@@ -17,16 +17,13 @@ import java.io.Serializable;
 
 @EqualsAndHashCode(callSuper = false)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Relation(value = "publication", collectionRelation = "publications")
-public class PublicationDto extends ResourceSupport implements Serializable {
+@Relation(value = "manuscript", collectionRelation = "manuscripts")
+public class ManuscriptDto extends ResourceSupport implements Serializable {
 
-    private static final long serialVersionUID = 4614819124284486530L;
+    private static final long serialVersionUID = -3319925385278963907L;
 
-    @JsonProperty("publicationId")
-    private final String publicationId;
-
-    @JsonProperty("pmid")
-    private final String pmid;
+    @JsonProperty("manuscriptId")
+    private final String manuscriptId;
 
     @JsonProperty("journal")
     private final String journal;
@@ -38,9 +35,13 @@ public class PublicationDto extends ResourceSupport implements Serializable {
     @JsonProperty("firstAuthor")
     private final String firstAuthor;
 
-    @JsonProperty("publicationDate")
+    @JsonProperty("submissionDate")
     @JsonSerialize(using = JsonJodaLocalDateSerializer.class)
-    private final LocalDate publicationDate;
+    private final LocalDate submissionDate;
+
+    @JsonProperty("acceptanceDate")
+    @JsonSerialize(using = JsonJodaLocalDateSerializer.class)
+    private final LocalDate acceptanceDate;
 
     @JsonProperty("correspondingAuthor")
     private final CorrespondingAuthorDto correspondingAuthor;
@@ -49,30 +50,34 @@ public class PublicationDto extends ResourceSupport implements Serializable {
     private final String status;
 
     @JsonCreator
-    public PublicationDto(@JsonProperty("publicationId") String publicationId,
-                          @JsonProperty("pmid") String pmid,
-                          @JsonProperty("title") String title,
-                          @JsonProperty("journal") String journal,
-                          @JsonProperty("firstAuthor") String firstAuthor,
-                          @JsonProperty("publicationDate") @JsonDeserialize(using = JsonJodaLocalDateDeserializer.class) LocalDate publicationDate,
-                          @JsonProperty("correspondingAuthor") CorrespondingAuthorDto correspondingAuthor,
-                          @JsonProperty("status") String status) {
-        this.publicationId = publicationId;
-        this.pmid = pmid;
+    public ManuscriptDto(@JsonProperty("manuscriptId") String manuscriptId,
+                         @JsonProperty("title") String title,
+                         @JsonProperty("journal") String journal,
+                         @JsonProperty("firstAuthor") String firstAuthor,
+                         @JsonProperty("submissionDate") @JsonDeserialize(using = JsonJodaLocalDateDeserializer.class) LocalDate submissionDate,
+                         @JsonProperty("acceptanceDate") @JsonDeserialize(using = JsonJodaLocalDateDeserializer.class) LocalDate acceptanceDate,
+                         @JsonProperty("correspondingAuthor") CorrespondingAuthorDto correspondingAuthor,
+                         @JsonProperty("status") String status) {
+        this.manuscriptId = manuscriptId;
         this.title = title;
         this.journal = journal;
         this.firstAuthor = firstAuthor;
-        this.publicationDate = publicationDate;
+        this.submissionDate = submissionDate;
+        this.acceptanceDate = acceptanceDate;
         this.correspondingAuthor = correspondingAuthor;
         this.status = status;
     }
 
-    public String getPublicationId() {
-        return publicationId;
+    public String getManuscriptId() {
+        return manuscriptId;
     }
 
-    public String getPmid() {
-        return pmid;
+    public LocalDate getSubmissionDate() {
+        return submissionDate;
+    }
+
+    public LocalDate getAcceptanceDate() {
+        return acceptanceDate;
     }
 
     public String getJournal() {
@@ -85,10 +90,6 @@ public class PublicationDto extends ResourceSupport implements Serializable {
 
     public String getFirstAuthor() {
         return firstAuthor;
-    }
-
-    public LocalDate getPublicationDate() {
-        return publicationDate;
     }
 
     public CorrespondingAuthorDto getCorrespondingAuthor() {

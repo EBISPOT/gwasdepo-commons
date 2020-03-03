@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import uk.ac.ebi.spot.gwas.deposition.constants.Status;
+import uk.ac.ebi.spot.gwas.deposition.constants.SubmissionProvenanceType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,8 @@ import java.util.List;
         @CompoundIndex(name = "archived_completed", def = "{'archived': 1, 'completed': 1}"),
         @CompoundIndex(name = "pubId_archived", def = "{'archived': 1, 'publicationId': 1}"),
         @CompoundIndex(name = "pubId_archived_user", def = "{'archived': 1, 'publicationId': 1, 'created_userId': 1}"),
+        @CompoundIndex(name = "manId_archived", def = "{'archived': 1, 'manuscriptId': 1}"),
+        @CompoundIndex(name = "manId_archived_user", def = "{'archived': 1, 'manuscriptId': 1, 'created_userId': 1}"),
         @CompoundIndex(name = "id_archived_user", def = "{'id': 1, 'archived': 1, 'created_userId': 1}")})
 public class Submission {
 
@@ -25,6 +28,9 @@ public class Submission {
 
     @Indexed
     private String publicationId;
+
+    @Indexed
+    private String manuscriptId;
 
     @Indexed
     private String overallStatus;
@@ -62,16 +68,23 @@ public class Submission {
 
     private String type;
 
+    private String provenanceType;
+
     @Indexed
     private boolean archived;
 
     private boolean completed;
 
-    public Submission(String publicationId, Provenance created) {
-        this.publicationId = publicationId;
+    public Submission(String provenanceId, String provenanceType, Provenance created) {
+        if (provenanceType.equalsIgnoreCase(SubmissionProvenanceType.MANUSCRIPT.name())) {
+            this.manuscriptId = provenanceId;
+        } else {
+            this.publicationId = provenanceId;
+        }
         this.overallStatus = Status.STARTED.name();
         this.metadataStatus = Status.NA.name();
         this.summaryStatsStatus = Status.NA.name();
+        this.provenanceType = provenanceType;
         this.created = created;
         this.lastUpdated = created;
 
@@ -90,6 +103,22 @@ public class Submission {
         this.samples = new ArrayList<>();
         this.fileUploads = new ArrayList<>();
         this.archived = false;
+    }
+
+    public String getManuscriptId() {
+        return manuscriptId;
+    }
+
+    public void setManuscriptId(String manuscriptId) {
+        this.manuscriptId = manuscriptId;
+    }
+
+    public String getProvenanceType() {
+        return provenanceType;
+    }
+
+    public void setProvenanceType(String provenanceType) {
+        this.provenanceType = provenanceType;
     }
 
     public DateTime getDeletedOn() {

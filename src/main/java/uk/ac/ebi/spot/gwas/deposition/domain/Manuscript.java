@@ -4,11 +4,13 @@ import org.joda.time.LocalDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.CompoundIndexes;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import uk.ac.ebi.spot.gwas.deposition.constants.ManuscriptStatus;
 
 @Document(collection = "manuscripts")
 @CompoundIndexes({@CompoundIndex(name = "archived_user", def = "{'created_userId': 1, 'archived': 1}"),
+        @CompoundIndex(name = "id_archived", def = "{'id': 1, 'archived': 1}"),
         @CompoundIndex(name = "id_archived_user", def = "{'id': 1, 'archived': 1, 'created_userId': 1}")})
 public class Manuscript {
 
@@ -35,6 +37,7 @@ public class Manuscript {
 
     private Provenance lastUpdated;
 
+    @Indexed
     private boolean archived;
 
     public Manuscript() {

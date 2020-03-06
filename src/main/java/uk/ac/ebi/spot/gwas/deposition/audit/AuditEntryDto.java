@@ -1,4 +1,4 @@
-package uk.ac.ebi.spot.gwas.deposition.dto;
+package uk.ac.ebi.spot.gwas.deposition.audit;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -11,6 +11,7 @@ import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaDateTimeDeserializer;
 import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaDateTimeSerializer;
 
 import java.io.Serializable;
+import java.util.Map;
 
 @EqualsAndHashCode
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -27,6 +28,9 @@ public final class AuditEntryDto implements Serializable {
     @JsonProperty("action")
     private final String action;
 
+    @JsonProperty("outcome")
+    private final String outcome;
+
     @JsonProperty("entityId")
     private final String entityId;
 
@@ -37,18 +41,26 @@ public final class AuditEntryDto implements Serializable {
     @JsonProperty("context")
     private final String context;
 
+    @JsonProperty("metadata")
+    private final Map<String, String> metadata;
+
+
     @JsonCreator
     public AuditEntryDto(@JsonProperty("id") String id,
                          @JsonProperty("userId") String userId,
                          @JsonProperty("action") String action,
+                         @JsonProperty("outcome") String outcome,
                          @JsonProperty("entityId") String entityId,
                          @JsonProperty("context") String context,
+                         @JsonProperty("metadata") Map<String, String> metadata,
                          @JsonProperty("timestamp") @JsonDeserialize(using = JsonJodaDateTimeDeserializer.class) DateTime timestamp) {
         this.id = id;
         this.userId = userId;
         this.action = action;
+        this.outcome = outcome;
         this.entityId = entityId;
         this.context = context;
+        this.metadata = metadata;
         this.timestamp = timestamp;
     }
 
@@ -74,5 +86,13 @@ public final class AuditEntryDto implements Serializable {
 
     public String getContext() {
         return context;
+    }
+
+    public String getOutcome() {
+        return outcome;
+    }
+
+    public Map<String, String> getMetadata() {
+        return metadata;
     }
 }

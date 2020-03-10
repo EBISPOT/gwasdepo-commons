@@ -34,6 +34,9 @@ public final class AuditEntryDto implements Serializable {
     @JsonProperty("entityId")
     private final String entityId;
 
+    @JsonProperty("entityType")
+    private final String entityType;
+
     @JsonProperty("timestamp")
     @JsonSerialize(using = JsonJodaDateTimeSerializer.class)
     private final DateTime timestamp;
@@ -51,6 +54,7 @@ public final class AuditEntryDto implements Serializable {
                          @JsonProperty("action") String action,
                          @JsonProperty("outcome") String outcome,
                          @JsonProperty("entityId") String entityId,
+                         @JsonProperty("entityType") String entityType,
                          @JsonProperty("context") String context,
                          @JsonProperty("metadata") Map<String, String> metadata,
                          @JsonProperty("timestamp") @JsonDeserialize(using = JsonJodaDateTimeDeserializer.class) DateTime timestamp) {
@@ -59,6 +63,7 @@ public final class AuditEntryDto implements Serializable {
         this.action = action;
         this.outcome = outcome;
         this.entityId = entityId;
+        this.entityType = entityType;
         this.context = context;
         this.metadata = metadata;
         this.timestamp = timestamp;
@@ -78,6 +83,10 @@ public final class AuditEntryDto implements Serializable {
 
     public String getEntityId() {
         return entityId;
+    }
+
+    public String getEntityType() {
+        return entityType;
     }
 
     public DateTime getTimestamp() {

@@ -1,6 +1,5 @@
 package uk.ac.ebi.spot.gwas.deposition.audit;
 
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -12,16 +11,9 @@ public class AuditProxy {
     private AuditService auditService;
 
     @Async
-    public void addAuditEntry(AuditEntryEnvelopeDto auditEntryEnvelopeDto) {
+    public void addAuditEntry(AuditEntryDto auditEntryDto) {
         if (auditService != null) {
-            auditService.addAuditEntry(new AuditEntryDto(null,
-                    auditEntryEnvelopeDto.getUserId(),
-                    auditEntryEnvelopeDto.getAction(),
-                    auditEntryEnvelopeDto.getOutcome(),
-                    auditEntryEnvelopeDto.getEntityId(),
-                    auditEntryEnvelopeDto.getContext(),
-                    auditEntryEnvelopeDto.getMetadata(),
-                    DateTime.now()));
+            auditService.addAuditEntry(auditEntryDto);
         }
     }
 }

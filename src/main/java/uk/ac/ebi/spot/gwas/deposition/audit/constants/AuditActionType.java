@@ -1,11 +1,13 @@
 package uk.ac.ebi.spot.gwas.deposition.audit.constants;
 
-public enum  AuditActionType {
+public enum AuditActionType {
 
     CREATE,
     RETRIEVE,
-    EDIT,
+    PROCESS,
     SUBMIT,
-    DELETE
+    DELETE,
+    VALIDATION,
+    SS_VALIDATION
 
 }

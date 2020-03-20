@@ -91,7 +91,7 @@ public class GWASQuartzJobScheduler extends MongoDBJobStore {
                 if (environmentConfiguration.isDev()) {
                     mongoClient = getMongoForDev();
                 } else {
-                    mongoClient = getMongoForNonDev();
+                    mongoClient = getMongoForNonDev(environmentConfiguration.isGcp());
                 }
             }
         }
@@ -108,7 +108,7 @@ public class GWASQuartzJobScheduler extends MongoDBJobStore {
         return new MongoClient(servers);
     }
 
-    private static MongoClient getMongoForNonDev() {
+    private static MongoClient getMongoForNonDev(boolean gcp) {
         int connectionsPoolSize = StringUtils.isNotEmpty(poolSize) ? Integer.parseInt(poolSize.trim()) : 2;
         String credentials = "";
         if (userName != null && password != null) {
@@ -120,7 +120,8 @@ public class GWASQuartzJobScheduler extends MongoDBJobStore {
             }
         }
 
-        MongoClientURI uri = new MongoClientURI("mongodb://" + credentials + mongoAddresses,
+        String prefix = gcp ? "mongodb+srv://" : "mongodb://";
+        MongoClientURI uri = new MongoClientURI(prefix + credentials + mongoAddresses,
                 MongoClientOptions.builder()
                         .sslInvalidHostNameAllowed(true)
                         .connectionsPerHost(connectionsPoolSize));

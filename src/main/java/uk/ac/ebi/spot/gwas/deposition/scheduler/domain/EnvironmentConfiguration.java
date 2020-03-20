@@ -12,10 +12,13 @@ public class EnvironmentConfiguration implements Serializable {
 
     private boolean dev;
 
-    public EnvironmentConfiguration(String name, String config, boolean dev) {
+    private boolean gcp;
+
+    public EnvironmentConfiguration(String name, String config, boolean dev, boolean gcp) {
         this.name = name;
         this.config = config;
         this.dev = dev;
+        this.gcp = gcp;
     }
 
     public String getName() {
@@ -30,8 +33,12 @@ public class EnvironmentConfiguration implements Serializable {
         return dev;
     }
 
+    public boolean isGcp() {
+        return gcp;
+    }
+
     @Override
     public String toString() {
-        return name + " [" + config + " | " + dev + "]";
+        return name + " [" + config + " | " + dev + " | " + gcp + "]";
     }
 }

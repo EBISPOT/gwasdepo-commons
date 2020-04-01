@@ -4,11 +4,11 @@ import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 import org.junit.Test;
 
-public class ManuscriptDtoTest {
+public class BodyOfWorkDtoTest {
 
     @Test
     public void equalsContract() {
-        EqualsVerifier.forClass(ManuscriptDto.class)
+        EqualsVerifier.forClass(BodyOfWorkDto.class)
                 .suppress(Warning.STRICT_INHERITANCE)
                 .withRedefinedSuperclass()
                 .withIgnoredFields("links")

@@ -3,11 +3,11 @@ package uk.ac.ebi.spot.gwas.deposition.dto.ingest;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.Test;
 
-public class ManuscriptDtoTest {
+public class BodyOfWorkDtoTest {
 
     @Test
     public void equalsContract() {
-        EqualsVerifier.forClass(ManuscriptDto.class)
+        EqualsVerifier.forClass(BodyOfWorkDto.class)
                 .verify();
     }
 

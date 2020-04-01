@@ -32,7 +32,7 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
     private final PublicationDto publication;
 
     @JsonProperty("manuscript")
-    private final ManuscriptDto manuscript;
+    private final BodyOfWorkDto manuscript;
 
     @NotEmpty
     @JsonProperty("submission_status")
@@ -82,7 +82,7 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
     @JsonCreator
     public SubmissionDto(@JsonProperty("submissionId") String submissionId,
                          @JsonProperty("publication") PublicationDto publication,
-                         @JsonProperty("manuscript") ManuscriptDto manuscript,
+                         @JsonProperty("manuscript") BodyOfWorkDto manuscript,
                          @JsonProperty("files") List<FileUploadDto> files,
                          @JsonProperty("globusFolder") String globusFolder,
                          @JsonProperty("globusOriginId") String globusOriginId,
@@ -170,7 +170,7 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
         return globusOriginId;
     }
 
-    public ManuscriptDto getManuscript() {
+    public BodyOfWorkDto getManuscript() {
         return manuscript;
     }
 

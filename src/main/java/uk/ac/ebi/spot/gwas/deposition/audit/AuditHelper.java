@@ -7,7 +7,7 @@ import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditMetadata;
 import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditObjectType;
 import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditOperationOutcome;
 import uk.ac.ebi.spot.gwas.deposition.domain.FileUpload;
-import uk.ac.ebi.spot.gwas.deposition.domain.Manuscript;
+import uk.ac.ebi.spot.gwas.deposition.domain.BodyOfWork;
 import uk.ac.ebi.spot.gwas.deposition.domain.SSGlobusResponse;
 import uk.ac.ebi.spot.gwas.deposition.domain.Submission;
 import uk.ac.ebi.spot.gwas.deposition.dto.PublicationDto;
@@ -18,25 +18,25 @@ import java.util.Map;
 
 public class AuditHelper {
 
-    public static AuditEntryDto manuscriptCreated(String userId, Manuscript manuscript) {
+    public static AuditEntryDto manuscriptCreated(String userId, BodyOfWork bodyOfWork) {
         Map<String, String> metadata = new HashMap<>();
-        metadata.put(AuditMetadata.TITLE.name(), manuscript.getTitle());
+        metadata.put(AuditMetadata.TITLE.name(), bodyOfWork.getTitle());
 
         return new AuditEntryDto(null,
                 userId,
                 AuditActionType.CREATE.name(),
                 AuditOperationOutcome.SUCCESS.name(),
-                manuscript.getId(),
+                bodyOfWork.getId(),
                 AuditObjectType.MANUSCRIPT.name(),
                 null,
                 metadata,
                 DateTime.now());
     }
 
-    public static AuditEntryDto submissionCreated(String userId, Submission submission, Manuscript manuscript) {
+    public static AuditEntryDto submissionCreated(String userId, Submission submission, BodyOfWork bodyOfWork) {
         Map<String, String> metadata = new HashMap<>();
         metadata.put(AuditMetadata.PROVENANCE_TYPE.name(), submission.getProvenanceType());
-        metadata.put(AuditMetadata.TITLE.name(), manuscript.getTitle());
+        metadata.put(AuditMetadata.TITLE.name(), bodyOfWork.getTitle());
 
         return new AuditEntryDto(null,
                 userId,
@@ -44,7 +44,7 @@ public class AuditHelper {
                 AuditOperationOutcome.SUCCESS.name(),
                 submission.getId(),
                 AuditObjectType.SUBMISSION.name(),
-                manuscript.getId(),
+                bodyOfWork.getId(),
                 metadata,
                 DateTime.now());
     }
@@ -190,15 +190,15 @@ public class AuditHelper {
                 DateTime.now());
     }
 
-    public static AuditEntryDto manuscriptRetrieved(String userId, Manuscript manuscript) {
+    public static AuditEntryDto manuscriptRetrieved(String userId, BodyOfWork bodyOfWork) {
         Map<String, String> metadata = new HashMap<>();
-        metadata.put(AuditMetadata.TITLE.name(), manuscript.getTitle());
+        metadata.put(AuditMetadata.TITLE.name(), bodyOfWork.getTitle());
 
         return new AuditEntryDto(null,
                 userId,
                 AuditActionType.RETRIEVE.name(),
                 AuditOperationOutcome.SUCCESS.name(),
-                manuscript.getId(),
+                bodyOfWork.getId(),
                 AuditObjectType.MANUSCRIPT.name(),
                 null,
                 metadata,

@@ -28,7 +28,7 @@ public final class SubmissionEnvelopeDto implements Serializable {
     private final PublicationDto publication;
 
     @JsonProperty("manuscript")
-    private final ManuscriptDto manuscript;
+    private final BodyOfWorkDto manuscript;
 
     @NotEmpty
     @JsonProperty("status")
@@ -53,7 +53,7 @@ public final class SubmissionEnvelopeDto implements Serializable {
     @JsonCreator
     public SubmissionEnvelopeDto(@JsonProperty("submissionId") String submissionId,
                                  @JsonProperty("publication") PublicationDto publication,
-                                 @JsonProperty("manuscript") ManuscriptDto manuscript,
+                                 @JsonProperty("manuscript") BodyOfWorkDto manuscript,
                                  @JsonProperty("provenanceType") String provenanceType,
                                  @JsonProperty("status") String status,
                                  @JsonProperty("globusFolder") String globusFolder,
@@ -79,7 +79,7 @@ public final class SubmissionEnvelopeDto implements Serializable {
         return publication;
     }
 
-    public ManuscriptDto getManuscript() {
+    public BodyOfWorkDto getManuscript() {
         return manuscript;
     }
 

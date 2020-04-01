@@ -92,7 +92,7 @@ public class AuditHelper {
                 AuditOperationOutcome.SUCCESS.name(),
                 submission.getId(),
                 AuditObjectType.SUBMISSION.name(),
-                submission.getPublicationId() != null ? submission.getPublicationId() : submission.getManuscriptId(),
+                submission.getPublicationId() != null ? submission.getPublicationId() : submission.getBodyOfWorks().get(0),
                 metadata,
                 DateTime.now());
     }
@@ -108,7 +108,7 @@ public class AuditHelper {
                 AuditOperationOutcome.FAILED.name(),
                 submission.getId(),
                 AuditObjectType.SUBMISSION.name(),
-                submission.getPublicationId() != null ? submission.getPublicationId() : submission.getManuscriptId(),
+                submission.getPublicationId() != null ? submission.getPublicationId() : submission.getBodyOfWorks().get(0),
                 metadata,
                 DateTime.now());
     }
@@ -124,7 +124,7 @@ public class AuditHelper {
                 AuditOperationOutcome.SUCCESS.name(),
                 submission.getId(),
                 AuditObjectType.SUBMISSION.name(),
-                submission.getPublicationId() != null ? submission.getPublicationId() : submission.getManuscriptId(),
+                submission.getPublicationId() != null ? submission.getPublicationId() : submission.getBodyOfWorks().get(0),
                 metadata,
                 DateTime.now());
     }
@@ -216,7 +216,7 @@ public class AuditHelper {
                 AuditOperationOutcome.SUCCESS.name(),
                 submission.getId(),
                 AuditObjectType.SUBMISSION.name(),
-                submission.getPublicationId() != null ? submission.getPublicationId() : submission.getManuscriptId(),
+                submission.getPublicationId() != null ? submission.getPublicationId() : submission.getBodyOfWorks().get(0),
                 metadata,
                 DateTime.now());
     }
@@ -232,7 +232,7 @@ public class AuditHelper {
                 success ? AuditOperationOutcome.SUCCESS.name() : AuditOperationOutcome.FAILED.name(),
                 submission.getId(),
                 AuditObjectType.SUBMISSION.name(),
-                submission.getPublicationId() != null ? submission.getPublicationId() : submission.getManuscriptId(),
+                submission.getPublicationId() != null ? submission.getPublicationId() : submission.getBodyOfWorks().get(0),
                 metadata,
                 DateTime.now());
     }

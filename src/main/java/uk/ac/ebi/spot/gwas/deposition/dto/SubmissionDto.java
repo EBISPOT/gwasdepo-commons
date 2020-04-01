@@ -31,8 +31,8 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
     @JsonProperty("publication")
     private final PublicationDto publication;
 
-    @JsonProperty("manuscript")
-    private final BodyOfWorkDto manuscript;
+    @JsonProperty("bodyOfWork")
+    private final BodyOfWorkDto bodyOfWork;
 
     @NotEmpty
     @JsonProperty("submission_status")
@@ -82,7 +82,7 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
     @JsonCreator
     public SubmissionDto(@JsonProperty("submissionId") String submissionId,
                          @JsonProperty("publication") PublicationDto publication,
-                         @JsonProperty("manuscript") BodyOfWorkDto manuscript,
+                         @JsonProperty("bodyOfWork") BodyOfWorkDto bodyOfWork,
                          @JsonProperty("files") List<FileUploadDto> files,
                          @JsonProperty("globusFolder") String globusFolder,
                          @JsonProperty("globusOriginId") String globusOriginId,
@@ -98,7 +98,7 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
                          @JsonProperty("lastUpdated") ProvenanceDto lastUpdated) {
         this.submissionId = submissionId;
         this.publication = publication;
-        this.manuscript = manuscript;
+        this.bodyOfWork = bodyOfWork;
         this.studyCount = studyCount;
         this.files = files;
         this.globusFolder = globusFolder;
@@ -170,8 +170,8 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
         return globusOriginId;
     }
 
-    public BodyOfWorkDto getManuscript() {
-        return manuscript;
+    public BodyOfWorkDto getBodyOfWork() {
+        return bodyOfWork;
     }
 
     public String getProvenanceType() {

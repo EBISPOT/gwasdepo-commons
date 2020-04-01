@@ -30,7 +30,7 @@ public class Submission {
     private String publicationId;
 
     @Indexed
-    private String manuscriptId;
+    private List<String> bodyOfWorks;
 
     @Indexed
     private String overallStatus;
@@ -76,8 +76,9 @@ public class Submission {
     private boolean completed;
 
     public Submission(String provenanceId, String provenanceType, Provenance created) {
-        if (provenanceType.equalsIgnoreCase(SubmissionProvenanceType.MANUSCRIPT.name())) {
-            this.manuscriptId = provenanceId;
+        if (provenanceType.equalsIgnoreCase(SubmissionProvenanceType.BODY_OF_WORK.name())) {
+            this.bodyOfWorks = new ArrayList<>();
+            this.bodyOfWorks.add(provenanceId);
         } else {
             this.publicationId = provenanceId;
         }
@@ -105,12 +106,12 @@ public class Submission {
         this.archived = false;
     }
 
-    public String getManuscriptId() {
-        return manuscriptId;
+    public List<String> getBodyOfWorks() {
+        return bodyOfWorks;
     }
 
-    public void setManuscriptId(String manuscriptId) {
-        this.manuscriptId = manuscriptId;
+    public void setBodyOfWorks(List<String> bodyOfWorks) {
+        this.bodyOfWorks = bodyOfWorks;
     }
 
     public String getProvenanceType() {

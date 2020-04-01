@@ -10,7 +10,7 @@ import uk.ac.ebi.spot.gwas.deposition.constants.BodyOfWorkStatus;
 
 import java.util.List;
 
-@Document(collection = "manuscripts")
+@Document(collection = "bodyOfWorks")
 @CompoundIndexes({@CompoundIndex(name = "archived_user", def = "{'created_userId': 1, 'archived': 1}"),
         @CompoundIndex(name = "id_archived", def = "{'id': 1, 'archived': 1}"),
         @CompoundIndex(name = "id_archived_user", def = "{'id': 1, 'archived': 1, 'created_userId': 1}")})
@@ -29,9 +29,9 @@ public class BodyOfWork {
 
     private String url;
 
-    private String firstAuthor;
+    private String firstAuthorFirstName;
 
-    private String lastAuthor;
+    private String firstAuthorLastName;
 
     private List<CorrespondingAuthor> correspondingAuthors;
 
@@ -59,7 +59,7 @@ public class BodyOfWork {
     }
 
     public BodyOfWork(String title, String description, String journal, String doi, String url,
-                      String firstAuthor, String lastAuthor, List<CorrespondingAuthor> correspondingAuthors,
+                      String firstAuthorFirstName, String firstAuthorLastName, List<CorrespondingAuthor> correspondingAuthors,
                       List<String> pmids, String prePrintServer, String preprintServerDOI, LocalDate embargoDate,
                       Boolean embargoUntilPublished, Provenance created) {
         this.status = BodyOfWorkStatus.NEW.name();
@@ -68,8 +68,8 @@ public class BodyOfWork {
         this.journal = journal;
         this.doi = doi;
         this.url = url;
-        this.firstAuthor = firstAuthor;
-        this.lastAuthor = lastAuthor;
+        this.firstAuthorFirstName = firstAuthorFirstName;
+        this.firstAuthorLastName = firstAuthorLastName;
         this.correspondingAuthors = correspondingAuthors;
         this.pmids = pmids;
         this.prePrintServer = prePrintServer;
@@ -129,20 +129,20 @@ public class BodyOfWork {
         this.url = url;
     }
 
-    public String getFirstAuthor() {
-        return firstAuthor;
+    public String getFirstAuthorFirstName() {
+        return firstAuthorFirstName;
     }
 
-    public void setFirstAuthor(String firstAuthor) {
-        this.firstAuthor = firstAuthor;
+    public void setFirstAuthorFirstName(String firstAuthorFirstName) {
+        this.firstAuthorFirstName = firstAuthorFirstName;
     }
 
-    public String getLastAuthor() {
-        return lastAuthor;
+    public String getFirstAuthorLastName() {
+        return firstAuthorLastName;
     }
 
-    public void setLastAuthor(String lastAuthor) {
-        this.lastAuthor = lastAuthor;
+    public void setFirstAuthorLastName(String firstAuthorLastName) {
+        this.firstAuthorLastName = firstAuthorLastName;
     }
 
     public List<CorrespondingAuthor> getCorrespondingAuthors() {

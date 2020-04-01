@@ -20,8 +20,9 @@ import java.util.List;
 public final class BodyOfWorkDto implements Serializable {
 
     private static final long serialVersionUID = -3319925385278963907L;
-    @JsonProperty("manuscriptId")
-    private final String manuscriptId;
+
+    @JsonProperty("bodyOfWorkId")
+    private final String bodyOfWorkId;
 
     @NotEmpty
     @JsonProperty("title")
@@ -68,7 +69,7 @@ public final class BodyOfWorkDto implements Serializable {
     private final String status;
 
     @JsonCreator
-    public BodyOfWorkDto(@JsonProperty("manuscriptId") String manuscriptId,
+    public BodyOfWorkDto(@JsonProperty("bodyOfWorkId") String bodyOfWorkId,
                          @JsonProperty("title") String title,
                          @JsonProperty("description") String description,
                          @JsonProperty("firstAuthorFirstName") String firstAuthorFirstName,
@@ -83,7 +84,7 @@ public final class BodyOfWorkDto implements Serializable {
                          @JsonProperty("embargoUntilPublished") Boolean embargoUntilPublished,
                          @JsonProperty("pmids") List<String> pmids,
                          @JsonProperty("status") String status) {
-        this.manuscriptId = manuscriptId;
+        this.bodyOfWorkId = bodyOfWorkId;
         this.title = title;
         this.description = description;
         this.firstAuthorFirstName = firstAuthorFirstName;
@@ -100,8 +101,8 @@ public final class BodyOfWorkDto implements Serializable {
         this.status = status;
     }
 
-    public String getManuscriptId() {
-        return manuscriptId;
+    public String getBodyOfWorkId() {
+        return bodyOfWorkId;
     }
 
     public String getTitle() {

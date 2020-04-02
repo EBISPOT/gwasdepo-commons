@@ -18,7 +18,7 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = false)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Relation(value = "manuscript", collectionRelation = "manuscripts")
+@Relation(value = "bodyofwork", collectionRelation = "bodyOfWorks")
 public class BodyOfWorkDto extends ResourceSupport implements Serializable {
 
     private static final long serialVersionUID = -3319925385278963907L;

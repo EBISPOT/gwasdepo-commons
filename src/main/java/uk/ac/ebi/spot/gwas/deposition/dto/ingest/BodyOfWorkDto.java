@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.EqualsAndHashCode;
 import org.joda.time.LocalDate;
-import uk.ac.ebi.spot.gwas.deposition.dto.CorrespondingAuthorDto;
+import uk.ac.ebi.spot.gwas.deposition.dto.AuthorDto;
 import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaLocalDateDeserializer;
 import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaLocalDateSerializer;
 
@@ -31,11 +31,11 @@ public final class BodyOfWorkDto implements Serializable {
     @JsonProperty("description")
     private final String description;
 
-    @JsonProperty("firstAuthorFirstName")
-    private final String firstAuthorFirstName;
+    @JsonProperty("firstAuthor")
+    private final AuthorDto firstAuthor;
 
-    @JsonProperty("firstAuthorLastName")
-    private final String firstAuthorLastName;
+    @JsonProperty("lastAuthor")
+    private final AuthorDto lastAuthor;
 
     @JsonProperty("journal")
     private final String journal;
@@ -47,7 +47,7 @@ public final class BodyOfWorkDto implements Serializable {
     private final String url;
 
     @JsonProperty("correspondingAuthors")
-    private final List<CorrespondingAuthorDto> correspondingAuthors;
+    private final List<AuthorDto> correspondingAuthors;
 
     @JsonProperty("prePrintServer")
     private final String prePrintServer;
@@ -72,12 +72,12 @@ public final class BodyOfWorkDto implements Serializable {
     public BodyOfWorkDto(@JsonProperty("bodyOfWorkId") String bodyOfWorkId,
                          @JsonProperty("title") String title,
                          @JsonProperty("description") String description,
-                         @JsonProperty("firstAuthorFirstName") String firstAuthorFirstName,
-                         @JsonProperty("firstAuthorLastName") String firstAuthorLastName,
+                         @JsonProperty("firstAuthor") AuthorDto firstAuthor,
+                         @JsonProperty("lastAuthor") AuthorDto lastAuthor,
                          @JsonProperty("journal") String journal,
                          @JsonProperty("doi") String doi,
                          @JsonProperty("url") String url,
-                         @JsonProperty("correspondingAuthors") List<CorrespondingAuthorDto> correspondingAuthors,
+                         @JsonProperty("correspondingAuthors") List<AuthorDto> correspondingAuthors,
                          @JsonProperty("prePrintServer") String prePrintServer,
                          @JsonProperty("preprintServerDOI") String preprintServerDOI,
                          @JsonProperty("embargoDate") @JsonDeserialize(using = JsonJodaLocalDateDeserializer.class) LocalDate embargoDate,
@@ -87,8 +87,8 @@ public final class BodyOfWorkDto implements Serializable {
         this.bodyOfWorkId = bodyOfWorkId;
         this.title = title;
         this.description = description;
-        this.firstAuthorFirstName = firstAuthorFirstName;
-        this.firstAuthorLastName = firstAuthorLastName;
+        this.firstAuthor = firstAuthor;
+        this.lastAuthor = lastAuthor;
         this.journal = journal;
         this.doi = doi;
         this.url = url;
@@ -113,12 +113,16 @@ public final class BodyOfWorkDto implements Serializable {
         return description;
     }
 
-    public String getFirstAuthorFirstName() {
-        return firstAuthorFirstName;
+    public AuthorDto getFirstAuthor() {
+        return firstAuthor;
     }
 
-    public String getFirstAuthorLastName() {
-        return firstAuthorLastName;
+    public AuthorDto getLastAuthor() {
+        return lastAuthor;
+    }
+
+    public List<AuthorDto> getCorrespondingAuthors() {
+        return correspondingAuthors;
     }
 
     public String getJournal() {
@@ -131,10 +135,6 @@ public final class BodyOfWorkDto implements Serializable {
 
     public String getUrl() {
         return url;
-    }
-
-    public List<CorrespondingAuthorDto> getCorrespondingAuthors() {
-        return correspondingAuthors;
     }
 
     public String getPrePrintServer() {

@@ -29,11 +29,11 @@ public class BodyOfWork {
 
     private String url;
 
-    private String firstAuthorFirstName;
+    private Author firstAuthor;
 
-    private String firstAuthorLastName;
+    private Author lastAuthor;
 
-    private List<CorrespondingAuthor> correspondingAuthors;
+    private List<Author> correspondingAuthors;
 
     private List<String> pmids;
 
@@ -59,7 +59,7 @@ public class BodyOfWork {
     }
 
     public BodyOfWork(String title, String description, String journal, String doi, String url,
-                      String firstAuthorFirstName, String firstAuthorLastName, List<CorrespondingAuthor> correspondingAuthors,
+                      Author firstAuthor, Author lastAuthor, List<Author> correspondingAuthors,
                       List<String> pmids, String prePrintServer, String preprintServerDOI, LocalDate embargoDate,
                       Boolean embargoUntilPublished, Provenance created) {
         this.status = BodyOfWorkStatus.NEW.name();
@@ -68,8 +68,8 @@ public class BodyOfWork {
         this.journal = journal;
         this.doi = doi;
         this.url = url;
-        this.firstAuthorFirstName = firstAuthorFirstName;
-        this.firstAuthorLastName = firstAuthorLastName;
+        this.firstAuthor = firstAuthor;
+        this.lastAuthor = lastAuthor;
         this.correspondingAuthors = correspondingAuthors;
         this.pmids = pmids;
         this.prePrintServer = prePrintServer;
@@ -129,27 +129,27 @@ public class BodyOfWork {
         this.url = url;
     }
 
-    public String getFirstAuthorFirstName() {
-        return firstAuthorFirstName;
+    public Author getFirstAuthor() {
+        return firstAuthor;
     }
 
-    public void setFirstAuthorFirstName(String firstAuthorFirstName) {
-        this.firstAuthorFirstName = firstAuthorFirstName;
+    public void setFirstAuthor(Author firstAuthor) {
+        this.firstAuthor = firstAuthor;
     }
 
-    public String getFirstAuthorLastName() {
-        return firstAuthorLastName;
+    public Author getLastAuthor() {
+        return lastAuthor;
     }
 
-    public void setFirstAuthorLastName(String firstAuthorLastName) {
-        this.firstAuthorLastName = firstAuthorLastName;
+    public void setLastAuthor(Author lastAuthor) {
+        this.lastAuthor = lastAuthor;
     }
 
-    public List<CorrespondingAuthor> getCorrespondingAuthors() {
+    public List<Author> getCorrespondingAuthors() {
         return correspondingAuthors;
     }
 
-    public void setCorrespondingAuthors(List<CorrespondingAuthor> correspondingAuthors) {
+    public void setCorrespondingAuthors(List<Author> correspondingAuthors) {
         this.correspondingAuthors = correspondingAuthors;
     }
 

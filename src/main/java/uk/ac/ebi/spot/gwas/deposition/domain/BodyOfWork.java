@@ -12,12 +12,15 @@ import java.util.List;
 
 @Document(collection = "bodyOfWorks")
 @CompoundIndexes({@CompoundIndex(name = "archived_user", def = "{'created_userId': 1, 'archived': 1}"),
-        @CompoundIndex(name = "id_archived", def = "{'id': 1, 'archived': 1}"),
-        @CompoundIndex(name = "id_archived_user", def = "{'id': 1, 'archived': 1, 'created_userId': 1}")})
+        @CompoundIndex(name = "id_archived", def = "{'bowId': 1, 'archived': 1}"),
+        @CompoundIndex(name = "id_archived_user", def = "{'bowId': 1, 'archived': 1, 'created_userId': 1}")})
 public class BodyOfWork {
 
     @Id
     private String id;
+
+    @Indexed
+    private String bowId;
 
     private String title;
 
@@ -223,5 +226,13 @@ public class BodyOfWork {
 
     public void setArchived(boolean archived) {
         this.archived = archived;
+    }
+
+    public String getBowId() {
+        return bowId;
+    }
+
+    public void setBowId(String bowId) {
+        this.bowId = bowId;
     }
 }

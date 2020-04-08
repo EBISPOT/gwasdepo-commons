@@ -12,8 +12,8 @@ import java.util.List;
 
 @Document(collection = "bodyOfWorks")
 @CompoundIndexes({@CompoundIndex(name = "archived_user", def = "{'created_userId': 1, 'archived': 1}"),
-        @CompoundIndex(name = "id_archived", def = "{'bowId': 1, 'archived': 1}"),
-        @CompoundIndex(name = "id_archived_user", def = "{'bowId': 1, 'archived': 1, 'created_userId': 1}")})
+        @CompoundIndex(name = "bowid_archived", def = "{'bowId': 1, 'archived': 1}"),
+        @CompoundIndex(name = "bowid_archived_user", def = "{'bowId': 1, 'archived': 1, 'created_userId': 1}")})
 public class BodyOfWork {
 
     @Id

@@ -18,8 +18,8 @@ import java.util.List;
         @CompoundIndex(name = "archived_completed", def = "{'archived': 1, 'completed': 1}"),
         @CompoundIndex(name = "pubId_archived", def = "{'archived': 1, 'publicationId': 1}"),
         @CompoundIndex(name = "pubId_archived_user", def = "{'archived': 1, 'publicationId': 1, 'created_userId': 1}"),
-        @CompoundIndex(name = "manId_archived", def = "{'archived': 1, 'manuscriptId': 1}"),
-        @CompoundIndex(name = "manId_archived_user", def = "{'archived': 1, 'manuscriptId': 1, 'created_userId': 1}"),
+        @CompoundIndex(name = "bw_arch", def = "{'bodyOfWorks': 1, 'archived': 1}"),
+        @CompoundIndex(name = "bw_arch_user", def = "{'bodyOfWorks': 1, 'created_userId': 1, 'archived': 1}"),
         @CompoundIndex(name = "id_archived_user", def = "{'id': 1, 'archived': 1, 'created_userId': 1}")})
 public class Submission {
 

@@ -6,9 +6,8 @@ import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditActionType;
 import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditMetadata;
 import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditObjectType;
 import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditOperationOutcome;
-import uk.ac.ebi.spot.gwas.deposition.domain.FileUpload;
 import uk.ac.ebi.spot.gwas.deposition.domain.BodyOfWork;
-import uk.ac.ebi.spot.gwas.deposition.domain.SSGlobusResponse;
+import uk.ac.ebi.spot.gwas.deposition.domain.FileUpload;
 import uk.ac.ebi.spot.gwas.deposition.domain.Submission;
 import uk.ac.ebi.spot.gwas.deposition.dto.PublicationDto;
 
@@ -18,7 +17,7 @@ import java.util.Map;
 
 public class AuditHelper {
 
-    public static AuditEntryDto manuscriptCreated(String userId, BodyOfWork bodyOfWork) {
+    public static AuditEntryDto bowCreate(String userId, BodyOfWork bodyOfWork) {
         Map<String, String> metadata = new HashMap<>();
         metadata.put(AuditMetadata.TITLE.name(), bodyOfWork.getTitle());
 
@@ -26,39 +25,78 @@ public class AuditHelper {
                 userId,
                 AuditActionType.CREATE.name(),
                 AuditOperationOutcome.SUCCESS.name(),
-                bodyOfWork.getId(),
-                AuditObjectType.MANUSCRIPT.name(),
+                bodyOfWork.getBowId(),
+                AuditObjectType.BODY_OF_WORK.name(),
                 null,
                 metadata,
                 DateTime.now());
     }
 
-    public static AuditEntryDto submissionCreated(String userId, Submission submission, BodyOfWork bodyOfWork) {
+
+    public static AuditEntryDto bowRetrieve(String userId, BodyOfWork bodyOfWork) {
+        Map<String, String> metadata = new HashMap<>();
+        if (bodyOfWork != null) {
+            metadata.put(AuditMetadata.TITLE.name(), bodyOfWork.getTitle());
+        }
+
+        return new AuditEntryDto(null,
+                userId,
+                AuditActionType.RETRIEVE.name(),
+                AuditOperationOutcome.SUCCESS.name(),
+                bodyOfWork != null ? bodyOfWork.getBowId() : null,
+                AuditObjectType.BODY_OF_WORK.name(),
+                null,
+                metadata,
+                DateTime.now());
+    }
+
+    public static AuditEntryDto bowDelete(String userId, BodyOfWork bodyOfWork, boolean outcome) {
+        Map<String, String> metadata = new HashMap<>();
+        metadata.put(AuditMetadata.TITLE.name(), bodyOfWork.getTitle());
+
+        return new AuditEntryDto(null,
+                userId,
+                AuditActionType.DELETE.name(),
+                outcome ? AuditOperationOutcome.SUCCESS.name() : AuditOperationOutcome.FAILED.name(),
+                bodyOfWork.getBowId(),
+                AuditObjectType.BODY_OF_WORK.name(),
+                null,
+                metadata,
+                DateTime.now());
+    }
+
+    public static AuditEntryDto submissionCreateBOW(String userId, Submission submission, BodyOfWork bodyOfWork,
+                                                    boolean start, boolean outcome) {
         Map<String, String> metadata = new HashMap<>();
         metadata.put(AuditMetadata.PROVENANCE_TYPE.name(), submission.getProvenanceType());
         metadata.put(AuditMetadata.TITLE.name(), bodyOfWork.getTitle());
 
         return new AuditEntryDto(null,
                 userId,
-                AuditActionType.CREATE.name(),
-                AuditOperationOutcome.SUCCESS.name(),
+                start ? AuditActionType.CREATE_START.name() : AuditActionType.CREATE.name(),
+                outcome ? AuditOperationOutcome.SUCCESS.name() : AuditOperationOutcome.FAILED.name(),
                 submission.getId(),
                 AuditObjectType.SUBMISSION.name(),
-                bodyOfWork.getId(),
+                bodyOfWork.getBowId(),
                 metadata,
                 DateTime.now());
     }
 
-    public static AuditEntryDto submissionCreated(String userId, Submission submission, PublicationDto publicationDto) {
+
+    public static AuditEntryDto submissionCreatePub(String userId, Submission submission, PublicationDto publicationDto,
+                                                    boolean start, boolean outcome, String error) {
         Map<String, String> metadata = new HashMap<>();
         metadata.put(AuditMetadata.TITLE.name(), publicationDto.getTitle());
         metadata.put(AuditMetadata.PROVENANCE_TYPE.name(), submission.getProvenanceType());
         metadata.put(AuditMetadata.TYPE.name(), submission.getType());
+        if (!outcome) {
+            metadata.put(AuditMetadata.ERROR.name(), error != null ? error : "UNKNOWN");
+        }
 
         return new AuditEntryDto(null,
                 userId,
-                AuditActionType.CREATE.name(),
-                AuditOperationOutcome.SUCCESS.name(),
+                start ? AuditActionType.CREATE_START.name() : AuditActionType.CREATE.name(),
+                outcome ? AuditOperationOutcome.SUCCESS.name() : AuditOperationOutcome.FAILED.name(),
                 submission.getId(),
                 AuditObjectType.SUBMISSION.name(),
                 publicationDto.getPmid(),
@@ -66,22 +104,8 @@ public class AuditHelper {
                 DateTime.now());
     }
 
-    public static AuditEntryDto fileCreated(String userId, FileUpload fileUpload, Submission submission) {
-        Map<String, String> metadata = new HashMap<>();
-        metadata.put(AuditMetadata.TITLE.name(), fileUpload.getFileName());
 
-        return new AuditEntryDto(null,
-                userId,
-                AuditActionType.CREATE.name(),
-                AuditOperationOutcome.SUCCESS.name(),
-                fileUpload.getId(),
-                AuditObjectType.FILE.name(),
-                submission.getId(),
-                metadata,
-                DateTime.now());
-    }
-
-    public static AuditEntryDto submissionRetrieved(String userId, Submission submission) {
+    public static AuditEntryDto submissionRetrieve(String userId, Submission submission) {
         Map<String, String> metadata = new HashMap<>();
         metadata.put(AuditMetadata.TYPE.name(), submission.getType());
         metadata.put(AuditMetadata.PROVENANCE_TYPE.name(), submission.getProvenanceType());
@@ -97,110 +121,18 @@ public class AuditHelper {
                 DateTime.now());
     }
 
-    public static AuditEntryDto submissionFailed(String userId, Submission submission) {
+    public static AuditEntryDto submissionDelete(String userId, Submission submission, boolean success) {
         Map<String, String> metadata = new HashMap<>();
         metadata.put(AuditMetadata.TYPE.name(), submission.getType());
         metadata.put(AuditMetadata.PROVENANCE_TYPE.name(), submission.getProvenanceType());
-
-        return new AuditEntryDto(null,
-                userId,
-                AuditActionType.PROCESS.name(),
-                AuditOperationOutcome.FAILED.name(),
-                submission.getId(),
-                AuditObjectType.SUBMISSION.name(),
-                submission.getPublicationId() != null ? submission.getPublicationId() : submission.getBodyOfWorks().get(0),
-                metadata,
-                DateTime.now());
-    }
-
-    public static AuditEntryDto submissionSuccess(String userId, Submission submission) {
-        Map<String, String> metadata = new HashMap<>();
-        metadata.put(AuditMetadata.TYPE.name(), submission.getType());
-        metadata.put(AuditMetadata.PROVENANCE_TYPE.name(), submission.getProvenanceType());
-
-        return new AuditEntryDto(null,
-                userId,
-                AuditActionType.PROCESS.name(),
-                AuditOperationOutcome.SUCCESS.name(),
-                submission.getId(),
-                AuditObjectType.SUBMISSION.name(),
-                submission.getPublicationId() != null ? submission.getPublicationId() : submission.getBodyOfWorks().get(0),
-                metadata,
-                DateTime.now());
-    }
-
-    public static AuditEntryDto fileRetrieved(String userId, FileUpload fileUpload) {
-        Map<String, String> metadata = new HashMap<>();
-        metadata.put(AuditMetadata.TITLE.name(), fileUpload.getFileName());
-
-        return new AuditEntryDto(null,
-                userId,
-                AuditActionType.RETRIEVE.name(),
-                AuditOperationOutcome.SUCCESS.name(),
-                fileUpload.getId(),
-                AuditObjectType.FILE.name(),
-                null,
-                metadata,
-                DateTime.now());
-    }
-
-    public static AuditEntryDto fileDeleted(String userId, FileUpload fileUpload) {
-        Map<String, String> metadata = new HashMap<>();
-        metadata.put(AuditMetadata.TITLE.name(), fileUpload.getFileName());
 
         return new AuditEntryDto(null,
                 userId,
                 AuditActionType.DELETE.name(),
-                AuditOperationOutcome.SUCCESS.name(),
-                fileUpload.getId(),
-                AuditObjectType.FILE.name(),
-                null,
-                metadata,
-                DateTime.now());
-    }
-
-    public static AuditEntryDto fileValidationFailed(String userId, FileUpload fileUpload, List<String> errors, boolean ss) {
-        Map<String, String> metadata = new HashMap<>();
-        metadata.put(AuditMetadata.TITLE.name(), fileUpload.getFileName());
-        metadata.put(AuditMetadata.ERROR.name(), StringUtils.join(errors, "; "));
-
-        return new AuditEntryDto(null,
-                userId,
-                ss ? AuditActionType.SS_VALIDATION.name() : AuditActionType.VALIDATION.name(),
-                AuditOperationOutcome.FAILED.name(),
-                fileUpload.getId(),
-                AuditObjectType.FILE.name(),
-                null,
-                metadata,
-                DateTime.now());
-    }
-
-    public static AuditEntryDto fileValidationSuccess(String userId, FileUpload fileUpload, boolean ss) {
-        Map<String, String> metadata = new HashMap<>();
-        metadata.put(AuditMetadata.TITLE.name(), fileUpload.getFileName());
-
-        return new AuditEntryDto(null,
-                userId,
-                ss ? AuditActionType.SS_VALIDATION.name() : AuditActionType.VALIDATION.name(),
-                AuditOperationOutcome.SUCCESS.name(),
-                fileUpload.getId(),
-                AuditObjectType.FILE.name(),
-                null,
-                metadata,
-                DateTime.now());
-    }
-
-    public static AuditEntryDto manuscriptRetrieved(String userId, BodyOfWork bodyOfWork) {
-        Map<String, String> metadata = new HashMap<>();
-        metadata.put(AuditMetadata.TITLE.name(), bodyOfWork.getTitle());
-
-        return new AuditEntryDto(null,
-                userId,
-                AuditActionType.RETRIEVE.name(),
-                AuditOperationOutcome.SUCCESS.name(),
-                bodyOfWork.getId(),
-                AuditObjectType.MANUSCRIPT.name(),
-                null,
+                success ? AuditOperationOutcome.SUCCESS.name() : AuditOperationOutcome.FAILED.name(),
+                submission.getId(),
+                AuditObjectType.SUBMISSION.name(),
+                submission.getPublicationId() != null ? submission.getPublicationId() : submission.getBodyOfWorks().get(0),
                 metadata,
                 DateTime.now());
     }
@@ -221,15 +153,15 @@ public class AuditHelper {
                 DateTime.now());
     }
 
-    public static AuditEntryDto submissionDeleted(String userId, Submission submission, boolean success) {
+    public static AuditEntryDto submissionValidate(String userId, Submission submission, boolean outcome) {
         Map<String, String> metadata = new HashMap<>();
         metadata.put(AuditMetadata.TYPE.name(), submission.getType());
         metadata.put(AuditMetadata.PROVENANCE_TYPE.name(), submission.getProvenanceType());
 
         return new AuditEntryDto(null,
                 userId,
-                AuditActionType.DELETE.name(),
-                success ? AuditOperationOutcome.SUCCESS.name() : AuditOperationOutcome.FAILED.name(),
+                AuditActionType.VALIDATION.name(),
+                outcome ? AuditOperationOutcome.SUCCESS.name() : AuditOperationOutcome.FAILED.name(),
                 submission.getId(),
                 AuditObjectType.SUBMISSION.name(),
                 submission.getPublicationId() != null ? submission.getPublicationId() : submission.getBodyOfWorks().get(0),
@@ -237,33 +169,74 @@ public class AuditHelper {
                 DateTime.now());
     }
 
-    public static AuditEntryDto globusFailed(String userId, PublicationDto publicationDto, SSGlobusResponse outcome) {
+    public static AuditEntryDto fileCreate(String userId, FileUpload fileUpload, Submission submission, boolean outcome, String error) {
         Map<String, String> metadata = new HashMap<>();
-        metadata.put(AuditMetadata.TITLE.name(), publicationDto.getTitle());
-        metadata.put(AuditMetadata.ERROR.name(), outcome != null ? outcome.getOutcome() : "UNKNOWN");
+        if (fileUpload.getFileName() != null) {
+            metadata.put(AuditMetadata.TITLE.name(), fileUpload.getFileName());
+        }
+        metadata.put(AuditMetadata.TYPE.name(), fileUpload.getType());
+        if (!outcome) {
+            metadata.put(AuditMetadata.ERROR.name(), error != null ? error : "UNKNOWN");
+        }
 
         return new AuditEntryDto(null,
                 userId,
                 AuditActionType.CREATE.name(),
-                AuditOperationOutcome.FAILED.name(),
-                null,
-                AuditObjectType.GLOBUS.name(),
-                publicationDto.getPmid(),
+                outcome ? AuditOperationOutcome.SUCCESS.name() : AuditOperationOutcome.FAILED.name(),
+                fileUpload.getId(),
+                AuditObjectType.FILE.name(),
+                submission.getId(),
                 metadata,
                 DateTime.now());
     }
 
-    public static AuditEntryDto globusSuccess(String userId, PublicationDto publicationDto, SSGlobusResponse outcome) {
+    public static AuditEntryDto fileRetrieve(String userId, FileUpload fileUpload, Submission submission) {
         Map<String, String> metadata = new HashMap<>();
-        metadata.put(AuditMetadata.TITLE.name(), publicationDto.getTitle());
+        metadata.put(AuditMetadata.TITLE.name(), fileUpload.getFileName());
 
         return new AuditEntryDto(null,
                 userId,
-                AuditActionType.CREATE.name(),
+                AuditActionType.RETRIEVE.name(),
                 AuditOperationOutcome.SUCCESS.name(),
-                outcome.getOutcome(),
-                AuditObjectType.GLOBUS.name(),
-                publicationDto.getPmid(),
+                fileUpload.getId(),
+                AuditObjectType.FILE.name(),
+                submission.getId(),
+                metadata,
+                DateTime.now());
+    }
+
+    public static AuditEntryDto fileDelete(String userId, FileUpload fileUpload, Submission submission) {
+        Map<String, String> metadata = new HashMap<>();
+        metadata.put(AuditMetadata.TITLE.name(), fileUpload.getFileName());
+
+        return new AuditEntryDto(null,
+                userId,
+                AuditActionType.DELETE.name(),
+                AuditOperationOutcome.SUCCESS.name(),
+                fileUpload.getId(),
+                AuditObjectType.FILE.name(),
+                submission.getId(),
+                metadata,
+                DateTime.now());
+    }
+
+    public static AuditEntryDto fileValidate(String userId, FileUpload fileUpload, Submission submission,
+                                             boolean ss, boolean outcome, List<String> errors) {
+        Map<String, String> metadata = new HashMap<>();
+        metadata.put(AuditMetadata.TITLE.name(), fileUpload.getFileName());
+        if (errors != null) {
+            if (!errors.isEmpty()) {
+                metadata.put(AuditMetadata.ERROR.name(), StringUtils.join(errors, "; "));
+            }
+        }
+
+        return new AuditEntryDto(null,
+                userId,
+                ss ? AuditActionType.SS_VALIDATION.name() : AuditActionType.VALIDATION.name(),
+                outcome ? AuditOperationOutcome.SUCCESS.name() : AuditOperationOutcome.FAILED.name(),
+                fileUpload.getId(),
+                AuditObjectType.FILE.name(),
+                submission.getId(),
                 metadata,
                 DateTime.now());
     }

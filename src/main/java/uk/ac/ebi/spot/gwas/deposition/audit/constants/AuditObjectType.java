@@ -4,7 +4,7 @@ public enum  AuditObjectType {
 
     SUBMISSION,
     PUBLICATION,
-    MANUSCRIPT,
+    BODY_OF_WORK,
     GLOBUS,
     FILE
 }

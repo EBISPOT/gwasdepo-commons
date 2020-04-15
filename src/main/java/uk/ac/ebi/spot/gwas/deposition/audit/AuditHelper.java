@@ -154,10 +154,15 @@ public class AuditHelper {
                 DateTime.now());
     }
 
-    public static AuditEntryDto submissionValidate(String userId, Submission submission, boolean outcome) {
+    public static AuditEntryDto submissionValidate(String userId, Submission submission, boolean outcome, List<String> errors) {
         Map<String, String> metadata = new HashMap<>();
         metadata.put(AuditMetadata.TYPE.name(), submission.getType());
         metadata.put(AuditMetadata.PROVENANCE_TYPE.name(), submission.getProvenanceType());
+        if (errors != null) {
+            if (!errors.isEmpty()) {
+                metadata.put(AuditMetadata.ERROR.name(), StringUtils.join(errors, "; "));
+            }
+        }
 
         return new AuditEntryDto(null,
                 userId,

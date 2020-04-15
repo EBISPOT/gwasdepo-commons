@@ -87,6 +87,7 @@ public class AuditHelper {
                                                     boolean start, boolean outcome, String error) {
         Map<String, String> metadata = new HashMap<>();
         metadata.put(AuditMetadata.TITLE.name(), publicationDto.getTitle());
+        metadata.put(AuditMetadata.AUTHOR.name(), publicationDto.getFirstAuthor());
         metadata.put(AuditMetadata.PROVENANCE_TYPE.name(), submission.getProvenanceType());
         metadata.put(AuditMetadata.TYPE.name(), submission.getType());
         if (!outcome) {

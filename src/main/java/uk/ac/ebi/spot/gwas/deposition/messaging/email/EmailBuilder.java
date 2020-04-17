@@ -4,6 +4,6 @@ import java.util.Map;
 
 public interface EmailBuilder {
 
-    String getEmailContent(Map<String, String> metadata);
+    String getEmailContent(Map<String, Object> metadata);
 
 }

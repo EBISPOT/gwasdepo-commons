@@ -8,6 +8,7 @@ import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditObjectType;
 import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditOperationOutcome;
 import uk.ac.ebi.spot.gwas.deposition.domain.BodyOfWork;
 import uk.ac.ebi.spot.gwas.deposition.domain.FileUpload;
+import uk.ac.ebi.spot.gwas.deposition.domain.SSGlobusResponse;
 import uk.ac.ebi.spot.gwas.deposition.domain.Submission;
 import uk.ac.ebi.spot.gwas.deposition.dto.PublicationDto;
 
@@ -16,6 +17,27 @@ import java.util.List;
 import java.util.Map;
 
 public class AuditHelper {
+
+    public static AuditEntryDto globusCreate(String userId, boolean successful, SSGlobusResponse ssGlobusResponse) {
+        Map<String, String> metadata = new HashMap<>();
+        if (!successful) {
+            if (ssGlobusResponse != null) {
+                metadata.put(AuditMetadata.ERROR.name(), ssGlobusResponse.getOutcome());
+            } else {
+                metadata.put(AuditMetadata.ERROR.name(), "UNKNOWN");
+            }
+        }
+
+        return new AuditEntryDto(null,
+                userId,
+                AuditActionType.CREATE.name(),
+                successful ? AuditOperationOutcome.SUCCESS.name() : AuditOperationOutcome.FAILED.name(),
+                successful ? ssGlobusResponse.getOutcome() : null,
+                AuditObjectType.GLOBUS.name(),
+                null,
+                metadata,
+                DateTime.now());
+    }
 
     public static AuditEntryDto bowCreate(String userId, BodyOfWork bodyOfWork) {
         Map<String, String> metadata = new HashMap<>();
@@ -31,7 +53,6 @@ public class AuditHelper {
                 metadata,
                 DateTime.now());
     }
-
 
     public static AuditEntryDto bowRetrieve(String userId, BodyOfWork bodyOfWork) {
         Map<String, String> metadata = new HashMap<>();

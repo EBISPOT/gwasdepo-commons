@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 @ConditionalOnProperty(name = "email.enabled", havingValue = "true")
 public class MailConfig {
 
-    @Value("${email.config.from-address:#{NULL}")
+    @Value("${email.config.from-address:#{NULL}}")
     private String fromAddress;
 
-    @Value("${email.config.from-name:#{NULL}")
+    @Value("${email.config.from-name:#{NULL}}")
     private String fromName;
 
     @Value("${email.config.retries:3}")

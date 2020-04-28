@@ -6,10 +6,7 @@ import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditActionType;
 import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditMetadata;
 import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditObjectType;
 import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditOperationOutcome;
-import uk.ac.ebi.spot.gwas.deposition.domain.BodyOfWork;
-import uk.ac.ebi.spot.gwas.deposition.domain.FileUpload;
-import uk.ac.ebi.spot.gwas.deposition.domain.SSGlobusResponse;
-import uk.ac.ebi.spot.gwas.deposition.domain.Submission;
+import uk.ac.ebi.spot.gwas.deposition.domain.*;
 import uk.ac.ebi.spot.gwas.deposition.dto.PublicationDto;
 
 import java.util.HashMap;
@@ -104,11 +101,11 @@ public class AuditHelper {
     }
 
 
-    public static AuditEntryDto submissionCreatePub(String userId, Submission submission, PublicationDto publicationDto,
+    public static AuditEntryDto submissionCreatePub(String userId, Submission submission, Publication publication,
                                                     boolean start, boolean outcome, String error) {
         Map<String, String> metadata = new HashMap<>();
-        metadata.put(AuditMetadata.TITLE.name(), publicationDto.getTitle());
-        metadata.put(AuditMetadata.AUTHOR.name(), publicationDto.getFirstAuthor());
+        metadata.put(AuditMetadata.TITLE.name(), publication.getTitle());
+        metadata.put(AuditMetadata.AUTHOR.name(), publication.getFirstAuthor());
         metadata.put(AuditMetadata.PROVENANCE_TYPE.name(), submission.getProvenanceType());
         metadata.put(AuditMetadata.TYPE.name(), submission.getType());
         if (!outcome) {
@@ -121,7 +118,7 @@ public class AuditHelper {
                 outcome ? AuditOperationOutcome.SUCCESS.name() : AuditOperationOutcome.FAILED.name(),
                 submission.getId(),
                 AuditObjectType.SUBMISSION.name(),
-                publicationDto.getPmid(),
+                publication.getPmid(),
                 metadata,
                 DateTime.now());
     }

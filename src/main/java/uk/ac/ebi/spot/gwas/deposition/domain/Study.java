@@ -18,6 +18,9 @@ public class Study {
     @Indexed
     private String submissionId;
 
+    @Indexed
+    private List<String> pmids;
+
     private String accession;
 
     private String genotypingTechnology;
@@ -61,6 +64,7 @@ public class Study {
 
     public Study() {
         bodyOfWorkList = new ArrayList<>();
+        pmids = new ArrayList<>();
     }
 
     public String getId() {
@@ -245,5 +249,13 @@ public class Study {
 
     public void setBodyOfWorkList(List<String> bodyOfWorkList) {
         this.bodyOfWorkList = bodyOfWorkList;
+    }
+
+    public List<String> getPmids() {
+        return pmids;
+    }
+
+    public void setPmids(List<String> pmids) {
+        this.pmids = pmids;
     }
 }

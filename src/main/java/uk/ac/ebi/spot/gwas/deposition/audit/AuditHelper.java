@@ -7,7 +7,6 @@ import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditMetadata;
 import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditObjectType;
 import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditOperationOutcome;
 import uk.ac.ebi.spot.gwas.deposition.domain.*;
-import uk.ac.ebi.spot.gwas.deposition.dto.PublicationDto;
 
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +42,21 @@ public class AuditHelper {
         return new AuditEntryDto(null,
                 userId,
                 AuditActionType.CREATE.name(),
+                AuditOperationOutcome.SUCCESS.name(),
+                bodyOfWork.getBowId(),
+                AuditObjectType.BODY_OF_WORK.name(),
+                null,
+                metadata,
+                DateTime.now());
+    }
+
+    public static AuditEntryDto bowUpdate(String userId, BodyOfWork bodyOfWork) {
+        Map<String, String> metadata = new HashMap<>();
+        metadata.put(AuditMetadata.TITLE.name(), bodyOfWork.getTitle());
+
+        return new AuditEntryDto(null,
+                userId,
+                AuditActionType.UPDATE.name(),
                 AuditOperationOutcome.SUCCESS.name(),
                 bodyOfWork.getBowId(),
                 AuditObjectType.BODY_OF_WORK.name(),

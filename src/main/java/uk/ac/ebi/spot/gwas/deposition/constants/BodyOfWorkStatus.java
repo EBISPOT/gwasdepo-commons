@@ -4,6 +4,7 @@ public enum BodyOfWorkStatus {
 
     NEW,
     UNDER_SUBMISSION,
-    HAS_PMID
+    HAS_PMID,
+    UPDATED_AFTER_SUBMISSION
 
 }

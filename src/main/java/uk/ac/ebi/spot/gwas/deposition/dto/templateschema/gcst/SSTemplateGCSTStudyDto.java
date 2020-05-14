@@ -31,19 +31,24 @@ public final class SSTemplateGCSTStudyDto implements Serializable {
     @JsonProperty("background_efo_trait")
     private final String backgroundEfoTrait;
 
+    @JsonProperty("summary_statistics_file")
+    private final String summaryStatisticsFile;
+
     @JsonCreator
     public SSTemplateGCSTStudyDto(@JsonProperty("study_accession") String studyAccession,
                                   @JsonProperty("study_tag") String studyTag,
                                   @JsonProperty("trait") String trait,
                                   @JsonProperty("efo_trait") String efoTrait,
                                   @JsonProperty("background_trait") String backgroundTrait,
-                                  @JsonProperty("background_efo_trait") String backgroundEfoTrait) {
+                                  @JsonProperty("background_efo_trait") String backgroundEfoTrait,
+                                  @JsonProperty("summary_statistics_file") String summaryStatisticsFile) {
         this.studyAccession = studyAccession;
         this.studyTag = studyTag;
         this.trait = trait;
         this.efoTrait = efoTrait;
         this.backgroundTrait = backgroundTrait;
         this.backgroundEfoTrait = backgroundEfoTrait;
+        this.summaryStatisticsFile = summaryStatisticsFile;
     }
 
     public String getStudyTag() {
@@ -68,5 +73,9 @@ public final class SSTemplateGCSTStudyDto implements Serializable {
 
     public String getBackgroundEfoTrait() {
         return backgroundEfoTrait;
+    }
+
+    public String getSummaryStatisticsFile() {
+        return summaryStatisticsFile;
     }
 }

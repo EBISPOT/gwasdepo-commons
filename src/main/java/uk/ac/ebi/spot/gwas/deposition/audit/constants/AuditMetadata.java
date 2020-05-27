@@ -6,5 +6,6 @@ public enum  AuditMetadata {
     AUTHOR,
     TYPE,
     PROVENANCE_TYPE,
+    EMBARGO,
     ERROR
 }

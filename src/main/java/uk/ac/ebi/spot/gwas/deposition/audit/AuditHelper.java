@@ -6,6 +6,7 @@ import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditActionType;
 import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditMetadata;
 import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditObjectType;
 import uk.ac.ebi.spot.gwas.deposition.audit.constants.AuditOperationOutcome;
+import uk.ac.ebi.spot.gwas.deposition.constants.EmbargoConstants;
 import uk.ac.ebi.spot.gwas.deposition.domain.*;
 
 import java.util.HashMap;
@@ -102,6 +103,18 @@ public class AuditHelper {
         Map<String, String> metadata = new HashMap<>();
         metadata.put(AuditMetadata.PROVENANCE_TYPE.name(), submission.getProvenanceType());
         metadata.put(AuditMetadata.TITLE.name(), bodyOfWork.getTitle());
+        String embargo = EmbargoConstants.NONE;
+        if (bodyOfWork.getEmbargoUntilPublished() != null) {
+            if (bodyOfWork.getEmbargoUntilPublished()) {
+                embargo = EmbargoConstants.PUBLICATION;
+            }
+        }
+        if (!embargo.equalsIgnoreCase(EmbargoConstants.PUBLICATION)) {
+            if (bodyOfWork.getEmbargoDate() != null) {
+                embargo = EmbargoConstants.DATE + " " + bodyOfWork.getEmbargoDate().toString();
+            }
+        }
+        metadata.put(AuditMetadata.EMBARGO.name(), embargo);
 
         return new AuditEntryDto(null,
                 userId,

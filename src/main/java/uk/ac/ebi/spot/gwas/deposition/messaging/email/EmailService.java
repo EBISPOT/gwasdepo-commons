@@ -86,7 +86,7 @@ public class EmailService {
                 log.info("Building the email message to be sent");
                 MimeMessage message = buildMessage(failedEmail.getEmailAddress(),
                         new String(Base64.getDecoder().decode(failedEmail.getSubject())),
-                        new String(Base64.getDecoder().decode(failedEmail.getSubject())));
+                        new String(Base64.getDecoder().decode(failedEmail.getContent())));
                 log.info("Preparing to send the email: {}", message);
                 mailSender.send(message);
                 failedEmailRepository.delete(failedEmail);

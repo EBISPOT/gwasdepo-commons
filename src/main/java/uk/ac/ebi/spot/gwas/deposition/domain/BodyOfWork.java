@@ -40,6 +40,7 @@ public class BodyOfWork {
 
     private List<Author> correspondingAuthors;
 
+    @Indexed
     private List<String> pmids;
 
     private String status;

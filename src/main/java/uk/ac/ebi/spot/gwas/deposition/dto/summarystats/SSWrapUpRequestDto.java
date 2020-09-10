@@ -16,32 +16,12 @@ public final class SSWrapUpRequestDto implements Serializable {
     private static final long serialVersionUID = -8654690473481510296L;
 
     @NotEmpty
-    @JsonProperty("pmid")
-    private final String pmid;
-
-    @NotEmpty
-    @JsonProperty("authorName")
-    private final String authorName;
-
-    @NotEmpty
     @JsonProperty("studyList")
     private final List<SSWrapUpRequestEntryDto> studyList;
 
     @JsonCreator
-    public SSWrapUpRequestDto(@JsonProperty("pmid") String pmid,
-                              @JsonProperty("authorName") String authorName,
-                              @JsonProperty("requestEntries") List<SSWrapUpRequestEntryDto> studyList) {
-        this.pmid = pmid;
-        this.authorName = authorName;
+    public SSWrapUpRequestDto(@JsonProperty("requestEntries") List<SSWrapUpRequestEntryDto> studyList) {
         this.studyList = studyList;
-    }
-
-    public String getPmid() {
-        return pmid;
-    }
-
-    public String getAuthorName() {
-        return authorName;
     }
 
     public List<SSWrapUpRequestEntryDto> getStudyList() {

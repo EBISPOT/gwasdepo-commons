@@ -4,6 +4,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Document(collection = "studies")
 public class Study {
 
@@ -14,6 +17,9 @@ public class Study {
 
     @Indexed
     private String submissionId;
+
+    @Indexed
+    private List<String> pmids;
 
     private String accession;
 
@@ -53,8 +59,12 @@ public class Study {
 
     private String cohortId;
 
-    public Study() {
+    @Indexed
+    private List<String> bodyOfWorkList;
 
+    public Study() {
+        bodyOfWorkList = new ArrayList<>();
+        pmids = new ArrayList<>();
     }
 
     public String getId() {
@@ -231,5 +241,21 @@ public class Study {
 
     public void setReadmeFile(String readmeFile) {
         this.readmeFile = readmeFile;
+    }
+
+    public List<String> getBodyOfWorkList() {
+        return bodyOfWorkList;
+    }
+
+    public void setBodyOfWorkList(List<String> bodyOfWorkList) {
+        this.bodyOfWorkList = bodyOfWorkList;
+    }
+
+    public List<String> getPmids() {
+        return pmids;
+    }
+
+    public void setPmids(List<String> pmids) {
+        this.pmids = pmids;
     }
 }

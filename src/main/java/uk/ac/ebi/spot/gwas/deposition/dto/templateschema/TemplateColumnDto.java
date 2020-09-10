@@ -55,6 +55,9 @@ public final class TemplateColumnDto implements Serializable {
     @JsonProperty("upperBound")
     private final Double upperBound;
 
+    @JsonProperty("size")
+    private final Integer size;
+
     @JsonProperty("acceptedValues")
     private final List<String> acceptedValues;
 
@@ -74,6 +77,7 @@ public final class TemplateColumnDto implements Serializable {
                              @JsonProperty("pattern") String pattern,
                              @JsonProperty("lowerBound") Double lowerBound,
                              @JsonProperty("upperBound") Double upperBound,
+                             @JsonProperty("size") Integer size,
                              @JsonProperty("acceptedValues") List<String> acceptedValues,
                              @JsonProperty("summaryStatsSchema") SummaryStatsSchemaDto summaryStatsSchema) {
         this.columnName = columnName;
@@ -88,6 +92,7 @@ public final class TemplateColumnDto implements Serializable {
         this.pattern = pattern;
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
+        this.size = size;
         this.acceptedValues = acceptedValues;
         this.summaryStatsSchema = summaryStatsSchema;
     }
@@ -134,6 +139,10 @@ public final class TemplateColumnDto implements Serializable {
 
     public Double getLowerBound() {
         return lowerBound;
+    }
+
+    public Integer getSize() {
+        return size;
     }
 
     public Double getUpperBound() {

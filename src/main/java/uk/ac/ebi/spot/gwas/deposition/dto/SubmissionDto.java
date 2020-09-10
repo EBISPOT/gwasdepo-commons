@@ -28,9 +28,11 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
     @JsonProperty("submissionId")
     private final String submissionId;
 
-    @NotNull
     @JsonProperty("publication")
     private final PublicationDto publication;
+
+    @JsonProperty("bodyOfWork")
+    private final BodyOfWorkDto bodyOfWork;
 
     @NotEmpty
     @JsonProperty("submission_status")
@@ -62,6 +64,9 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
     @JsonProperty("globusOriginId")
     private final String globusOriginId;
 
+    @JsonProperty("provenanceType")
+    private final String provenanceType;
+
     @NotNull
     @JsonProperty("date_submitted")
     @JsonSerialize(using = JsonJodaLocalDateSerializer.class)
@@ -77,6 +82,7 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
     @JsonCreator
     public SubmissionDto(@JsonProperty("submissionId") String submissionId,
                          @JsonProperty("publication") PublicationDto publication,
+                         @JsonProperty("bodyOfWork") BodyOfWorkDto bodyOfWork,
                          @JsonProperty("files") List<FileUploadDto> files,
                          @JsonProperty("globusFolder") String globusFolder,
                          @JsonProperty("globusOriginId") String globusOriginId,
@@ -87,10 +93,12 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
                          @JsonProperty("metadata_status") String metadataStatus,
                          @JsonProperty("summary_statistics_status") String summaryStatisticsStatus,
                          @JsonProperty("date_submitted") @JsonDeserialize(using = JsonJodaLocalDateDeserializer.class) LocalDate dateSubmitted,
+                         @JsonProperty("provenanceType") String provenanceType,
                          @JsonProperty("created") ProvenanceDto created,
                          @JsonProperty("lastUpdated") ProvenanceDto lastUpdated) {
         this.submissionId = submissionId;
         this.publication = publication;
+        this.bodyOfWork = bodyOfWork;
         this.studyCount = studyCount;
         this.files = files;
         this.globusFolder = globusFolder;
@@ -101,6 +109,7 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
         this.dateSubmitted = dateSubmitted;
         this.metadataStatus = metadataStatus;
         this.summaryStatisticsStatus = summaryStatisticsStatus;
+        this.provenanceType = provenanceType;
         this.created = created;
         this.lastUpdated = lastUpdated;
     }
@@ -159,5 +168,13 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
 
     public String getGlobusOriginId() {
         return globusOriginId;
+    }
+
+    public BodyOfWorkDto getBodyOfWork() {
+        return bodyOfWork;
+    }
+
+    public String getProvenanceType() {
+        return provenanceType;
     }
 }

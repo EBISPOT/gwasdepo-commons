@@ -4,5 +4,6 @@ public enum FileUploadType {
 
     METADATA,
     SUMMARY_STATS_TEMPLATE,
-    SUMMARY_STATS
+    SUMMARY_STATS,
+    METADATA_FILLED
 }

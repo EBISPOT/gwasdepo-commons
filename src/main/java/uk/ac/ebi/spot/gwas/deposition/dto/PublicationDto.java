@@ -13,7 +13,6 @@ import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaLocalDateDeserializer;
 import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaLocalDateSerializer;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @EqualsAndHashCode(callSuper = false)
@@ -26,11 +25,9 @@ public class PublicationDto extends ResourceSupport implements Serializable {
     @JsonProperty("publicationId")
     private final String publicationId;
 
-    @NotEmpty
     @JsonProperty("pmid")
     private final String pmid;
 
-    @NotEmpty
     @JsonProperty("journal")
     private final String journal;
 
@@ -38,11 +35,9 @@ public class PublicationDto extends ResourceSupport implements Serializable {
     @JsonProperty("title")
     private final String title;
 
-    @NotEmpty
     @JsonProperty("firstAuthor")
     private final String firstAuthor;
 
-    @NotNull
     @JsonProperty("publicationDate")
     @JsonSerialize(using = JsonJodaLocalDateSerializer.class)
     private final LocalDate publicationDate;

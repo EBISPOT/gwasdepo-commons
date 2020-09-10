@@ -6,7 +6,7 @@
 
     <groupId>uk.ac.ebi.spot.gwasdepo</groupId>
     <artifactId>gwasdepo-commons</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.5</version>
     <packaging>jar</packaging>
 
     <name>GWAS Deposition App Commons</name>
@@ -14,7 +14,7 @@
     <parent>
         <groupId>uk.ac.ebi.spot.gwasdepo</groupId>
         <artifactId>gwasdepo-master</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
 
     <scm>
@@ -101,6 +101,14 @@
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
         <dependency>

@@ -12,7 +12,6 @@ import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaLocalDateDeserializer;
 import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaLocalDateSerializer;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
@@ -26,9 +25,11 @@ public final class SubmissionDto implements Serializable {
     @JsonProperty("submissionId")
     private final String submissionId;
 
-    @NotNull
     @JsonProperty("publication")
     private final PublicationDto publication;
+
+    @JsonProperty("bodyOfWork")
+    private final BodyOfWorkDto bodyOfWork;
 
     @NotEmpty
     @JsonProperty("status")
@@ -52,6 +53,9 @@ public final class SubmissionDto implements Serializable {
     @JsonProperty("globusOriginId")
     private final String globusOriginId;
 
+    @JsonProperty("provenanceType")
+    private final String provenanceType;
+
     @JsonProperty("date_submitted")
     @JsonSerialize(using = JsonJodaLocalDateSerializer.class)
     private final LocalDate dateSubmitted;
@@ -62,6 +66,8 @@ public final class SubmissionDto implements Serializable {
     @JsonCreator
     public SubmissionDto(@JsonProperty("submissionId") String submissionId,
                          @JsonProperty("publication") PublicationDto publication,
+                         @JsonProperty("bodyOfWork") BodyOfWorkDto bodyOfWork,
+                         @JsonProperty("provenanceType") String provenanceType,
                          @JsonProperty("status") String status,
                          @JsonProperty("globusFolder") String globusFolder,
                          @JsonProperty("globusOriginId") String globusOriginId,
@@ -73,6 +79,8 @@ public final class SubmissionDto implements Serializable {
                          @JsonProperty("created") ProvenanceDto created) {
         this.submissionId = submissionId;
         this.publication = publication;
+        this.bodyOfWork = bodyOfWork;
+        this.provenanceType = provenanceType;
         this.status = status;
         this.globusFolder = globusFolder;
         this.globusOriginId = globusOriginId;
@@ -126,5 +134,13 @@ public final class SubmissionDto implements Serializable {
 
     public String getGlobusOriginId() {
         return globusOriginId;
+    }
+
+    public BodyOfWorkDto getBodyOfWork() {
+        return bodyOfWork;
+    }
+
+    public String getProvenanceType() {
+        return provenanceType;
     }
 }

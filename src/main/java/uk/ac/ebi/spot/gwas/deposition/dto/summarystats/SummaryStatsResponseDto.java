@@ -19,20 +19,29 @@ public final class SummaryStatsResponseDto implements Serializable {
     @JsonProperty("callbackId")
     private final String callbackId;
 
-    @NotEmpty
     @JsonProperty("completed")
     private final Boolean completed;
 
     @NotEmpty
+    @JsonProperty("status")
+    private final String status;
+
+    @JsonProperty("metadataErrors")
+    private final List<String> metadataErrors;
+
     @JsonProperty("statusList")
     private final List<SummaryStatsStatusDto> statusList;
 
     @JsonCreator
     public SummaryStatsResponseDto(@JsonProperty("callbackId") String callbackId,
                                    @JsonProperty("completed") Boolean completed,
+                                   @JsonProperty("status") String status,
+                                   @JsonProperty("metadataErrors") List<String> metadataErrors,
                                    @JsonProperty("statusList") List<SummaryStatsStatusDto> statusList) {
         this.callbackId = callbackId;
         this.completed = completed;
+        this.status = status;
+        this.metadataErrors = metadataErrors;
         this.statusList = statusList;
     }
 
@@ -42,6 +51,14 @@ public final class SummaryStatsResponseDto implements Serializable {
 
     public Boolean getCompleted() {
         return completed;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public List<String> getMetadataErrors() {
+        return metadataErrors;
     }
 
     public List<SummaryStatsStatusDto> getStatusList() {

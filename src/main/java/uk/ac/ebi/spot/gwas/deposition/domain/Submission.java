@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import uk.ac.ebi.spot.gwas.deposition.constants.ReminderStatus;
 import uk.ac.ebi.spot.gwas.deposition.constants.Status;
 import uk.ac.ebi.spot.gwas.deposition.constants.SubmissionProvenanceType;
 
@@ -15,6 +16,7 @@ import java.util.List;
 
 @Document(collection = "submissions")
 @CompoundIndexes({@CompoundIndex(name = "overallStatus_archived", def = "{'overallStatus': 1, 'archived': 1}"),
+        @CompoundIndex(name = "oa_lU", def = "{'overallStatus': 1, 'archived': 1, 'lastUpdated': 1}"),
         @CompoundIndex(name = "archived_completed", def = "{'archived': 1, 'completed': 1}"),
         @CompoundIndex(name = "pubId_archived", def = "{'archived': 1, 'publicationId': 1}"),
         @CompoundIndex(name = "pubId_archived_user", def = "{'archived': 1, 'publicationId': 1, 'created_userId': 1}"),
@@ -70,6 +72,8 @@ public class Submission {
 
     private String provenanceType;
 
+    private String reminderStatus;
+
     @Indexed
     private boolean archived;
 
@@ -95,6 +99,7 @@ public class Submission {
         this.samples = new ArrayList<>();
         this.fileUploads = new ArrayList<>();
         this.archived = false;
+        this.reminderStatus = ReminderStatus.NONE.name();
     }
 
     public Submission() {
@@ -104,6 +109,7 @@ public class Submission {
         this.samples = new ArrayList<>();
         this.fileUploads = new ArrayList<>();
         this.archived = false;
+        this.reminderStatus = ReminderStatus.NONE.name();
     }
 
     public List<String> getBodyOfWorks() {
@@ -299,5 +305,13 @@ public class Submission {
 
     public void setGlobusOriginId(String globusOriginId) {
         this.globusOriginId = globusOriginId;
+    }
+
+    public String getReminderStatus() {
+        return reminderStatus;
+    }
+
+    public void setReminderStatus(String reminderStatus) {
+        this.reminderStatus = reminderStatus;
     }
 }

@@ -65,6 +65,9 @@ public final class StudyDto implements Serializable {
     @JsonProperty("summary_statistics_file")
     private final String summaryStatisticsFile;
 
+    @JsonProperty("raw_sumstats_file")
+    private final String rawSumstatsFile;
+
     @JsonProperty("summary_statistics_assembly")
     private final String summaryStatisticsAssembly;
 
@@ -93,6 +96,7 @@ public final class StudyDto implements Serializable {
                     @JsonProperty("background_trait") String backgroundTrait,
                     @JsonProperty("background_efo_trait") String backgroundEfoTrait,
                     @JsonProperty("summary_statistics_file") String summaryStatisticsFile,
+                    @JsonProperty("raw_sumstats_file") String rawSumstatsFile,
                     @JsonProperty("checksum") String checksum,
                     @JsonProperty("summary_statistics_assembly") String summaryStatisticsAssembly,
                     @JsonProperty("readme_file") String readmeFile,
@@ -113,6 +117,7 @@ public final class StudyDto implements Serializable {
         this.backgroundTrait = backgroundTrait;
         this.backgroundEfoTrait = backgroundEfoTrait;
         this.summaryStatisticsFile = summaryStatisticsFile;
+        this.rawSumstatsFile = rawSumstatsFile;
         this.checksum = checksum;
         this.summaryStatisticsAssembly = summaryStatisticsAssembly;
         this.readmeFile = readmeFile;
@@ -170,6 +175,10 @@ public final class StudyDto implements Serializable {
 
     public String getSummaryStatisticsFile() {
         return summaryStatisticsFile;
+    }
+
+    public String getRawSumstatsFile() {
+        return rawSumstatsFile;
     }
 
     public String getChecksum() {

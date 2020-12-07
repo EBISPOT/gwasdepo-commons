@@ -1,15 +1,19 @@
 package uk.ac.ebi.spot.gwas.deposition.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "samples")
+@CompoundIndexes({@CompoundIndex(name = "ssTag_sId", def = "{'studyTag': 1, 'submissionId': 1}")})
 public class Sample {
 
     @Id
     private String id;
 
+    @Indexed
     private String studyTag;
 
     @Indexed

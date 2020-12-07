@@ -63,6 +63,9 @@ public final class SubmissionDto implements Serializable {
     @JsonProperty("created")
     private final ProvenanceDto created;
 
+    @JsonProperty("metadata")
+    private final MetadataDto metadata;
+
     @JsonCreator
     public SubmissionDto(@JsonProperty("submissionId") String submissionId,
                          @JsonProperty("publication") PublicationDto publication,
@@ -76,6 +79,7 @@ public final class SubmissionDto implements Serializable {
                          @JsonProperty("samples") List<SampleDto> samples,
                          @JsonProperty("notes") List<NoteDto> notes,
                          @JsonProperty("date_submitted") @JsonDeserialize(using = JsonJodaLocalDateDeserializer.class) LocalDate dateSubmitted,
+                         @JsonProperty("metadata") MetadataDto metadata,
                          @JsonProperty("created") ProvenanceDto created) {
         this.submissionId = submissionId;
         this.publication = publication;
@@ -89,6 +93,7 @@ public final class SubmissionDto implements Serializable {
         this.samples = samples;
         this.notes = notes;
         this.dateSubmitted = dateSubmitted;
+        this.metadata = metadata;
         this.created = created;
     }
 
@@ -142,5 +147,9 @@ public final class SubmissionDto implements Serializable {
 
     public String getProvenanceType() {
         return provenanceType;
+    }
+
+    public MetadataDto getMetadata() {
+        return metadata;
     }
 }

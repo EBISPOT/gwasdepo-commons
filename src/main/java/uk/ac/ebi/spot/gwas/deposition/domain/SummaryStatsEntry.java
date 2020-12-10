@@ -21,6 +21,8 @@ public class SummaryStatsEntry {
 
     private String filePath;
 
+    private String rawFilePath;
+
     private String md5;
 
     private String assembly;
@@ -38,10 +40,11 @@ public class SummaryStatsEntry {
 
     }
 
-    public SummaryStatsEntry(String fileUploadId, String studyTag, String filePath, String md5, String assembly, String readme, String globusFolder) {
+    public SummaryStatsEntry(String fileUploadId, String studyTag, String filePath, String rawFilePath, String md5, String assembly, String readme, String globusFolder) {
         this.fileUploadId = fileUploadId;
         this.studyTag = studyTag;
         this.filePath = filePath;
+        this.rawFilePath = rawFilePath;
         this.md5 = md5;
         this.assembly = assembly;
         this.readme = readme;
@@ -135,5 +138,13 @@ public class SummaryStatsEntry {
 
     public void setGlobusFolder(String globusFolder) {
         this.globusFolder = globusFolder;
+    }
+
+    public String getRawFilePath() {
+        return rawFilePath;
+    }
+
+    public void setRawFilePath(String rawFilePath) {
+        this.rawFilePath = rawFilePath;
     }
 }

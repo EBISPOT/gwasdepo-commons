@@ -22,6 +22,9 @@ public final class SummaryStatsRequestEntryDto implements Serializable {
     @JsonProperty("filePath")
     private final String filePath;
 
+    @JsonProperty("rawFilePath")
+    private final String rawFilePath;
+
     @NotEmpty
     @JsonProperty("md5")
     private final String md5;
@@ -38,12 +41,14 @@ public final class SummaryStatsRequestEntryDto implements Serializable {
     @JsonCreator
     public SummaryStatsRequestEntryDto(@JsonProperty("id") String id,
                                        @JsonProperty("filePath") String filePath,
+                                       @JsonProperty("rawFilePath") String rawFilePath,
                                        @JsonProperty("md5") String md5,
                                        @JsonProperty("assembly") String assembly,
                                        @JsonProperty("readme") String readme,
                                        @JsonProperty("entryUUID") String entryUUID) {
         this.id = id;
         this.filePath = filePath;
+        this.rawFilePath = rawFilePath;
         this.md5 = md5;
         this.assembly = assembly;
         this.readme = readme;
@@ -52,6 +57,11 @@ public final class SummaryStatsRequestEntryDto implements Serializable {
 
     public String getId() {
         return id;
+    }
+
+
+    public String getRawFilePath() {
+        return rawFilePath;
     }
 
     public String getFilePath() {

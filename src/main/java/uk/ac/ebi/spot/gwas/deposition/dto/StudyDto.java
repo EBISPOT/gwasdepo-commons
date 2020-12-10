@@ -8,6 +8,7 @@ import org.springframework.hateoas.core.Relation;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.util.List;
 
 @EqualsAndHashCode
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -65,6 +66,9 @@ public final class StudyDto implements Serializable {
     @JsonProperty("summary_statistics_file")
     private final String summaryStatisticsFile;
 
+    @JsonProperty("raw_sumstats_file")
+    private final String rawSumstatsFile;
+
     @JsonProperty("summary_statistics_assembly")
     private final String summaryStatisticsAssembly;
 
@@ -76,6 +80,15 @@ public final class StudyDto implements Serializable {
 
     @JsonProperty("cohort_id")
     private final String cohortId;
+
+    @JsonProperty("associations")
+    private final List<AssociationDto> associations;
+
+    @JsonProperty("samples")
+    private final List<SampleDto> samples;
+
+    @JsonProperty("notes")
+    private final List<NoteDto> notes;
 
     @JsonCreator
     public StudyDto(@JsonProperty("study_tag") String studyTag,
@@ -93,11 +106,15 @@ public final class StudyDto implements Serializable {
                     @JsonProperty("background_trait") String backgroundTrait,
                     @JsonProperty("background_efo_trait") String backgroundEfoTrait,
                     @JsonProperty("summary_statistics_file") String summaryStatisticsFile,
+                    @JsonProperty("raw_sumstats_file") String rawSumstatsFile,
                     @JsonProperty("checksum") String checksum,
                     @JsonProperty("summary_statistics_assembly") String summaryStatisticsAssembly,
                     @JsonProperty("readme_file") String readmeFile,
                     @JsonProperty("cohort") String cohort,
-                    @JsonProperty("cohort_id") String cohortId) {
+                    @JsonProperty("cohort_id") String cohortId,
+                    @JsonProperty("associations") List<AssociationDto> associations,
+                    @JsonProperty("samples") List<SampleDto> samples,
+                    @JsonProperty("notes") List<NoteDto> notes) {
         this.studyTag = studyTag;
         this.accession = accession;
         this.genotypingTechnology = genotypingTechnology;
@@ -113,11 +130,15 @@ public final class StudyDto implements Serializable {
         this.backgroundTrait = backgroundTrait;
         this.backgroundEfoTrait = backgroundEfoTrait;
         this.summaryStatisticsFile = summaryStatisticsFile;
+        this.rawSumstatsFile = rawSumstatsFile;
         this.checksum = checksum;
         this.summaryStatisticsAssembly = summaryStatisticsAssembly;
         this.readmeFile = readmeFile;
         this.cohort = cohort;
         this.cohortId = cohortId;
+        this.associations = associations;
+        this.samples = samples;
+        this.notes = notes;
     }
 
     public String getStudyTag() {
@@ -172,6 +193,10 @@ public final class StudyDto implements Serializable {
         return summaryStatisticsFile;
     }
 
+    public String getRawSumstatsFile() {
+        return rawSumstatsFile;
+    }
+
     public String getChecksum() {
         return checksum;
     }
@@ -198,5 +223,17 @@ public final class StudyDto implements Serializable {
 
     public String getReadmeFile() {
         return readmeFile;
+    }
+
+    public List<AssociationDto> getAssociations() {
+        return associations;
+    }
+
+    public List<SampleDto> getSamples() {
+        return samples;
+    }
+
+    public List<NoteDto> getNotes() {
+        return notes;
     }
 }

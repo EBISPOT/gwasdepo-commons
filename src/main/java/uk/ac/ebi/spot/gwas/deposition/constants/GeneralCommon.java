@@ -4,6 +4,8 @@ public class GeneralCommon {
 
     public static final String API_V1 = "/v1";
 
+    public static final String API_V2 = "/v2";
+
     public static final String LOG_FILE_NAME = "LOG_FILE_NAME";
 
     public static final String HEADER_X_AUTH = "X-Auth";

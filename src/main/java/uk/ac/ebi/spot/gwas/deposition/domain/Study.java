@@ -13,6 +13,7 @@ public class Study {
     @Id
     private String id;
 
+    @Indexed
     private String studyTag;
 
     @Indexed
@@ -48,6 +49,8 @@ public class Study {
     private String backgroundEfoTrait;
 
     private String summaryStatisticsFile;
+
+    private String rawFilePath;
 
     private String checksum;
 
@@ -257,5 +260,13 @@ public class Study {
 
     public void setPmids(List<String> pmids) {
         this.pmids = pmids;
+    }
+
+    public String getRawFilePath() {
+        return rawFilePath;
+    }
+
+    public void setRawFilePath(String rawFilePath) {
+        this.rawFilePath = rawFilePath;
     }
 }

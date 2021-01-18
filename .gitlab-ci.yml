@@ -27,7 +27,8 @@ sonarcloud-check:
     paths:
       - .sonar/cache
   script:
-    - mvn verify sonar:sonar
+    - echo ${MAVEN_SETTINGS} | base64 -d > settings.xml
+    - mvn -s settings.xml verify sonar:sonar
   only:
     - merge_requests
     - develop

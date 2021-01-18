@@ -17,6 +17,11 @@
         <version>1.0.3</version>
     </parent>
 
+    <properties>
+        <sonar.projectKey>gwasdepo-commons</sonar.projectKey>
+        <sonar.organization>gwas-ebi</sonar.organization>
+    </properties>
+
     <scm>
         <connection>scm:git:https://github.com/EBISPOT/gwasdepo-commons.git</connection>
         <developerConnection>scm:git:https://github.com/EBISPOT/gwasdepo-commons.git</developerConnection>

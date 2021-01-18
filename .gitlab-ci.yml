@@ -31,4 +31,4 @@ sonarcloud-check:
     - mvn -s settings.xml verify sonar:sonar
   only:
     - merge_requests
-    - develop
+    - master

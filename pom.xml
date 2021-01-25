@@ -65,6 +65,31 @@
         <url>https://github.com/EBISPOT/gwasdepo-commons.git</url>
     </scm>
 
+    <repositories>
+        <repository>
+            <id>spot-releases</id>
+            <name>Releases</name>
+            <url>https://www.ebi.ac.uk/spot/nexus/repository/maven-releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spot-snapshots</id>
+            <name>Snapshot</name>
+            <url>https://www.ebi.ac.uk/spot/nexus/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <distributionManagement>
         <repository>
             <id>spot</id>

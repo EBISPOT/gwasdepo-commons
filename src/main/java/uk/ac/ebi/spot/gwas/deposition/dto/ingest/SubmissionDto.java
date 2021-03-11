@@ -66,6 +66,9 @@ public final class SubmissionDto implements Serializable {
     @JsonProperty("metadata")
     private final MetadataDto metadata;
 
+    @JsonProperty("agreedToCc0")
+    private final boolean agreedToCc0;
+
     @JsonCreator
     public SubmissionDto(@JsonProperty("submissionId") String submissionId,
                          @JsonProperty("publication") PublicationDto publication,
@@ -80,7 +83,8 @@ public final class SubmissionDto implements Serializable {
                          @JsonProperty("notes") List<NoteDto> notes,
                          @JsonProperty("date_submitted") @JsonDeserialize(using = JsonJodaLocalDateDeserializer.class) LocalDate dateSubmitted,
                          @JsonProperty("metadata") MetadataDto metadata,
-                         @JsonProperty("created") ProvenanceDto created) {
+                         @JsonProperty("created") ProvenanceDto created,
+                         @JsonProperty("agreedToCc0") boolean agreedToCc0) {
         this.submissionId = submissionId;
         this.publication = publication;
         this.bodyOfWork = bodyOfWork;
@@ -95,6 +99,7 @@ public final class SubmissionDto implements Serializable {
         this.dateSubmitted = dateSubmitted;
         this.metadata = metadata;
         this.created = created;
+        this.agreedToCc0 = agreedToCc0;
     }
 
     public String getSubmissionId() {
@@ -151,5 +156,9 @@ public final class SubmissionDto implements Serializable {
 
     public MetadataDto getMetadata() {
         return metadata;
+    }
+
+    public boolean isAgreedToCc0() {
+        return agreedToCc0;
     }
 }

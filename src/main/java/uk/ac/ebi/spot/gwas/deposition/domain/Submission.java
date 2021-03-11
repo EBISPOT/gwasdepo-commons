@@ -79,6 +79,8 @@ public class Submission {
 
     private boolean completed;
 
+    private boolean agreedToCc0;
+
     public Submission(String provenanceId, String provenanceType, Provenance created) {
         if (provenanceType.equalsIgnoreCase(SubmissionProvenanceType.BODY_OF_WORK.name())) {
             this.bodyOfWorks = new ArrayList<>();
@@ -313,5 +315,13 @@ public class Submission {
 
     public void setReminderStatus(String reminderStatus) {
         this.reminderStatus = reminderStatus;
+    }
+
+    public boolean isAgreedToCc0() {
+        return agreedToCc0;
+    }
+
+    public void setAgreedToCc0(boolean agreedToCc0) {
+        this.agreedToCc0 = agreedToCc0;
     }
 }

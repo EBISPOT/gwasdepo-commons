@@ -79,6 +79,9 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
     @JsonProperty("lastUpdated")
     private final ProvenanceDto lastUpdated;
 
+    @JsonProperty("agreedToCc0")
+    private final Boolean agreedToCc0;
+
     @JsonCreator
     public SubmissionDto(@JsonProperty("submissionId") String submissionId,
                          @JsonProperty("publication") PublicationDto publication,
@@ -95,7 +98,8 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
                          @JsonProperty("date_submitted") @JsonDeserialize(using = JsonJodaLocalDateDeserializer.class) LocalDate dateSubmitted,
                          @JsonProperty("provenanceType") String provenanceType,
                          @JsonProperty("created") ProvenanceDto created,
-                         @JsonProperty("lastUpdated") ProvenanceDto lastUpdated) {
+                         @JsonProperty("lastUpdated") ProvenanceDto lastUpdated,
+                         @JsonProperty("agreedToCc0") Boolean agreedToCc0) {
         this.submissionId = submissionId;
         this.publication = publication;
         this.bodyOfWork = bodyOfWork;
@@ -112,6 +116,7 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
         this.provenanceType = provenanceType;
         this.created = created;
         this.lastUpdated = lastUpdated;
+        this.agreedToCc0 = agreedToCc0;
     }
 
     public String getSubmissionId() {
@@ -176,5 +181,9 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
 
     public String getProvenanceType() {
         return provenanceType;
+    }
+
+    public Boolean isAgreedToCc0() {
+        return agreedToCc0;
     }
 }

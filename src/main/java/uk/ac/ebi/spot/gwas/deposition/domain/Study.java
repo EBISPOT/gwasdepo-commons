@@ -65,7 +65,7 @@ public class Study {
     @Indexed
     private List<String> bodyOfWorkList;
 
-    private boolean agreedToCc0;
+    private Boolean agreedToCc0;
 
     public Study() {
         bodyOfWorkList = new ArrayList<>();
@@ -272,11 +272,11 @@ public class Study {
         this.rawFilePath = rawFilePath;
     }
 
-    public boolean isAgreedToCc0() {
+    public Boolean isAgreedToCc0() {
         return agreedToCc0;
     }
 
-    public void setAgreedToCc0(boolean agreedToCc0) {
+    public void setAgreedToCc0(Boolean agreedToCc0) {
         this.agreedToCc0 = agreedToCc0;
     }
 }

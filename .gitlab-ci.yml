@@ -15,3 +15,4 @@ maven-build:
   script:
     - echo ${MAVEN_SETTINGS} | base64 -d > settings.xml
     - mvn -s settings.xml clean install deploy
+

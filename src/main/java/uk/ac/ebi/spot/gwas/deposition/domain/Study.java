@@ -65,6 +65,8 @@ public class Study {
     @Indexed
     private List<String> bodyOfWorkList;
 
+    private Boolean agreedToCc0;
+
     public Study() {
         bodyOfWorkList = new ArrayList<>();
         pmids = new ArrayList<>();
@@ -268,5 +270,13 @@ public class Study {
 
     public void setRawFilePath(String rawFilePath) {
         this.rawFilePath = rawFilePath;
+    }
+
+    public Boolean isAgreedToCc0() {
+        return agreedToCc0;
+    }
+
+    public void setAgreedToCc0(Boolean agreedToCc0) {
+        this.agreedToCc0 = agreedToCc0;
     }
 }

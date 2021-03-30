@@ -22,13 +22,18 @@ public final class SubmissionCreationDto implements Serializable {
     @JsonProperty("globusIdentity")
     private final String globusIdentity;
 
+    @JsonProperty("agreedToCc0")
+    private final Boolean agreedToCc0;
+
     @JsonCreator
     public SubmissionCreationDto(@JsonProperty("publication") PublicationDto publication,
                                  @JsonProperty("bodyOfWork") BodyOfWorkDto bodyOfWork,
-                                 @JsonProperty("globusIdentity") String globusIdentity) {
+                                 @JsonProperty("globusIdentity") String globusIdentity,
+                                 @JsonProperty("agreedToCc0") Boolean agreedToCc0) {
         this.publication = publication;
         this.bodyOfWork = bodyOfWork;
         this.globusIdentity = globusIdentity;
+        this.agreedToCc0 = agreedToCc0;
     }
 
     public PublicationDto getPublication() {
@@ -41,5 +46,9 @@ public final class SubmissionCreationDto implements Serializable {
 
     public String getGlobusIdentity() {
         return globusIdentity;
+    }
+
+    public Boolean isAgreedToCc0() {
+        return agreedToCc0;
     }
 }

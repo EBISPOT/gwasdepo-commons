@@ -90,6 +90,9 @@ public final class StudyDto implements Serializable {
     @JsonProperty("notes")
     private final List<NoteDto> notes;
 
+    @JsonProperty("agreedToCc0")
+    private final Boolean agreedToCc0;
+
     @JsonCreator
     public StudyDto(@JsonProperty("study_tag") String studyTag,
                     @JsonProperty("study_accession") String accession,
@@ -114,7 +117,8 @@ public final class StudyDto implements Serializable {
                     @JsonProperty("cohort_id") String cohortId,
                     @JsonProperty("associations") List<AssociationDto> associations,
                     @JsonProperty("samples") List<SampleDto> samples,
-                    @JsonProperty("notes") List<NoteDto> notes) {
+                    @JsonProperty("notes") List<NoteDto> notes,
+                    @JsonProperty("agreedToCc0") Boolean agreedToCc0) {
         this.studyTag = studyTag;
         this.accession = accession;
         this.genotypingTechnology = genotypingTechnology;
@@ -139,6 +143,7 @@ public final class StudyDto implements Serializable {
         this.associations = associations;
         this.samples = samples;
         this.notes = notes;
+        this.agreedToCc0 = agreedToCc0;
     }
 
     public String getStudyTag() {
@@ -235,5 +240,9 @@ public final class StudyDto implements Serializable {
 
     public List<NoteDto> getNotes() {
         return notes;
+    }
+
+    public Boolean isAgreedToCc0() {
+        return agreedToCc0;
     }
 }

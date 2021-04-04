@@ -68,6 +68,8 @@ public class Submission {
 
     private Provenance lastUpdated;
 
+    private Provenance editTemplate;
+
     private String type;
 
     private String provenanceType;
@@ -292,6 +294,9 @@ public class Submission {
         this.lastUpdated = lastUpdated;
     }
 
+    public Provenance getEditTemplate() { return editTemplate; }
+
+    public void setEditTemplate(Provenance editTemplate) { this.editTemplate = editTemplate; }
 
     public String getGlobusFolderId() {
         return globusFolderId;

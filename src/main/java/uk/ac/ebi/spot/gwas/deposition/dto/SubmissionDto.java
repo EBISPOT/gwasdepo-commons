@@ -79,6 +79,9 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
     @JsonProperty("lastUpdated")
     private final ProvenanceDto lastUpdated;
 
+    @JsonProperty("editTemplate")
+    private final ProvenanceDto editTemplate;
+
     @JsonProperty("agreedToCc0")
     private final Boolean agreedToCc0;
 
@@ -99,6 +102,7 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
                          @JsonProperty("provenanceType") String provenanceType,
                          @JsonProperty("created") ProvenanceDto created,
                          @JsonProperty("lastUpdated") ProvenanceDto lastUpdated,
+                         @JsonProperty("editTemplate") ProvenanceDto editTemplate,
                          @JsonProperty("agreedToCc0") Boolean agreedToCc0) {
         this.submissionId = submissionId;
         this.publication = publication;
@@ -116,6 +120,7 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
         this.provenanceType = provenanceType;
         this.created = created;
         this.lastUpdated = lastUpdated;
+        this.editTemplate = editTemplate;
         this.agreedToCc0 = agreedToCc0;
     }
 
@@ -165,6 +170,10 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
 
     public ProvenanceDto getLastUpdated() {
         return lastUpdated;
+    }
+
+    public ProvenanceDto getEditTemplate() {
+        return editTemplate;
     }
 
     public String getGlobusFolder() {

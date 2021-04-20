@@ -41,6 +41,7 @@ public class Submission {
 
     private String summaryStatsStatus;
 
+
     @Indexed
     private List<String> studies;
 
@@ -69,6 +70,10 @@ public class Submission {
     private Provenance lastUpdated;
 
     private Provenance editTemplate;
+
+
+
+    private LockDetails lockDetails;
 
     private String type;
 
@@ -147,6 +152,7 @@ public class Submission {
     public void setMetadataStatus(String metadataStatus) {
         this.metadataStatus = metadataStatus;
     }
+
 
     public String getSummaryStatsStatus() {
         return summaryStatsStatus;
@@ -329,4 +335,8 @@ public class Submission {
     public void setAgreedToCc0(Boolean agreedToCc0) {
         this.agreedToCc0 = agreedToCc0;
     }
+
+    public LockDetails getLockDetails() { return lockDetails; }
+
+    public void setLockDetails(LockDetails lockDetails) { this.lockDetails = lockDetails; }
 }

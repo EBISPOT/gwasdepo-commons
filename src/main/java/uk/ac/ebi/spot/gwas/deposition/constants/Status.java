@@ -9,6 +9,8 @@ public enum Status {
     VALID,
     SUBMITTED,
     CURATOR_REVIEW,
-    CURATION_COMPLETE
+    CURATION_COMPLETE,
+    LOCKED_FOR_EDITING
+
 
 }

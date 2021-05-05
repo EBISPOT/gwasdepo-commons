@@ -10,6 +10,9 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class JaversChangeWrapper {
 
+    private static final long serialVersionUID = 2258719551854413859L;
+
+
     @JsonProperty("changeType")
     private final String changeType;
 
@@ -32,13 +35,13 @@ public class JaversChangeWrapper {
     @JsonProperty("elementChanges")
     private final List<ElementChange> elementChanges;
 
-    public JaversChangeWrapper(String changeType,
-                               GlobalId globalId,
-                               CommitMetadata commitMetadata,
-                               String property,
-                               String left,
-                               String right,
-                               List<ElementChange> elementChanges) {
+    public JaversChangeWrapper(@JsonProperty("changeType") String changeType,
+                               @JsonProperty("globalId") GlobalId globalId,
+                               @JsonProperty("commitMetadata") CommitMetadata commitMetadata,
+                               @JsonProperty("property") String property,
+                               @JsonProperty("left") String left,
+                               @JsonProperty("right") String right,
+                               @JsonProperty("elementChanges") List<ElementChange> elementChanges) {
         this.changeType = changeType;
         this.globalId = globalId;
         this.commitMetadata = commitMetadata;

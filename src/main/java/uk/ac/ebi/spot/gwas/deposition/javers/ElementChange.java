@@ -15,19 +15,19 @@ public class ElementChange {
     private final Integer index;
 
     @JsonProperty("value")
-    private final String value;
+    private final Object value;
 
     @JsonProperty("leftValue")
-    private final String leftValue;
+    private final Object leftValue;
 
     @JsonProperty("rightValue")
-    private final String rightValue;
+    private final Object rightValue;
 
     public ElementChange(@JsonProperty("elementChangeType") String elementChangeType,
                          @JsonProperty("index") Integer index,
-                         @JsonProperty("value") String value,
-                         @JsonProperty("leftValue") String leftValue,
-                         @JsonProperty("rightValue") String rightValue) {
+                         @JsonProperty("value") Object value,
+                         @JsonProperty("leftValue") Object leftValue,
+                         @JsonProperty("rightValue") Object rightValue) {
         this.elementChangeType = elementChangeType;
         this.index = index;
         this.value = value;
@@ -43,15 +43,15 @@ public class ElementChange {
         return index;
     }
 
-    public String getValue() {
+    public Object getValue() {
         return value;
     }
 
-    public String getLeftValue() {
+    public Object getLeftValue() {
         return leftValue;
     }
 
-    public String getRightValue() {
+    public Object getRightValue() {
         return rightValue;
     }
 }

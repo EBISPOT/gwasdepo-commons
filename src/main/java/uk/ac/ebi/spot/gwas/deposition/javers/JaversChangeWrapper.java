@@ -26,10 +26,10 @@ public class JaversChangeWrapper {
     private final String property;
 
     @JsonProperty("left")
-    private final String left;
+    private final Object left;
 
     @JsonProperty("right")
-    private final String right;
+    private final Object right;
 
 
     @JsonProperty("elementChanges")
@@ -39,8 +39,8 @@ public class JaversChangeWrapper {
                                @JsonProperty("globalId") GlobalId globalId,
                                @JsonProperty("commitMetadata") CommitMetadata commitMetadata,
                                @JsonProperty("property") String property,
-                               @JsonProperty("left") String left,
-                               @JsonProperty("right") String right,
+                               @JsonProperty("left") Object left,
+                               @JsonProperty("right") Object right,
                                @JsonProperty("elementChanges") List<ElementChange> elementChanges) {
         this.changeType = changeType;
         this.globalId = globalId;
@@ -67,11 +67,11 @@ public class JaversChangeWrapper {
         return property;
     }
 
-    public String getLeft() {
+    public Object getLeft() {
         return left;
     }
 
-    public String getRight() {
+    public Object getRight() {
         return right;
     }
 

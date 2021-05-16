@@ -1,11 +1,11 @@
 package uk.ac.ebi.spot.gwas.deposition.javers;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class VersionSummary {
 
-    @JsonProperty("fileSummaryStats")
-    private FileSummaryStats fileSummaryStats;
 
     @JsonProperty("currentVersionSummary")
     private CurrentVersionSummary currentVersionSummary;
@@ -22,13 +22,6 @@ public class VersionSummary {
     @JsonProperty("newFileName")
     private String newFileName;
 
-    public FileSummaryStats getFileSummaryStats() {
-        return fileSummaryStats;
-    }
-
-    public void setFileSummaryStats(FileSummaryStats fileSummaryStats) {
-        this.fileSummaryStats = fileSummaryStats;
-    }
 
     public CurrentVersionSummary getCurrentVersionSummary() {
         return currentVersionSummary;

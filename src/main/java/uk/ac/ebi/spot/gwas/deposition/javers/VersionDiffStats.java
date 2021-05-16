@@ -22,6 +22,12 @@ public class VersionDiffStats {
     @JsonProperty("samplesremoved")
     private Integer samplesRemoved;
 
+    @JsonProperty("studyTagsAdded")
+    private String studyTagsAdded;
+
+    @JsonProperty("studyTagsRemoved")
+    private String studyTagsRemoved;
+
     @JsonProperty("edited")
     List<DiffPropertyObject> edited;
 
@@ -108,5 +114,21 @@ public class VersionDiffStats {
 
     public void setSamplesRemoved(Integer samplesRemoved) {
         this.samplesRemoved = samplesRemoved;
+    }
+
+    public String getStudyTagsAdded() {
+        return studyTagsAdded;
+    }
+
+    public void setStudyTagsAdded(String studyTagsAdded) {
+        this.studyTagsAdded = studyTagsAdded;
+    }
+
+    public String getStudyTagsRemoved() {
+        return studyTagsRemoved;
+    }
+
+    public void setStudyTagsRemoved(String studyTagsRemoved) {
+        this.studyTagsRemoved = studyTagsRemoved;
     }
 }

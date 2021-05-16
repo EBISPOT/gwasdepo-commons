@@ -1,7 +1,9 @@
 package uk.ac.ebi.spot.gwas.deposition.javers;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class VersionSummaryStats {
 
     @JsonProperty("studiesAdded")

@@ -16,11 +16,11 @@ public class VersionSummary {
     @JsonProperty("versionDiffStats")
     private VersionDiffStats versionDiffStats;
 
-    @JsonProperty("oldFileName")
-    private String oldFileName;
+    @JsonProperty("oldFileDetails")
+    private FileSummaryStats oldFileDetails;
 
-    @JsonProperty("newFileName")
-    private String newFileName;
+    @JsonProperty("newFileDetails")
+    private FileSummaryStats newFileDetails;
 
 
     public CurrentVersionSummary getCurrentVersionSummary() {
@@ -47,19 +47,19 @@ public class VersionSummary {
         this.versionDiffStats = versionDiffStats;
     }
 
-    public String getOldFileName() {
-        return oldFileName;
+    public FileSummaryStats getOldFileDetails() {
+        return oldFileDetails;
     }
 
-    public void setOldFileName(String oldFileName) {
-        this.oldFileName = oldFileName;
+    public void setOldFileDetails(FileSummaryStats oldFileDetails) {
+        this.oldFileDetails = oldFileDetails;
     }
 
-    public String getNewFileName() {
-        return newFileName;
+    public FileSummaryStats getNewFileDetails() {
+        return newFileDetails;
     }
 
-    public void setNewFileName(String newFileName) {
-        this.newFileName = newFileName;
+    public void setNewFileDetails(FileSummaryStats newFileDetails) {
+        this.newFileDetails = newFileDetails;
     }
 }

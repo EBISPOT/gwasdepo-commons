@@ -12,16 +12,16 @@ public class VersionDiffStats {
     private String entity;
 
 
-    @JsonProperty("ascnadded")
+    @JsonProperty("ascnsAdded")
     private Integer ascnsAdded;
 
-    @JsonProperty("ascnremoved")
+    @JsonProperty("ascnsRemoved")
     private Integer ascnsRemoved;
 
-    @JsonProperty("sampleadded")
+    @JsonProperty("samplesAdded")
     private Integer samplesAdded;
 
-    @JsonProperty("samplesremoved")
+    @JsonProperty("samplesRemoved")
     private Integer samplesRemoved;
 
     @JsonProperty("studyTagsAdded")

@@ -10,8 +10,11 @@ public class FileSummaryStats {
     @JsonProperty("fileId")
     private String fileId;
 
-    @JsonProperty("fileUploadDate")
-    private String fileUploadDate;
+    public FileSummaryStats(@JsonProperty("fileName") String fileName,
+                            @JsonProperty("fileId") String fileId) {
+        this.fileName = fileName;
+        this.fileId = fileId;
+    }
 
     public String getFileName() {
         return fileName;
@@ -29,11 +32,5 @@ public class FileSummaryStats {
         this.fileId = fileId;
     }
 
-    public String getFileUploadDate() {
-        return fileUploadDate;
-    }
 
-    public void setFileUploadDate(String fileUploadDate) {
-        this.fileUploadDate = fileUploadDate;
-    }
 }

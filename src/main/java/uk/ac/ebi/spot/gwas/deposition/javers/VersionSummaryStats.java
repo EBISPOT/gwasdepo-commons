@@ -28,8 +28,14 @@ public class VersionSummaryStats {
     @JsonProperty("reportedTraitsAdded")
     private Integer reportedTraitsAdded;
 
+    @JsonProperty("reportedTraitsRemoved")
+    private Integer reportedTraitsRemoved;
+
     @JsonProperty("efoTraitsAdded")
     private Integer efoTraitsAdded;
+
+    @JsonProperty("efoTraitsRemoved")
+    private Integer efoTraitsRemoved;
 
     public Integer getStudiesAdded() {
         return studiesAdded;
@@ -93,5 +99,21 @@ public class VersionSummaryStats {
 
     public void setEfoTraitsAdded(Integer efoTraitsAdded) {
         this.efoTraitsAdded = efoTraitsAdded;
+    }
+
+    public Integer getReportedTraitsRemoved() {
+        return reportedTraitsRemoved;
+    }
+
+    public void setReportedTraitsRemoved(Integer reportedTraitsRemoved) {
+        this.reportedTraitsRemoved = reportedTraitsRemoved;
+    }
+
+    public Integer getEfoTraitsRemoved() {
+        return efoTraitsRemoved;
+    }
+
+    public void setEfoTraitsRemoved(Integer efoTraitsRemoved) {
+        this.efoTraitsRemoved = efoTraitsRemoved;
     }
 }

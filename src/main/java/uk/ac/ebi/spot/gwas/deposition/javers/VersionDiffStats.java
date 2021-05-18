@@ -8,7 +8,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class VersionDiffStats {
 
-    @JsonProperty("entity")
+    @JsonProperty("identifier")
     private String entity;
 
 

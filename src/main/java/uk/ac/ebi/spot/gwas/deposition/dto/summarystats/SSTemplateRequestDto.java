@@ -16,18 +16,26 @@ public final class SSTemplateRequestDto implements Serializable {
     @JsonProperty("summaryStats")
     private final boolean summaryStats;
 
+    @JsonProperty("curator")
+    private final boolean curator;
+
     @JsonProperty("prefillData")
     private final SSTemplateRequestStudyDto prefillData;
 
     @JsonCreator
-    public SSTemplateRequestDto(@JsonProperty("summaryStats") boolean summaryStats,
+    public SSTemplateRequestDto(@JsonProperty("summaryStats") boolean summaryStats, @JsonProperty("curator") boolean curator,
                                 @JsonProperty("prefillData") SSTemplateRequestStudyDto prefillData) {
         this.summaryStats = summaryStats;
+        this.curator = curator;
         this.prefillData = prefillData;
     }
 
     public boolean isSummaryStats() {
         return summaryStats;
+    }
+
+    public boolean isCurator() {
+        return curator;
     }
 
     public SSTemplateRequestStudyDto getPrefillData() {

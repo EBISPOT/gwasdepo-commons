@@ -9,6 +9,7 @@ import lombok.EqualsAndHashCode;
 import org.joda.time.LocalDate;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
+import uk.ac.ebi.spot.gwas.deposition.domain.LockDetails;
 import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaLocalDateDeserializer;
 import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaLocalDateSerializer;
 
@@ -79,6 +80,13 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
     @JsonProperty("lastUpdated")
     private final ProvenanceDto lastUpdated;
 
+    @JsonProperty("editTemplate")
+    private final ProvenanceDto editTemplate;
+
+    @JsonProperty("lockDetails")
+    private final LockDetailsDto lockDetails;
+
+
     @JsonProperty("agreedToCc0")
     private final Boolean agreedToCc0;
 
@@ -99,6 +107,8 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
                          @JsonProperty("provenanceType") String provenanceType,
                          @JsonProperty("created") ProvenanceDto created,
                          @JsonProperty("lastUpdated") ProvenanceDto lastUpdated,
+                         @JsonProperty("editTemplate") ProvenanceDto editTemplate,
+                         @JsonProperty("lockDetails") LockDetailsDto lockdetails,
                          @JsonProperty("agreedToCc0") Boolean agreedToCc0) {
         this.submissionId = submissionId;
         this.publication = publication;
@@ -116,6 +126,8 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
         this.provenanceType = provenanceType;
         this.created = created;
         this.lastUpdated = lastUpdated;
+        this.editTemplate = editTemplate;
+        this.lockDetails = lockdetails;
         this.agreedToCc0 = agreedToCc0;
     }
 
@@ -167,6 +179,10 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
         return lastUpdated;
     }
 
+    public ProvenanceDto getEditTemplate() {
+        return editTemplate;
+    }
+
     public String getGlobusFolder() {
         return globusFolder;
     }
@@ -182,6 +198,8 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
     public String getProvenanceType() {
         return provenanceType;
     }
+
+    public LockDetailsDto getLockDetails() { return lockDetails; }
 
     public Boolean isAgreedToCc0() {
         return agreedToCc0;

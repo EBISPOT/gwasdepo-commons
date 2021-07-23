@@ -19,6 +19,8 @@ public class DiseaseTrait {
     @Indexed
     private List<String> studyIds;
 
+    private Provenance created;
+
     public String getId() {
         return id;
     }
@@ -41,5 +43,13 @@ public class DiseaseTrait {
 
     public void setTrait(String trait) {
         this.trait = trait;
+    }
+
+    public Provenance getCreated() {
+        return created;
+    }
+
+    public void setCreated(Provenance created) {
+        this.created = created;
     }
 }

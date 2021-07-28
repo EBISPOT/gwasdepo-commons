@@ -21,6 +21,8 @@ public class DiseaseTrait {
 
     private Provenance created;
 
+    private Provenance updated;
+
     public String getId() {
         return id;
     }
@@ -51,5 +53,13 @@ public class DiseaseTrait {
 
     public void setCreated(Provenance created) {
         this.created = created;
+    }
+
+    public Provenance getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Provenance updated) {
+        this.updated = updated;
     }
 }

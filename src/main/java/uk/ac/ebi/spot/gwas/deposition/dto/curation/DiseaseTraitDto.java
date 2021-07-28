@@ -32,16 +32,21 @@ public class DiseaseTraitDto extends ResourceSupport implements Serializable {
     @JsonProperty("created")
     private final ProvenanceDto created;
 
+    @JsonProperty("updated")
+    private final ProvenanceDto updated;
+
 
 
     public DiseaseTraitDto(@JsonProperty("diseaseTraitId") String diseaseTraitId,
                            @JsonProperty("trait") String trait,
                            @JsonProperty("studies") List<String> studies,
-                            @JsonProperty("created") ProvenanceDto created) {
+                           @JsonProperty("created") ProvenanceDto created,
+                           @JsonProperty("updated") ProvenanceDto updated) {
         this.diseaseTraitId = diseaseTraitId;
         this.trait = trait;
         this.studies = studies;
         this.created = created;
+        this.updated = updated;
     }
 
     public String getDiseaseTraitId() {
@@ -59,4 +64,6 @@ public class DiseaseTraitDto extends ResourceSupport implements Serializable {
     public ProvenanceDto getCreated() {
         return created;
     }
+
+    public ProvenanceDto getUpdated() { return updated; }
 }

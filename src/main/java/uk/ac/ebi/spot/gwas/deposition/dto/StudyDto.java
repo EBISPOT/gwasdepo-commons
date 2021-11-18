@@ -3,17 +3,21 @@ package uk.ac.ebi.spot.gwas.deposition.dto;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
+import uk.ac.ebi.spot.gwas.deposition.dto.curation.DiseaseTraitDto;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.List;
 
 @EqualsAndHashCode
+@Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Relation(value = "study", collectionRelation = "studies")
-public final class StudyDto implements Serializable {
+public final class StudyDto extends ResourceSupport implements Serializable {
 
     private static final long serialVersionUID = -2822216095301860842L;
 
@@ -93,6 +97,9 @@ public final class StudyDto implements Serializable {
     @JsonProperty("agreedToCc0")
     private final Boolean agreedToCc0;
 
+    @JsonProperty("diseaseTraits")
+    private List<DiseaseTraitDto> diseaseTraits;
+
     @JsonCreator
     public StudyDto(@JsonProperty("study_tag") String studyTag,
                     @JsonProperty("study_accession") String accession,
@@ -118,7 +125,8 @@ public final class StudyDto implements Serializable {
                     @JsonProperty("associations") List<AssociationDto> associations,
                     @JsonProperty("samples") List<SampleDto> samples,
                     @JsonProperty("notes") List<NoteDto> notes,
-                    @JsonProperty("agreedToCc0") Boolean agreedToCc0) {
+                    @JsonProperty("agreedToCc0") Boolean agreedToCc0,
+                    @JsonProperty("diseaseTraits") List<DiseaseTraitDto> diseaseTraits) {
         this.studyTag = studyTag;
         this.accession = accession;
         this.genotypingTechnology = genotypingTechnology;
@@ -144,6 +152,7 @@ public final class StudyDto implements Serializable {
         this.samples = samples;
         this.notes = notes;
         this.agreedToCc0 = agreedToCc0;
+        this.diseaseTraits = diseaseTraits;
     }
 
     public String getStudyTag() {
@@ -245,4 +254,6 @@ public final class StudyDto implements Serializable {
     public Boolean isAgreedToCc0() {
         return agreedToCc0;
     }
+
+    public List<DiseaseTraitDto> getDiseaseTraits() { return diseaseTraits; }
 }

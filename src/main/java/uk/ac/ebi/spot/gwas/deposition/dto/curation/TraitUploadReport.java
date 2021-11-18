@@ -20,13 +20,18 @@ public class TraitUploadReport extends ResourceSupport implements Serializable {
     @JsonProperty("trait")
     private String trait;
 
+    @JsonProperty("accession")
+    private String accession;
+
     @JsonProperty("uploadComment")
     private String uploadComment;
 
     public TraitUploadReport(@JsonProperty("trait") String trait,
-                             @JsonProperty("uploadComment") String uploadComment) {
+                             @JsonProperty("uploadComment") String uploadComment,
+                             @JsonProperty("accession") String accession) {
         this.trait = trait;
         this.uploadComment = uploadComment;
+        this.accession = accession;
     }
 
     public String getTrait() {
@@ -36,4 +41,6 @@ public class TraitUploadReport extends ResourceSupport implements Serializable {
     public String getUploadComment() {
         return uploadComment;
     }
+
+    public String getAccession() { return accession; }
 }

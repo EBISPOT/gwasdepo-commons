@@ -52,6 +52,9 @@ public class Study {
 
     private String backgroundEfoTrait;
 
+    @Indexed
+    private List<String> efoTraitList;
+
     private String summaryStatisticsFile;
 
     private String rawFilePath;

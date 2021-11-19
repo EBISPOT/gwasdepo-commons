@@ -22,7 +22,11 @@ public class Study {
     @Indexed
     private List<String> pmids;
 
+    @Indexed
     private String accession;
+
+    @Indexed
+    private List<String> diseaseTraits;
 
     private String genotypingTechnology;
 
@@ -282,4 +286,8 @@ public class Study {
     public void setAgreedToCc0(Boolean agreedToCc0) {
         this.agreedToCc0 = agreedToCc0;
     }
+
+    public List<String> getDiseaseTraits() { return diseaseTraits; }
+
+    public void setDiseaseTraits(List<String> diseaseTraits) { this.diseaseTraits = diseaseTraits; }
 }

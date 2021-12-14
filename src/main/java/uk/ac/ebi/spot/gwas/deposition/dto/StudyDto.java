@@ -25,6 +25,9 @@ public final class StudyDto extends ResourceSupport implements Serializable {
     @JsonProperty("study_tag")
     private final String studyTag;
 
+    @JsonProperty("studyId")
+    private final String studyId;
+
     @JsonProperty("study_accession")
     private final String accession;
 
@@ -102,6 +105,7 @@ public final class StudyDto extends ResourceSupport implements Serializable {
 
     @JsonCreator
     public StudyDto(@JsonProperty("study_tag") String studyTag,
+                    @JsonProperty("studyId") String studyId,
                     @JsonProperty("study_accession") String accession,
                     @JsonProperty("genotyping_technology") String genotypingTechnology,
                     @JsonProperty("array_manufacturer") String arrayManufacturer,
@@ -128,6 +132,7 @@ public final class StudyDto extends ResourceSupport implements Serializable {
                     @JsonProperty("agreedToCc0") Boolean agreedToCc0,
                     @JsonProperty("diseaseTraits") List<DiseaseTraitDto> diseaseTraits) {
         this.studyTag = studyTag;
+        this.studyId = studyId;
         this.accession = accession;
         this.genotypingTechnology = genotypingTechnology;
         this.arrayManufacturer = arrayManufacturer;
@@ -254,6 +259,8 @@ public final class StudyDto extends ResourceSupport implements Serializable {
     public Boolean isAgreedToCc0() {
         return agreedToCc0;
     }
+
+    public String getStudyId() { return studyId; }
 
     public List<DiseaseTraitDto> getDiseaseTraits() { return diseaseTraits; }
 }

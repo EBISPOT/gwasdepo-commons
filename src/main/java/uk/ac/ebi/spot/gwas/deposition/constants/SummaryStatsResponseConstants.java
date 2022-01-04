@@ -8,4 +8,6 @@ public class SummaryStatsResponseConstants {
 
     public static final String VALID = "VALID";
 
+    public static final String IGNORE = "IGNORE";
+
 }

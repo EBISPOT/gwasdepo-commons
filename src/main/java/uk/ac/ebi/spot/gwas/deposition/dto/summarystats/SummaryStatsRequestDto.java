@@ -20,7 +20,7 @@ public final class SummaryStatsRequestDto implements Serializable {
     private final List<SummaryStatsRequestEntryDto> requestEntries;
 
     @JsonProperty("skipValidation")
-    private String skipValidation;
+    private final String skipValidation;
 
     @JsonCreator
     public SummaryStatsRequestDto(@JsonProperty("requestEntries") List<SummaryStatsRequestEntryDto> requestEntries, @JsonProperty("skipValidation") String skipValidation) {

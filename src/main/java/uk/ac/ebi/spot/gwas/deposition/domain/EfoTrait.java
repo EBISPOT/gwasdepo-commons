@@ -7,6 +7,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotBlank;
+
 @Document(collection = "efoTraits")
 @Data
 @AllArgsConstructor
@@ -16,9 +18,12 @@ public class EfoTrait {
     @Id
     private String id;
 
-    @Indexed(unique = true)
+    @Indexed
+    @NotBlank
     private String trait;
 
+    @Indexed(unique = true)
+    @NotBlank
     private String uri;
 
     @Indexed

@@ -53,7 +53,7 @@ public class Study {
     private String backgroundEfoTrait;
 
     @Indexed
-    private List<String> efoTraitList;
+    private List<String> efoTraits;
 
     private String summaryStatisticsFile;
 
@@ -290,4 +290,8 @@ public class Study {
     public List<String> getDiseaseTraits() { return diseaseTraits; }
 
     public void setDiseaseTraits(List<String> diseaseTraits) { this.diseaseTraits = diseaseTraits; }
+
+    public List<String> getEfoTraits() { return efoTraits; }
+
+    public void setEfoTraits(List<String> efoTraits) { this.efoTraits = efoTraits; }
 }

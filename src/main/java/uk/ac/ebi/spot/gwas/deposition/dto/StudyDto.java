@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
 import uk.ac.ebi.spot.gwas.deposition.dto.curation.DiseaseTraitDto;
+import uk.ac.ebi.spot.gwas.deposition.dto.curation.EfoTraitDto;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -103,6 +104,9 @@ public final class StudyDto extends ResourceSupport implements Serializable {
     @JsonProperty("diseaseTraits")
     private List<DiseaseTraitDto> diseaseTraits;
 
+    @JsonProperty("efoTraits")
+    private List<EfoTraitDto> efoTraits;
+
     @JsonCreator
     public StudyDto(@JsonProperty("study_tag") String studyTag,
                     @JsonProperty("studyId") String studyId,
@@ -130,7 +134,8 @@ public final class StudyDto extends ResourceSupport implements Serializable {
                     @JsonProperty("samples") List<SampleDto> samples,
                     @JsonProperty("notes") List<NoteDto> notes,
                     @JsonProperty("agreedToCc0") Boolean agreedToCc0,
-                    @JsonProperty("diseaseTraits") List<DiseaseTraitDto> diseaseTraits) {
+                    @JsonProperty("diseaseTraits") List<DiseaseTraitDto> diseaseTraits,
+                    @JsonProperty("efoTraits") List<EfoTraitDto> efoTraits) {
         this.studyTag = studyTag;
         this.studyId = studyId;
         this.accession = accession;
@@ -158,6 +163,7 @@ public final class StudyDto extends ResourceSupport implements Serializable {
         this.notes = notes;
         this.agreedToCc0 = agreedToCc0;
         this.diseaseTraits = diseaseTraits;
+        this.efoTraits = efoTraits;
     }
 
     public String getStudyTag() {
@@ -263,4 +269,6 @@ public final class StudyDto extends ResourceSupport implements Serializable {
     public String getStudyId() { return studyId; }
 
     public List<DiseaseTraitDto> getDiseaseTraits() { return diseaseTraits; }
+
+    public List<EfoTraitDto> getEfoTraits() { return efoTraits; }
 }

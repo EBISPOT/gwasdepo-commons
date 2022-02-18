@@ -19,14 +19,10 @@ public class EFOTraitWrapperDTO {
 
     private String uri;
 
-    private String shortForm;
-
     public EFOTraitWrapperDTO(@JsonProperty("trait") String trait,
-                              @JsonProperty("uri") String uri,
-                              @JsonProperty("shortForm") String shortForm) {
+                              @JsonProperty("uri") String uri) {
         this.trait = trait;
         this.uri = uri;
-        this.shortForm = shortForm;
     }
 
     public String getTrait() {
@@ -35,9 +31,5 @@ public class EFOTraitWrapperDTO {
 
     public String getUri() {
         return uri;
-    }
-
-    public String getShortForm() {
-        return shortForm;
     }
 }

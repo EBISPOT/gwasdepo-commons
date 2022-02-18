@@ -26,7 +26,7 @@ public class EfoTrait {
     @NotBlank
     private String uri;
 
-    @Indexed(unique = true)
+    @Indexed
     private String shortForm;
 
     private Provenance created;

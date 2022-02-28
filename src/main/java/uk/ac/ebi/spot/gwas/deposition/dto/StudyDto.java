@@ -101,8 +101,8 @@ public final class StudyDto extends ResourceSupport implements Serializable {
     @JsonProperty("agreedToCc0")
     private final Boolean agreedToCc0;
 
-    @JsonProperty("diseaseTraits")
-    private List<DiseaseTraitDto> diseaseTraits;
+    @JsonProperty("diseaseTrait")
+    private DiseaseTraitDto diseaseTrait;
 
     @JsonProperty("efoTraits")
     private List<EfoTraitDto> efoTraits;
@@ -134,7 +134,7 @@ public final class StudyDto extends ResourceSupport implements Serializable {
                     @JsonProperty("samples") List<SampleDto> samples,
                     @JsonProperty("notes") List<NoteDto> notes,
                     @JsonProperty("agreedToCc0") Boolean agreedToCc0,
-                    @JsonProperty("diseaseTraits") List<DiseaseTraitDto> diseaseTraits,
+                    @JsonProperty("diseaseTrait") DiseaseTraitDto diseaseTrait,
                     @JsonProperty("efoTraits") List<EfoTraitDto> efoTraits) {
         this.studyTag = studyTag;
         this.studyId = studyId;
@@ -162,7 +162,7 @@ public final class StudyDto extends ResourceSupport implements Serializable {
         this.samples = samples;
         this.notes = notes;
         this.agreedToCc0 = agreedToCc0;
-        this.diseaseTraits = diseaseTraits;
+        this.diseaseTrait = diseaseTrait;
         this.efoTraits = efoTraits;
     }
 
@@ -268,7 +268,7 @@ public final class StudyDto extends ResourceSupport implements Serializable {
 
     public String getStudyId() { return studyId; }
 
-    public List<DiseaseTraitDto> getDiseaseTraits() { return diseaseTraits; }
+    public DiseaseTraitDto getDiseaseTrait() { return diseaseTrait; }
 
     public List<EfoTraitDto> getEfoTraits() { return efoTraits; }
 }

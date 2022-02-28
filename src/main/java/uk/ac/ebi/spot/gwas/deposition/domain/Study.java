@@ -26,7 +26,7 @@ public class Study {
     private String accession;
 
     @Indexed
-    private List<String> diseaseTraits;
+    private String diseaseTrait;
 
     private String genotypingTechnology;
 
@@ -287,9 +287,14 @@ public class Study {
         this.agreedToCc0 = agreedToCc0;
     }
 
-    public List<String> getDiseaseTraits() { return diseaseTraits; }
 
-    public void setDiseaseTraits(List<String> diseaseTraits) { this.diseaseTraits = diseaseTraits; }
+    public String getDiseaseTrait() {
+        return diseaseTrait;
+    }
+
+    public void setDiseaseTrait(String diseaseTrait) {
+        this.diseaseTrait = diseaseTrait;
+    }
 
     public List<String> getEfoTraits() { return efoTraits; }
 

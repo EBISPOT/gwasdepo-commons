@@ -74,6 +74,10 @@ public class Study {
 
     private Boolean agreedToCc0;
 
+    private String initialSampleDescription;
+
+    private String replicateSampleDescription;
+
     public Study() {
         bodyOfWorkList = new ArrayList<>();
         pmids = new ArrayList<>();
@@ -299,4 +303,20 @@ public class Study {
     public List<String> getEfoTraits() { return efoTraits; }
 
     public void setEfoTraits(List<String> efoTraits) { this.efoTraits = efoTraits; }
+
+    public String getInitialSampleDescription() {
+        return initialSampleDescription;
+    }
+
+    public void setInitialSampleDescription(String initialSampleDescription) {
+        this.initialSampleDescription = initialSampleDescription;
+    }
+
+    public String getReplicateSampleDescription() {
+        return replicateSampleDescription;
+    }
+
+    public void setReplicateSampleDescription(String replicateSampleDescription) {
+        this.replicateSampleDescription = replicateSampleDescription;
+    }
 }

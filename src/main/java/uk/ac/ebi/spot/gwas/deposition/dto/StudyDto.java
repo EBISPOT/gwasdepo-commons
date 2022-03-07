@@ -107,6 +107,12 @@ public final class StudyDto extends ResourceSupport implements Serializable {
     @JsonProperty("efoTraits")
     private List<EfoTraitDto> efoTraits;
 
+    @JsonProperty("initialSampleDescription")
+    private String initialSampleDescription;
+
+    @JsonProperty("replicateSampleDescription")
+    private String replicateSampleDescription;
+
     @JsonCreator
     public StudyDto(@JsonProperty("study_tag") String studyTag,
                     @JsonProperty("studyId") String studyId,
@@ -135,7 +141,9 @@ public final class StudyDto extends ResourceSupport implements Serializable {
                     @JsonProperty("notes") List<NoteDto> notes,
                     @JsonProperty("agreedToCc0") Boolean agreedToCc0,
                     @JsonProperty("diseaseTrait") DiseaseTraitDto diseaseTrait,
-                    @JsonProperty("efoTraits") List<EfoTraitDto> efoTraits) {
+                    @JsonProperty("efoTraits") List<EfoTraitDto> efoTraits,
+                    @JsonProperty("initialSampleDescription") String initialSampleDescription,
+                    @JsonProperty("replicateSampleDescription") String replicateSampleDescription) {
         this.studyTag = studyTag;
         this.studyId = studyId;
         this.accession = accession;
@@ -164,6 +172,8 @@ public final class StudyDto extends ResourceSupport implements Serializable {
         this.agreedToCc0 = agreedToCc0;
         this.diseaseTrait = diseaseTrait;
         this.efoTraits = efoTraits;
+        this.initialSampleDescription = initialSampleDescription;
+        this.replicateSampleDescription = replicateSampleDescription;
     }
 
     public String getStudyTag() {
@@ -271,4 +281,12 @@ public final class StudyDto extends ResourceSupport implements Serializable {
     public DiseaseTraitDto getDiseaseTrait() { return diseaseTrait; }
 
     public List<EfoTraitDto> getEfoTraits() { return efoTraits; }
+
+    public String getInitialSampleDescription() {
+        return initialSampleDescription;
+    }
+
+    public String getReplicateSampleDescription() {
+        return replicateSampleDescription;
+    }
 }

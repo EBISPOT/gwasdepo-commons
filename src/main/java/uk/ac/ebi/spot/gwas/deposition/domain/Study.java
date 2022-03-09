@@ -74,6 +74,12 @@ public class Study {
 
     private Boolean agreedToCc0;
 
+    private Boolean sumstatsFlag;
+
+    private Boolean pooledFlag;
+
+    private Boolean gxeFlag;
+
     public Study() {
         bodyOfWorkList = new ArrayList<>();
         pmids = new ArrayList<>();
@@ -294,4 +300,28 @@ public class Study {
     public List<String> getEfoTraits() { return efoTraits; }
 
     public void setEfoTraits(List<String> efoTraits) { this.efoTraits = efoTraits; }
+
+    public Boolean getSumstatsFlag() {
+        return sumstatsFlag;
+    }
+
+    public void setSumstatsFlag(Boolean sumstatsFlag) {
+        this.sumstatsFlag = sumstatsFlag;
+    }
+
+    public Boolean getPooledFlag() {
+        return pooledFlag;
+    }
+
+    public void setPooledFlag(Boolean pooledFlag) {
+        this.pooledFlag = pooledFlag;
+    }
+
+    public Boolean getGxeFlag() {
+        return gxeFlag;
+    }
+
+    public void setGxeFlag(Boolean gxeFlag) {
+        this.gxeFlag = gxeFlag;
+    }
 }

@@ -113,6 +113,15 @@ public final class StudyDto extends ResourceSupport implements Serializable {
     @JsonProperty("replicateSampleDescription")
     private String replicateSampleDescription;
 
+    @JsonProperty("sumstats_flag")
+    private Boolean sumstatsFlag;
+
+    @JsonProperty("pooled_flag")
+    private Boolean pooledFlag;
+
+    @JsonProperty("gxe_flag")
+    private Boolean gxeFlag;
+
     @JsonCreator
     public StudyDto(@JsonProperty("study_tag") String studyTag,
                     @JsonProperty("studyId") String studyId,
@@ -143,7 +152,11 @@ public final class StudyDto extends ResourceSupport implements Serializable {
                     @JsonProperty("diseaseTrait") DiseaseTraitDto diseaseTrait,
                     @JsonProperty("efoTraits") List<EfoTraitDto> efoTraits,
                     @JsonProperty("initialSampleDescription") String initialSampleDescription,
-                    @JsonProperty("replicateSampleDescription") String replicateSampleDescription) {
+                    @JsonProperty("replicateSampleDescription") String replicateSampleDescription,
+                    @JsonProperty("diseaseTraits") List<DiseaseTraitDto> diseaseTraits,
+                    @JsonProperty("sumstats_flag") Boolean sumstatsFlag,
+                    @JsonProperty("pooled_flag") Boolean pooledFlag,
+                    @JsonProperty("gxe_flag") Boolean gxeFlag) {
         this.studyTag = studyTag;
         this.studyId = studyId;
         this.accession = accession;
@@ -174,6 +187,9 @@ public final class StudyDto extends ResourceSupport implements Serializable {
         this.efoTraits = efoTraits;
         this.initialSampleDescription = initialSampleDescription;
         this.replicateSampleDescription = replicateSampleDescription;
+        this.sumstatsFlag = sumstatsFlag;
+        this.pooledFlag = pooledFlag;
+        this.gxeFlag = gxeFlag;
     }
 
     public String getStudyTag() {
@@ -288,5 +304,17 @@ public final class StudyDto extends ResourceSupport implements Serializable {
 
     public String getReplicateSampleDescription() {
         return replicateSampleDescription;
+    }
+
+    public Boolean getSumstatsFlag() {
+        return sumstatsFlag;
+    }
+
+    public Boolean getPooledFlag() {
+        return pooledFlag;
+    }
+
+    public Boolean getGxeFlag() {
+        return gxeFlag;
     }
 }

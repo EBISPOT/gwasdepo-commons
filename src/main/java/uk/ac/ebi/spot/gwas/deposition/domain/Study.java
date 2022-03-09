@@ -78,6 +78,12 @@ public class Study {
 
     private String replicateSampleDescription;
 
+    private Boolean sumstatsFlag;
+
+    private Boolean pooledFlag;
+
+    private Boolean gxeFlag;
+
     public Study() {
         bodyOfWorkList = new ArrayList<>();
         pmids = new ArrayList<>();
@@ -318,5 +324,29 @@ public class Study {
 
     public void setReplicateSampleDescription(String replicateSampleDescription) {
         this.replicateSampleDescription = replicateSampleDescription;
+    }
+
+    public Boolean getSumstatsFlag() {
+        return sumstatsFlag;
+    }
+
+    public void setSumstatsFlag(Boolean sumstatsFlag) {
+        this.sumstatsFlag = sumstatsFlag;
+    }
+
+    public Boolean getPooledFlag() {
+        return pooledFlag;
+    }
+
+    public void setPooledFlag(Boolean pooledFlag) {
+        this.pooledFlag = pooledFlag;
+    }
+
+    public Boolean getGxeFlag() {
+        return gxeFlag;
+    }
+
+    public void setGxeFlag(Boolean gxeFlag) {
+        this.gxeFlag = gxeFlag;
     }
 }

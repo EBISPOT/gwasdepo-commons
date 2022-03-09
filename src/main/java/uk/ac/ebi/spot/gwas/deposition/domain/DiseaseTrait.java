@@ -16,8 +16,6 @@ public class DiseaseTrait {
     @Indexed(unique = true)
     private String trait;
 
-    @Indexed
-    private List<String> studyIds;
 
     private Provenance created;
 
@@ -31,13 +29,6 @@ public class DiseaseTrait {
         this.id = id;
     }
 
-    public List<String> getStudyIds() {
-        return studyIds;
-    }
-
-    public void setStudyIds(List<String> studyIds) {
-        this.studyIds = studyIds;
-    }
 
     public String getTrait() {
         return trait;

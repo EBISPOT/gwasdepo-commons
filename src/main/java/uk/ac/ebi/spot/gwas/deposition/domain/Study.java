@@ -26,7 +26,7 @@ public class Study {
     private String accession;
 
     @Indexed
-    private List<String> diseaseTraits;
+    private String diseaseTrait;
 
     private String genotypingTechnology;
 
@@ -73,6 +73,10 @@ public class Study {
     private List<String> bodyOfWorkList;
 
     private Boolean agreedToCc0;
+
+    private String initialSampleDescription;
+
+    private String replicateSampleDescription;
 
     private Boolean sumstatsFlag;
 
@@ -293,13 +297,34 @@ public class Study {
         this.agreedToCc0 = agreedToCc0;
     }
 
-    public List<String> getDiseaseTraits() { return diseaseTraits; }
 
-    public void setDiseaseTraits(List<String> diseaseTraits) { this.diseaseTraits = diseaseTraits; }
+    public String getDiseaseTrait() {
+        return diseaseTrait;
+    }
+
+    public void setDiseaseTrait(String diseaseTrait) {
+        this.diseaseTrait = diseaseTrait;
+    }
 
     public List<String> getEfoTraits() { return efoTraits; }
 
     public void setEfoTraits(List<String> efoTraits) { this.efoTraits = efoTraits; }
+
+    public String getInitialSampleDescription() {
+        return initialSampleDescription;
+    }
+
+    public void setInitialSampleDescription(String initialSampleDescription) {
+        this.initialSampleDescription = initialSampleDescription;
+    }
+
+    public String getReplicateSampleDescription() {
+        return replicateSampleDescription;
+    }
+
+    public void setReplicateSampleDescription(String replicateSampleDescription) {
+        this.replicateSampleDescription = replicateSampleDescription;
+    }
 
     public Boolean getSumstatsFlag() {
         return sumstatsFlag;

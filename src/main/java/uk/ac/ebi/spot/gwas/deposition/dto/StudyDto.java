@@ -153,7 +153,6 @@ public final class StudyDto extends ResourceSupport implements Serializable {
                     @JsonProperty("efoTraits") List<EfoTraitDto> efoTraits,
                     @JsonProperty("initialSampleDescription") String initialSampleDescription,
                     @JsonProperty("replicateSampleDescription") String replicateSampleDescription,
-                    @JsonProperty("diseaseTraits") List<DiseaseTraitDto> diseaseTraits,
                     @JsonProperty("sumstats_flag") Boolean sumstatsFlag,
                     @JsonProperty("pooled_flag") Boolean pooledFlag,
                     @JsonProperty("gxe_flag") Boolean gxeFlag) {

@@ -19,6 +19,9 @@ public class StudyPatchRequest {
     @JsonProperty("GCST")
     private String gcst;
 
+    @JsonProperty("studytag")
+    private String studyTag;
+
     @JsonProperty("Curated reported trait")
     private String curatedReportedTrait;
 

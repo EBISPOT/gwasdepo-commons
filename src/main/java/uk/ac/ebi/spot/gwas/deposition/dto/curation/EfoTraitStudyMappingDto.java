@@ -17,6 +17,9 @@ public class EfoTraitStudyMappingDto {
     @JsonProperty("Short form")
     private String shortForm;
 
+    @JsonProperty("studytag")
+    private String studyTag;
+
     @JsonProperty("GCST")
     private String gcst;
 }

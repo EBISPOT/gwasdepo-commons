@@ -92,7 +92,7 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
     @JsonProperty("opentargets_flag")
     private final Boolean openTargetsFlag;
 
-    @JsonProperty("userequested_flag")
+    @JsonProperty("userrequested_flag")
     private final Boolean userRequestedFlag;
 
     @JsonCreator
@@ -116,7 +116,7 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
                          @JsonProperty("lockDetails") LockDetailsDto lockdetails,
                          @JsonProperty("agreedToCc0") Boolean agreedToCc0,
                          @JsonProperty("opentargets_flag") Boolean openTargetsFlag,
-                         @JsonProperty("userequested_flag") Boolean userRequestedFlag) {
+                         @JsonProperty("userrequested_flag") Boolean userRequestedFlag) {
         this.submissionId = submissionId;
         this.publication = publication;
         this.bodyOfWork = bodyOfWork;

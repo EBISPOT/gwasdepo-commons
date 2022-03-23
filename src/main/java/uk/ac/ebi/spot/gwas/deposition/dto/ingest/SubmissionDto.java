@@ -69,6 +69,12 @@ public final class SubmissionDto implements Serializable {
     @JsonProperty("agreedToCc0")
     private final Boolean agreedToCc0;
 
+    @JsonProperty("opentargets_flag")
+    private final Boolean openTargetsFlag;
+
+    @JsonProperty("userrequested_flag")
+    private final Boolean userRequestedFlag;
+
     @JsonCreator
     public SubmissionDto(@JsonProperty("submissionId") String submissionId,
                          @JsonProperty("publication") PublicationDto publication,
@@ -84,7 +90,9 @@ public final class SubmissionDto implements Serializable {
                          @JsonProperty("date_submitted") @JsonDeserialize(using = JsonJodaLocalDateDeserializer.class) LocalDate dateSubmitted,
                          @JsonProperty("metadata") MetadataDto metadata,
                          @JsonProperty("created") ProvenanceDto created,
-                         @JsonProperty("agreedToCc0") Boolean agreedToCc0) {
+                         @JsonProperty("agreedToCc0") Boolean agreedToCc0,
+                         @JsonProperty("opentargets_flag") Boolean openTargetsFlag,
+                         @JsonProperty("userrequested_flag") Boolean userRequestedFlag) {
         this.submissionId = submissionId;
         this.publication = publication;
         this.bodyOfWork = bodyOfWork;
@@ -100,6 +108,8 @@ public final class SubmissionDto implements Serializable {
         this.metadata = metadata;
         this.created = created;
         this.agreedToCc0 = agreedToCc0;
+        this.openTargetsFlag = openTargetsFlag;
+        this.userRequestedFlag = userRequestedFlag;
     }
 
     public String getSubmissionId() {
@@ -160,5 +170,13 @@ public final class SubmissionDto implements Serializable {
 
     public Boolean isAgreedToCc0() {
         return agreedToCc0;
+    }
+
+    public Boolean getOpenTargetsFlag() {
+        return openTargetsFlag;
+    }
+
+    public Boolean getUserRequestedFlag() {
+        return userRequestedFlag;
     }
 }

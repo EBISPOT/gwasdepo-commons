@@ -7,6 +7,7 @@ public enum Status {
     VALIDATING,
     INVALID,
     VALID,
+    DEPOSITION_COMPLETE,
     SUBMITTED,
     CURATOR_REVIEW,
     CURATION_COMPLETE,

@@ -69,7 +69,7 @@
         <repository>
             <id>spot-releases</id>
             <name>Releases</name>
-            <url>https://wwwdev.ebi.ac.uk/spot/nexus/repository/maven-releases/</url>
+            <url>https://wwwdev.ebi.ac.uk/gwas/nexus/repository/maven-releases/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -80,7 +80,7 @@
         <repository>
             <id>spot-snapshots</id>
             <name>Snapshot</name>
-            <url>https://wwwdev.ebi.ac.uk/spot/nexus/repository/maven-snapshots/</url>
+            <url>https://wwwdev.ebi.ac.uk/gwas/nexus/repository/maven-snapshots/</url>
             <releases>
                 <enabled>false</enabled>
             </releases>
@@ -94,12 +94,12 @@
         <repository>
             <id>spot</id>
             <name>Releases</name>
-            <url>https://wwwdev.ebi.ac.uk/spot/nexus/repository/maven-releases/</url>
+            <url>https://wwwdev.ebi.ac.uk/gwas/nexus/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
             <id>spot</id>
             <name>Snapshot</name>
-            <url>https://wwwdev.ebi.ac.uk/spot/nexus/repository/maven-snapshots/</url>
+            <url>https://wwwdev.ebi.ac.uk/gwas/nexus/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 

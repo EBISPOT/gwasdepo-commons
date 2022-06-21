@@ -2,6 +2,7 @@ package uk.ac.ebi.spot.gwas.deposition.dto.curation;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;

@@ -50,6 +50,9 @@ public class Study {
 
     private String backgroundTrait;
 
+    @Indexed
+    private List<String> backgroundEfoTraits;
+
     private String backgroundEfoTrait;
 
     @Indexed
@@ -309,6 +312,10 @@ public class Study {
     public List<String> getEfoTraits() { return efoTraits; }
 
     public void setEfoTraits(List<String> efoTraits) { this.efoTraits = efoTraits; }
+
+    public List<String> getBackgroundEfoTraits() { return backgroundEfoTraits; }
+
+    public void setBackgroundEfoTraits(List<String> backgroundEfoTraits) { this.backgroundEfoTraits = backgroundEfoTraits; }
 
     public String getInitialSampleDescription() {
         return initialSampleDescription;

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({"GCST", "Study Tag", "Efo Trait ShortForm", "Reported Trait Name"})
+@JsonPropertyOrder({"GCST", "Study Tag", "EFO Trait ShortForm", "Background EFO", "Reported Trait Name"})
 public class MultiTraitStudyMappingDto {
     @JsonProperty("GCST")
     private String gcst;
@@ -23,6 +23,9 @@ public class MultiTraitStudyMappingDto {
 
     @JsonProperty("EFO Trait ShortForm")
     private String efoTraitShortForm;
+
+    //@JsonProperty("Background EFO")
+   // private String backgroundEfoShortForm;
 
     @JsonProperty("Reported Trait Name")
     private String reportedTrait;

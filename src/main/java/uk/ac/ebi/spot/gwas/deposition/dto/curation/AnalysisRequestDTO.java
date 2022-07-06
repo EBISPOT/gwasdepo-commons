@@ -1,22 +1,17 @@
 package uk.ac.ebi.spot.gwas.deposition.dto.curation;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class AnalysisCacheDto {
+public class AnalysisRequestDTO {
 
-    private String uniqueId;
-
-    //private String status;
-
-    private List<AnalysisDTO> analysisResult;
-
+    @JsonProperty("user_term")
+    private String userTerm;
 }

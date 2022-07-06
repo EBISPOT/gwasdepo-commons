@@ -11,14 +11,16 @@ import lombok.Getter;
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Getter
-@JsonPropertyOrder({"GCST", "Study Tag", "Efo Trait Comments", "Reported Trait Comments"})
+@JsonPropertyOrder({"GCST", "Study Tag", "Efo Trait Comments", "Background Efo Comments", "Reported Trait Comments"})
 public class MultiTraitStudyMappingReport {
 
     public MultiTraitStudyMappingReport(@JsonProperty("GCST") String gcst, @JsonProperty("Study Tag") String tag,
-                                 @JsonProperty("Efo Trait Comments") String efoTraitComments, @JsonProperty("Reported Trait Comments") String reportedTraitComments) {
+                                        @JsonProperty("Efo Trait Comments") String efoTraitComments//, @JsonProperty("Background Efo Comments") String backgroundEfoComments,
+                                        , @JsonProperty("Reported Trait Comments") String reportedTraitComments) {
         this.gcst = gcst;
         this.tag = tag;
         this.efoTraitComments = efoTraitComments;
+        //this.backgroundEfoComments = backgroundEfoComments;
         this.reportedTraitComments = reportedTraitComments;
     }
 
@@ -30,6 +32,9 @@ public class MultiTraitStudyMappingReport {
 
     @JsonProperty("Efo Trait Comments")
     private String efoTraitComments;
+
+    //@JsonProperty("Background Efo Comments")
+    //private String backgroundEfoComments;
 
     @JsonProperty("Reported Trait Comments")
     private String reportedTraitComments;

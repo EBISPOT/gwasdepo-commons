@@ -24,8 +24,8 @@ public class MultiTraitStudyMappingDto {
     @JsonProperty("EFO Trait ShortForm")
     private String efoTraitShortForm;
 
-    @JsonProperty("Background EFO")
-    private String backgroundEfoShortForm;
+    //@JsonProperty("Background EFO")
+   // private String backgroundEfoShortForm;
 
     @JsonProperty("Reported Trait Name")
     private String reportedTrait;

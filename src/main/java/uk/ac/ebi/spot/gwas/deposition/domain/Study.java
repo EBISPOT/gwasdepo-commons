@@ -22,7 +22,11 @@ public class Study {
     @Indexed
     private List<String> pmids;
 
+    @Indexed
     private String accession;
+
+    @Indexed
+    private String diseaseTrait;
 
     private String genotypingTechnology;
 
@@ -46,7 +50,13 @@ public class Study {
 
     private String backgroundTrait;
 
+    @Indexed
+    private List<String> backgroundEfoTraits;
+
     private String backgroundEfoTrait;
+
+    @Indexed
+    private List<String> efoTraits;
 
     private String summaryStatisticsFile;
 
@@ -66,6 +76,16 @@ public class Study {
     private List<String> bodyOfWorkList;
 
     private Boolean agreedToCc0;
+
+    private String initialSampleDescription;
+
+    private String replicateSampleDescription;
+
+    private Boolean sumstatsFlag;
+
+    private Boolean pooledFlag;
+
+    private Boolean gxeFlag;
 
     public Study() {
         bodyOfWorkList = new ArrayList<>();
@@ -278,5 +298,62 @@ public class Study {
 
     public void setAgreedToCc0(Boolean agreedToCc0) {
         this.agreedToCc0 = agreedToCc0;
+    }
+
+
+    public String getDiseaseTrait() {
+        return diseaseTrait;
+    }
+
+    public void setDiseaseTrait(String diseaseTrait) {
+        this.diseaseTrait = diseaseTrait;
+    }
+
+    public List<String> getEfoTraits() { return efoTraits; }
+
+    public void setEfoTraits(List<String> efoTraits) { this.efoTraits = efoTraits; }
+
+    public List<String> getBackgroundEfoTraits() { return backgroundEfoTraits; }
+
+    public void setBackgroundEfoTraits(List<String> backgroundEfoTraits) { this.backgroundEfoTraits = backgroundEfoTraits; }
+
+    public String getInitialSampleDescription() {
+        return initialSampleDescription;
+    }
+
+    public void setInitialSampleDescription(String initialSampleDescription) {
+        this.initialSampleDescription = initialSampleDescription;
+    }
+
+    public String getReplicateSampleDescription() {
+        return replicateSampleDescription;
+    }
+
+    public void setReplicateSampleDescription(String replicateSampleDescription) {
+        this.replicateSampleDescription = replicateSampleDescription;
+    }
+
+    public Boolean getSumstatsFlag() {
+        return sumstatsFlag;
+    }
+
+    public void setSumstatsFlag(Boolean sumstatsFlag) {
+        this.sumstatsFlag = sumstatsFlag;
+    }
+
+    public Boolean getPooledFlag() {
+        return pooledFlag;
+    }
+
+    public void setPooledFlag(Boolean pooledFlag) {
+        this.pooledFlag = pooledFlag;
+    }
+
+    public Boolean getGxeFlag() {
+        return gxeFlag;
+    }
+
+    public void setGxeFlag(Boolean gxeFlag) {
+        this.gxeFlag = gxeFlag;
     }
 }

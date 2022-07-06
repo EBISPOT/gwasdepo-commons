@@ -3,23 +3,31 @@ package uk.ac.ebi.spot.gwas.deposition.dto;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
+import uk.ac.ebi.spot.gwas.deposition.dto.curation.DiseaseTraitDto;
+import uk.ac.ebi.spot.gwas.deposition.dto.curation.EfoTraitDto;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.List;
 
 @EqualsAndHashCode
+@Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Relation(value = "study", collectionRelation = "studies")
-public final class StudyDto implements Serializable {
+public final class StudyDto extends ResourceSupport implements Serializable {
 
     private static final long serialVersionUID = -2822216095301860842L;
 
     @NotEmpty
     @JsonProperty("study_tag")
     private final String studyTag;
+
+    @JsonProperty("studyId")
+    private final String studyId;
 
     @JsonProperty("study_accession")
     private final String accession;
@@ -93,8 +101,33 @@ public final class StudyDto implements Serializable {
     @JsonProperty("agreedToCc0")
     private final Boolean agreedToCc0;
 
+    @JsonProperty("diseaseTrait")
+    private DiseaseTraitDto diseaseTrait;
+
+    @JsonProperty("efoTraits")
+    private List<EfoTraitDto> efoTraits;
+
+    //@JsonProperty("backgroundEfoTraits")
+    //private List<EfoTraitDto> backgroundEfoTraits;
+
+    @JsonProperty("initialSampleDescription")
+    private String initialSampleDescription;
+
+    @JsonProperty("replicateSampleDescription")
+    private String replicateSampleDescription;
+
+    @JsonProperty("sumstats_flag")
+    private Boolean sumstatsFlag;
+
+    @JsonProperty("pooled_flag")
+    private Boolean pooledFlag;
+
+    @JsonProperty("gxe_flag")
+    private Boolean gxeFlag;
+
     @JsonCreator
     public StudyDto(@JsonProperty("study_tag") String studyTag,
+                    @JsonProperty("studyId") String studyId,
                     @JsonProperty("study_accession") String accession,
                     @JsonProperty("genotyping_technology") String genotypingTechnology,
                     @JsonProperty("array_manufacturer") String arrayManufacturer,
@@ -118,8 +151,17 @@ public final class StudyDto implements Serializable {
                     @JsonProperty("associations") List<AssociationDto> associations,
                     @JsonProperty("samples") List<SampleDto> samples,
                     @JsonProperty("notes") List<NoteDto> notes,
-                    @JsonProperty("agreedToCc0") Boolean agreedToCc0) {
+                    @JsonProperty("agreedToCc0") Boolean agreedToCc0,
+                    @JsonProperty("diseaseTrait") DiseaseTraitDto diseaseTrait,
+                    @JsonProperty("efoTraits") List<EfoTraitDto> efoTraits,
+                    //@JsonProperty("backgroundEfoTraits") List<EfoTraitDto> backgroundEfoTraits,
+                    @JsonProperty("initialSampleDescription") String initialSampleDescription,
+                    @JsonProperty("replicateSampleDescription") String replicateSampleDescription,
+                    @JsonProperty("sumstats_flag") Boolean sumstatsFlag,
+                    @JsonProperty("pooled_flag") Boolean pooledFlag,
+                    @JsonProperty("gxe_flag") Boolean gxeFlag) {
         this.studyTag = studyTag;
+        this.studyId = studyId;
         this.accession = accession;
         this.genotypingTechnology = genotypingTechnology;
         this.arrayManufacturer = arrayManufacturer;
@@ -144,6 +186,14 @@ public final class StudyDto implements Serializable {
         this.samples = samples;
         this.notes = notes;
         this.agreedToCc0 = agreedToCc0;
+        this.diseaseTrait = diseaseTrait;
+        this.efoTraits = efoTraits;
+        //this.backgroundEfoTraits = backgroundEfoTraits;
+        this.initialSampleDescription = initialSampleDescription;
+        this.replicateSampleDescription = replicateSampleDescription;
+        this.sumstatsFlag = sumstatsFlag;
+        this.pooledFlag = pooledFlag;
+        this.gxeFlag = gxeFlag;
     }
 
     public String getStudyTag() {
@@ -244,5 +294,33 @@ public final class StudyDto implements Serializable {
 
     public Boolean isAgreedToCc0() {
         return agreedToCc0;
+    }
+
+    public String getStudyId() { return studyId; }
+
+    public DiseaseTraitDto getDiseaseTrait() { return diseaseTrait; }
+
+    public List<EfoTraitDto> getEfoTraits() { return efoTraits; }
+
+    //public List<EfoTraitDto> getBackgroundEfoTraits() { return backgroundEfoTraits; }
+
+    public String getInitialSampleDescription() {
+        return initialSampleDescription;
+    }
+
+    public String getReplicateSampleDescription() {
+        return replicateSampleDescription;
+    }
+
+    public Boolean getSumstatsFlag() {
+        return sumstatsFlag;
+    }
+
+    public Boolean getPooledFlag() {
+        return pooledFlag;
+    }
+
+    public Boolean getGxeFlag() {
+        return gxeFlag;
     }
 }

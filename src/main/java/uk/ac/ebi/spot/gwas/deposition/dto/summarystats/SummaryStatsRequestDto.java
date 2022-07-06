@@ -19,12 +19,18 @@ public final class SummaryStatsRequestDto implements Serializable {
     @JsonProperty("requestEntries")
     private final List<SummaryStatsRequestEntryDto> requestEntries;
 
+    @JsonProperty("skipValidation")
+    private final Boolean skipValidation;
+
     @JsonCreator
-    public SummaryStatsRequestDto(@JsonProperty("requestEntries") List<SummaryStatsRequestEntryDto> requestEntries) {
+    public SummaryStatsRequestDto(@JsonProperty("requestEntries") List<SummaryStatsRequestEntryDto> requestEntries, @JsonProperty("skipValidation") Boolean skipValidation) {
         this.requestEntries = requestEntries;
+        this.skipValidation = skipValidation;
     }
 
     public List<SummaryStatsRequestEntryDto> getRequestEntries() {
         return requestEntries;
     }
+
+    public Boolean getSkipValidation() { return skipValidation; }
 }

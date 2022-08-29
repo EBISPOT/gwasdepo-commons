@@ -47,6 +47,8 @@ public class Association {
 
     private Double standardError;
 
+    private Boolean isValid;
+
     public Association() {
 
     }
@@ -185,5 +187,13 @@ public class Association {
 
     public void setStandardError(Double standardError) {
         this.standardError = standardError;
+    }
+
+    public Boolean getValid() {
+        return isValid;
+    }
+
+    public void setValid(Boolean valid) {
+        isValid = valid;
     }
 }

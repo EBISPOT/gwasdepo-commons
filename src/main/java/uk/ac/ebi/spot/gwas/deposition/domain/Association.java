@@ -49,6 +49,8 @@ public class Association {
 
     private Boolean isValid;
 
+    private Boolean isApproved;
+
     public Association() {
 
     }
@@ -195,5 +197,13 @@ public class Association {
 
     public void setValid(Boolean valid) {
         isValid = valid;
+    }
+
+    public Boolean getApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(Boolean approved) {
+        isApproved = approved;
     }
 }

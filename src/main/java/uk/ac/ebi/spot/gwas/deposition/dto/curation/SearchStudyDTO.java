@@ -12,36 +12,59 @@ public class SearchStudyDTO {
 
     private static final long serialVersionUID = -5261952713215430422L;
 
-    @JsonProperty("gcst")
-    private String gcst;
 
-    @JsonProperty("efo-trait")
+    @JsonProperty("efoTrait")
     private String efoTrait;
 
-    @JsonProperty("reported-trait")
+    @JsonProperty("pmid")
+    private String pmid;
+
+    @JsonProperty("submissionId")
+    private String submissionId;
+
+    @JsonProperty("bowId")
+    private String bowId;
+
+    @JsonProperty("reportedTrait")
     private String reportedTrait;
 
-    @JsonProperty("study-flag")
-    private String studyFlag;
+    @JsonProperty("sumstatsFlag")
+    private Boolean sumstatsFlag;
+
+    @JsonProperty("pooledFlag")
+    private Boolean pooledFlag;
+
+    @JsonProperty("gxeFlag")
+    private Boolean gxeFlag;
 
     @JsonProperty("note")
     private String note;
 
-    public SearchStudyDTO(@JsonProperty("gcst") String gcst,
-                          @JsonProperty("efo-trait") String efoTrait,
+    @JsonProperty("accessionId")
+    private String accessionId;
+
+    public SearchStudyDTO(@JsonProperty("efo-trait") String efoTrait,
                           @JsonProperty("reported-trait") String reportedTrait,
-                          @JsonProperty("study-flag") String studyFlag,
-                          @JsonProperty("note") String note) {
-        this.gcst = gcst;
+                          @JsonProperty("pmid") String pmid,
+                          @JsonProperty("submissionId") String submissionId,
+                          @JsonProperty("bowId") String bowId,
+                          @JsonProperty("sumstatsFlag") Boolean sumstatsFlag,
+                          @JsonProperty("pooledFlag") Boolean pooledFlag,
+                          @JsonProperty("gxeFlag") Boolean gxeFlag,
+                          @JsonProperty("note") String note,
+                          @JsonProperty("accessionId") String accessionId) {
         this.efoTrait = efoTrait;
         this.reportedTrait = reportedTrait;
-        this.studyFlag = studyFlag;
+        this.pmid = pmid;
+        this.submissionId = submissionId;
+        this.bowId = bowId;
+        this.sumstatsFlag = sumstatsFlag;
+        this.pooledFlag = pooledFlag;
+        this.gxeFlag = gxeFlag;
         this.note = note;
+        this.accessionId = accessionId;
     }
 
-    public String getGcst() {
-        return gcst;
-    }
 
     public String getEfoTrait() {
         return efoTrait;
@@ -51,11 +74,35 @@ public class SearchStudyDTO {
         return reportedTrait;
     }
 
-    public String getStudyFlag() {
-        return studyFlag;
+    public String getPmid() {
+        return pmid;
+    }
+
+    public String getSubmissionId() {
+        return submissionId;
+    }
+
+    public String getBowId() {
+        return bowId;
+    }
+
+    public Boolean getSumstatsFlag() {
+        return sumstatsFlag;
+    }
+
+    public Boolean getPooledFlag() {
+        return pooledFlag;
+    }
+
+    public Boolean getGxeFlag() {
+        return gxeFlag;
     }
 
     public String getNote() {
         return note;
+    }
+
+    public String getAccessionId() {
+        return accessionId;
     }
 }

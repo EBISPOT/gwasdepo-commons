@@ -47,6 +47,10 @@ public class Association {
 
     private Double standardError;
 
+    private Boolean isValid;
+
+    private Boolean isApproved;
+
     public Association() {
 
     }
@@ -185,5 +189,21 @@ public class Association {
 
     public void setStandardError(Double standardError) {
         this.standardError = standardError;
+    }
+
+    public Boolean getValid() {
+        return isValid;
+    }
+
+    public void setValid(Boolean valid) {
+        isValid = valid;
+    }
+
+    public Boolean getApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(Boolean approved) {
+        isApproved = approved;
     }
 }

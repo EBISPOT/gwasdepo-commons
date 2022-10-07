@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class RabbitMQConfigProperties {
 
-    @Value("rabbitmq.queue-name")
+    @Value("${rabbitmq.queue-name}")
     private String queueName;
 
-    @Value("rabbitmq.exchange-name")
+    @Value("${rabbitmq.exchange-name}")
     private String exchangeName;
 
-    @Value("rabbitmq.routing-key")
+    @Value("${rabbitmq.routing-key}")
     private String routingKey;
 
 

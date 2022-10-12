@@ -32,6 +32,12 @@ public class Publication implements Serializable {
 
     private CorrespondingAuthor correspondingAuthor;
 
+    private String curator;
+
+    private String curationStatus;
+
+    private String submitter;
+
     @Indexed
     private boolean pushed;
 
@@ -41,7 +47,7 @@ public class Publication implements Serializable {
 
     public Publication(String pmid, String journal, String title, String firstAuthor,
                        LocalDate publicationDate, CorrespondingAuthor correspondingAuthor,
-                       String status) {
+                       String status, String curator,String curationStatus, String submitter) {
         this.pmid = pmid;
         this.journal = journal;
         this.title = title;
@@ -50,6 +56,9 @@ public class Publication implements Serializable {
         this.correspondingAuthor = correspondingAuthor;
         this.status = status;
         this.pushed = false;
+        this.curator = curator;
+        this.curationStatus = curationStatus;
+        this.submitter = submitter;
     }
 
     public String getId() {
@@ -122,5 +131,29 @@ public class Publication implements Serializable {
 
     public void setPushed(boolean pushed) {
         this.pushed = pushed;
+    }
+
+    public String getCurator() {
+        return curator;
+    }
+
+    public void setCurator(String curator) {
+        this.curator = curator;
+    }
+
+    public String getCurationStatus() {
+        return curationStatus;
+    }
+
+    public void setCurationStatus(String curationStatus) {
+        this.curationStatus = curationStatus;
+    }
+
+    public String getSubmitter() {
+        return submitter;
+    }
+
+    public void setSubmitter(String submitter) {
+        this.submitter = submitter;
     }
 }

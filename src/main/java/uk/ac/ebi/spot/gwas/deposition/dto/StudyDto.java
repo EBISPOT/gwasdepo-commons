@@ -125,6 +125,9 @@ public final class StudyDto extends ResourceSupport implements Serializable {
     @JsonProperty("gxe_flag")
     private Boolean gxeFlag;
 
+    @JsonProperty("submissionId")
+    private String submissionId;
+
     @JsonCreator
     public StudyDto(@JsonProperty("study_tag") String studyTag,
                     @JsonProperty("studyId") String studyId,
@@ -159,7 +162,8 @@ public final class StudyDto extends ResourceSupport implements Serializable {
                     @JsonProperty("replicateSampleDescription") String replicateSampleDescription,
                     @JsonProperty("sumstats_flag") Boolean sumstatsFlag,
                     @JsonProperty("pooled_flag") Boolean pooledFlag,
-                    @JsonProperty("gxe_flag") Boolean gxeFlag) {
+                    @JsonProperty("gxe_flag") Boolean gxeFlag,
+                    @JsonProperty("submissionId") String submissionId) {
         this.studyTag = studyTag;
         this.studyId = studyId;
         this.accession = accession;
@@ -194,6 +198,7 @@ public final class StudyDto extends ResourceSupport implements Serializable {
         this.sumstatsFlag = sumstatsFlag;
         this.pooledFlag = pooledFlag;
         this.gxeFlag = gxeFlag;
+        this.submissionId = submissionId;
     }
 
     public String getStudyTag() {
@@ -322,5 +327,9 @@ public final class StudyDto extends ResourceSupport implements Serializable {
 
     public Boolean getGxeFlag() {
         return gxeFlag;
+    }
+
+    public String getSubmissionId() {
+        return submissionId;
     }
 }

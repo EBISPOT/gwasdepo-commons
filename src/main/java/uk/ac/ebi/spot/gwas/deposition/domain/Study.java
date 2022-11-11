@@ -1,12 +1,13 @@
 package uk.ac.ebi.spot.gwas.deposition.domain;
 
+//import com.querydsl.core.annotations.QueryEntity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//@QueryEntity
 @Document(collection = "studies")
 public class Study {
 

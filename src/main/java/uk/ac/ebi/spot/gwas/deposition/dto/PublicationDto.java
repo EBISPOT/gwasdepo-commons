@@ -5,16 +5,20 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import org.joda.time.LocalDate;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
+import uk.ac.ebi.spot.gwas.deposition.dto.curation.PublicationAuthorDto;
 import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaLocalDateDeserializer;
 import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaLocalDateSerializer;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.util.List;
 
+@Builder
 @EqualsAndHashCode(callSuper = false)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Relation(value = "publication", collectionRelation = "publications")
@@ -48,6 +52,16 @@ public class PublicationDto extends ResourceSupport implements Serializable {
     @JsonProperty("status")
     private final String status;
 
+
+    @JsonProperty("created")
+    private  ProvenanceDto created;
+
+    @JsonProperty("updated")
+    private  ProvenanceDto updated;
+
+    @JsonProperty("authors")
+    private List<PublicationAuthorDto> authors;
+
     @JsonCreator
     public PublicationDto(@JsonProperty("publicationId") String publicationId,
                           @JsonProperty("pmid") String pmid,
@@ -56,7 +70,10 @@ public class PublicationDto extends ResourceSupport implements Serializable {
                           @JsonProperty("firstAuthor") String firstAuthor,
                           @JsonProperty("publicationDate") @JsonDeserialize(using = JsonJodaLocalDateDeserializer.class) LocalDate publicationDate,
                           @JsonProperty("correspondingAuthor") CorrespondingAuthorDto correspondingAuthor,
-                          @JsonProperty("status") String status) {
+                          @JsonProperty("status") String status,
+                          @JsonProperty("created") ProvenanceDto created,
+                          @JsonProperty("updated") ProvenanceDto updated,
+                          @JsonProperty("authors") List<PublicationAuthorDto> authors ) {
         this.publicationId = publicationId;
         this.pmid = pmid;
         this.title = title;
@@ -65,6 +82,9 @@ public class PublicationDto extends ResourceSupport implements Serializable {
         this.publicationDate = publicationDate;
         this.correspondingAuthor = correspondingAuthor;
         this.status = status;
+        this.created = created;
+        this.updated = updated;
+        this.authors = authors;
     }
 
     public String getPublicationId() {
@@ -97,5 +117,29 @@ public class PublicationDto extends ResourceSupport implements Serializable {
 
     public String getStatus() {
         return status;
+    }
+
+    public ProvenanceDto getCreated() {
+        return created;
+    }
+
+    public void setCreated(ProvenanceDto created) {
+        this.created = created;
+    }
+
+    public ProvenanceDto getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(ProvenanceDto updated) {
+        this.updated = updated;
+    }
+
+    public List<PublicationAuthorDto> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<PublicationAuthorDto> authors) {
+        this.authors = authors;
     }
 }

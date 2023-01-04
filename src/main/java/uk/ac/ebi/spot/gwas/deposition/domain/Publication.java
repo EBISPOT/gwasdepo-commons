@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Document(collection = "publications")
 public class Publication implements Serializable {
@@ -41,13 +42,22 @@ public class Publication implements Serializable {
     @Indexed
     private boolean pushed;
 
+    private List<String> authors;
+
+    private String firstAuthorId;
+
+    private Provenance created;
+
+    private Provenance updated;
+
     public Publication() {
 
     }
 
     public Publication(String pmid, String journal, String title, String firstAuthor,
                        LocalDate publicationDate, CorrespondingAuthor correspondingAuthor,
-                       String status, String curator,String curationStatus, String submitter) {
+                       String status, String curator,String curationStatus, String submitter,
+                       Provenance created, Provenance updated, List<String> authors) {
         this.pmid = pmid;
         this.journal = journal;
         this.title = title;
@@ -59,6 +69,9 @@ public class Publication implements Serializable {
         this.curator = curator;
         this.curationStatus = curationStatus;
         this.submitter = submitter;
+        this.created = created;
+        this.updated = updated;
+        this.authors = authors;
     }
 
     public String getId() {
@@ -155,5 +168,37 @@ public class Publication implements Serializable {
 
     public void setSubmitter(String submitter) {
         this.submitter = submitter;
+    }
+
+    public List<String> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<String> authors) {
+        this.authors = authors;
+    }
+
+    public String getFirstAuthorId() {
+        return firstAuthorId;
+    }
+
+    public void setFirstAuthorId(String firstAuthorId) {
+        this.firstAuthorId = firstAuthorId;
+    }
+
+    public Provenance getCreated() {
+        return created;
+    }
+
+    public void setCreated(Provenance created) {
+        this.created = created;
+    }
+
+    public Provenance getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Provenance updated) {
+        this.updated = updated;
     }
 }

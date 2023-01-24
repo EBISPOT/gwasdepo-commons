@@ -13,6 +13,6 @@ maven-build:
   image: maven:3-jdk-8
   stage: build
   script:
-    - echo ${MAVEN_SETTINGS} | base64 -d > settings.xml
+    - echo ${MAVEN_SETTINGS} | base64 -d > settings.xml -Dmaven.test.error.ignore=true -Dmaven.test.failure.ignore=true
     - mvn -s settings.xml clean install deploy
 

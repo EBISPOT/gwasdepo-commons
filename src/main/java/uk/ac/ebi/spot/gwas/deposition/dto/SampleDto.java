@@ -52,6 +52,12 @@ public final class SampleDto implements Serializable {
     @JsonProperty("country_recruitement")
     private final String countryRecruitement;
 
+    @JsonProperty("caseControlStudy")
+    private Boolean caseControlStudy;
+
+    @JsonProperty("ancestryMethod")
+    private String ancestryMethod;
+
     @JsonCreator
     public SampleDto(@JsonProperty("study_tag") String studyTag,
                      @JsonProperty("note") String stage,
@@ -62,7 +68,9 @@ public final class SampleDto implements Serializable {
                      @JsonProperty("ancestry_category") String ancestryCategory,
                      @JsonProperty("ancestry") String ancestry,
                      @JsonProperty("ancestry_description") String ancestryDescription,
-                     @JsonProperty("country_recruitement") String countryRecruitement) {
+                     @JsonProperty("country_recruitement") String countryRecruitement,
+                     @JsonProperty("caseControlStudy") Boolean caseControlStudy,
+                     @JsonProperty("ancestryMethod") String ancestryMethod) {
         this.studyTag = studyTag;
         this.stage = stage;
         this.size = size;
@@ -73,6 +81,8 @@ public final class SampleDto implements Serializable {
         this.ancestry = ancestry;
         this.ancestryDescription = ancestryDescription;
         this.countryRecruitement = countryRecruitement;
+        this.caseControlStudy = caseControlStudy;
+        this.ancestryMethod = ancestryMethod;
     }
 
     public String getStudyTag() {
@@ -115,4 +125,20 @@ public final class SampleDto implements Serializable {
         return countryRecruitement;
     }
 
+
+    public Boolean getCaseControlStudy() {
+        return caseControlStudy;
+    }
+
+    public void setCaseControlStudy(Boolean caseControlStudy) {
+        this.caseControlStudy = caseControlStudy;
+    }
+
+    public String getAncestryMethod() {
+        return ancestryMethod;
+    }
+
+    public void setAncestryMethod(String ancestryMethod) {
+        this.ancestryMethod = ancestryMethod;
+    }
 }

@@ -128,6 +128,21 @@ public final class StudyDto extends ResourceSupport implements Serializable {
     @JsonProperty("submissionId")
     private String submissionId;
 
+    @JsonProperty("imputationPanel")
+    private String imputationPanel;
+
+    @JsonProperty("imputationSoftware")
+    private String imputationSoftware;
+
+    @JsonProperty("adjustedCovariates")
+    private String adjustedCovariates;
+
+    @JsonProperty("neg_log_p_value")
+    private Boolean neg_log_p_value;
+
+    @JsonProperty("effect_allele_frequency_lower_limit")
+    private Double effect_allele_frequency_lower_limit;
+
     @JsonCreator
     public StudyDto(@JsonProperty("study_tag") String studyTag,
                     @JsonProperty("studyId") String studyId,
@@ -163,7 +178,12 @@ public final class StudyDto extends ResourceSupport implements Serializable {
                     @JsonProperty("sumstats_flag") Boolean sumstatsFlag,
                     @JsonProperty("pooled_flag") Boolean pooledFlag,
                     @JsonProperty("gxe_flag") Boolean gxeFlag,
-                    @JsonProperty("submissionId") String submissionId) {
+                    @JsonProperty("submissionId") String submissionId,
+                    @JsonProperty("imputationPanel") String imputationPanel,
+                    @JsonProperty("imputationSoftware") String imputationSoftware,
+                    @JsonProperty("adjustedCovariates") String adjustedCovariates,
+                    @JsonProperty("neg_log_p_value") Boolean neg_log_p_value,
+                    @JsonProperty("effect_allele_frequency_lower_limit") Double effect_allele_frequency_lower_limit) {
         this.studyTag = studyTag;
         this.studyId = studyId;
         this.accession = accession;
@@ -199,6 +219,11 @@ public final class StudyDto extends ResourceSupport implements Serializable {
         this.pooledFlag = pooledFlag;
         this.gxeFlag = gxeFlag;
         this.submissionId = submissionId;
+        this.imputationPanel = imputationPanel;
+        this.imputationSoftware = imputationSoftware;
+        this.adjustedCovariates = adjustedCovariates;
+        this.neg_log_p_value = neg_log_p_value;
+        this.effect_allele_frequency_lower_limit = effect_allele_frequency_lower_limit;
     }
 
     public String getStudyTag() {
@@ -331,5 +356,25 @@ public final class StudyDto extends ResourceSupport implements Serializable {
 
     public String getSubmissionId() {
         return submissionId;
+    }
+
+    public String getImputationPanel() {
+        return imputationPanel;
+    }
+
+    public String getImputationSoftware() {
+        return imputationSoftware;
+    }
+
+    public String getAdjustedCovariates() {
+        return adjustedCovariates;
+    }
+
+    public Boolean getNeg_log_p_value() {
+        return neg_log_p_value;
+    }
+
+    public Double getEffect_allele_frequency_lower_limit() {
+        return effect_allele_frequency_lower_limit;
     }
 }

@@ -137,11 +137,15 @@ public final class StudyDto extends ResourceSupport implements Serializable {
     @JsonProperty("adjustedCovariates")
     private String adjustedCovariates;
 
-    @JsonProperty("neg_log_p_value")
-    private Boolean neg_log_p_value;
 
-    @JsonProperty("effect_allele_frequency_lower_limit")
-    private Double effect_allele_frequency_lower_limit;
+    @JsonProperty("minor_allele_frequency_lower_limit")
+    private Double minor_allele_frequency_lower_limit;
+
+    @JsonProperty("sex")
+    private String sex;
+
+    @JsonProperty("coordinateSystem")
+    private String coordinateSystem;
 
     @JsonCreator
     public StudyDto(@JsonProperty("study_tag") String studyTag,
@@ -182,8 +186,9 @@ public final class StudyDto extends ResourceSupport implements Serializable {
                     @JsonProperty("imputationPanel") String imputationPanel,
                     @JsonProperty("imputationSoftware") String imputationSoftware,
                     @JsonProperty("adjustedCovariates") String adjustedCovariates,
-                    @JsonProperty("neg_log_p_value") Boolean neg_log_p_value,
-                    @JsonProperty("effect_allele_frequency_lower_limit") Double effect_allele_frequency_lower_limit) {
+                    @JsonProperty("minor_allele_frequency_lower_limit") Double minor_allele_frequency_lower_limit,
+                    @JsonProperty("sex") String sex,
+                    @JsonProperty("coordinateSystem") String coordinateSystem) {
         this.studyTag = studyTag;
         this.studyId = studyId;
         this.accession = accession;
@@ -222,8 +227,9 @@ public final class StudyDto extends ResourceSupport implements Serializable {
         this.imputationPanel = imputationPanel;
         this.imputationSoftware = imputationSoftware;
         this.adjustedCovariates = adjustedCovariates;
-        this.neg_log_p_value = neg_log_p_value;
-        this.effect_allele_frequency_lower_limit = effect_allele_frequency_lower_limit;
+        this.minor_allele_frequency_lower_limit = minor_allele_frequency_lower_limit;
+        this.sex = sex;
+        this.coordinateSystem = coordinateSystem;
     }
 
     public String getStudyTag() {
@@ -370,11 +376,15 @@ public final class StudyDto extends ResourceSupport implements Serializable {
         return adjustedCovariates;
     }
 
-    public Boolean getNeg_log_p_value() {
-        return neg_log_p_value;
+    public Double getMinor_allele_frequency_lower_limit() {
+        return minor_allele_frequency_lower_limit;
     }
 
-    public Double getEffect_allele_frequency_lower_limit() {
-        return effect_allele_frequency_lower_limit;
+    public String getSex() {
+        return sex;
+    }
+
+    public String getCoordinateSystem() {
+        return coordinateSystem;
     }
 }

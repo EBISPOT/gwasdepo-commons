@@ -98,6 +98,10 @@ public class Study {
 
     private Double effect_allele_frequency_lower_limit;
 
+    private String sex;
+
+    private String coordinateSystem;
+
 
     public Study() {
         bodyOfWorkList = new ArrayList<>();
@@ -407,5 +411,21 @@ public class Study {
 
     public void setEffect_allele_frequency_lower_limit(Double effect_allele_frequency_lower_limit) {
         this.effect_allele_frequency_lower_limit = effect_allele_frequency_lower_limit;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getCoordinateSystem() {
+        return coordinateSystem;
+    }
+
+    public void setCoordinateSystem(String coordinateSystem) {
+        this.coordinateSystem = coordinateSystem;
     }
 }

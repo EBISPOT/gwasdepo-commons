@@ -88,6 +88,21 @@ public class Study {
 
     private Boolean gxeFlag;
 
+    private String imputationPanel;
+
+    private String imputationSoftware;
+
+    private String adjustedCovariates;
+
+    private Boolean neg_log_p_value;
+
+    private Double effect_allele_frequency_lower_limit;
+
+    private String sex;
+
+    private String coordinateSystem;
+
+
     public Study() {
         bodyOfWorkList = new ArrayList<>();
         pmids = new ArrayList<>();
@@ -356,5 +371,61 @@ public class Study {
 
     public void setGxeFlag(Boolean gxeFlag) {
         this.gxeFlag = gxeFlag;
+    }
+
+    public String getImputationPanel() {
+        return imputationPanel;
+    }
+
+    public void setImputationPanel(String imputationPanel) {
+        this.imputationPanel = imputationPanel;
+    }
+
+    public String getImputationSoftware() {
+        return imputationSoftware;
+    }
+
+    public void setImputationSoftware(String imputationSoftware) {
+        this.imputationSoftware = imputationSoftware;
+    }
+
+    public String getAdjustedCovariates() {
+        return adjustedCovariates;
+    }
+
+    public void setAdjustedCovariates(String adjustedCovariates) {
+        this.adjustedCovariates = adjustedCovariates;
+    }
+
+    public Boolean getNeg_log_p_value() {
+        return neg_log_p_value;
+    }
+
+    public void setNeg_log_p_value(Boolean neg_log_p_value) {
+        this.neg_log_p_value = neg_log_p_value;
+    }
+
+    public Double getEffect_allele_frequency_lower_limit() {
+        return effect_allele_frequency_lower_limit;
+    }
+
+    public void setEffect_allele_frequency_lower_limit(Double effect_allele_frequency_lower_limit) {
+        this.effect_allele_frequency_lower_limit = effect_allele_frequency_lower_limit;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getCoordinateSystem() {
+        return coordinateSystem;
+    }
+
+    public void setCoordinateSystem(String coordinateSystem) {
+        this.coordinateSystem = coordinateSystem;
     }
 }

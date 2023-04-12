@@ -128,6 +128,25 @@ public final class StudyDto extends ResourceSupport implements Serializable {
     @JsonProperty("submissionId")
     private String submissionId;
 
+    @JsonProperty("imputationPanel")
+    private String imputationPanel;
+
+    @JsonProperty("imputationSoftware")
+    private String imputationSoftware;
+
+    @JsonProperty("adjustedCovariates")
+    private String adjustedCovariates;
+
+
+    @JsonProperty("minor_allele_frequency_lower_limit")
+    private Double minor_allele_frequency_lower_limit;
+
+    @JsonProperty("sex")
+    private String sex;
+
+    @JsonProperty("coordinateSystem")
+    private String coordinateSystem;
+
     @JsonCreator
     public StudyDto(@JsonProperty("study_tag") String studyTag,
                     @JsonProperty("studyId") String studyId,
@@ -163,7 +182,13 @@ public final class StudyDto extends ResourceSupport implements Serializable {
                     @JsonProperty("sumstats_flag") Boolean sumstatsFlag,
                     @JsonProperty("pooled_flag") Boolean pooledFlag,
                     @JsonProperty("gxe_flag") Boolean gxeFlag,
-                    @JsonProperty("submissionId") String submissionId) {
+                    @JsonProperty("submissionId") String submissionId,
+                    @JsonProperty("imputationPanel") String imputationPanel,
+                    @JsonProperty("imputationSoftware") String imputationSoftware,
+                    @JsonProperty("adjustedCovariates") String adjustedCovariates,
+                    @JsonProperty("minor_allele_frequency_lower_limit") Double minor_allele_frequency_lower_limit,
+                    @JsonProperty("sex") String sex,
+                    @JsonProperty("coordinateSystem") String coordinateSystem) {
         this.studyTag = studyTag;
         this.studyId = studyId;
         this.accession = accession;
@@ -199,6 +224,12 @@ public final class StudyDto extends ResourceSupport implements Serializable {
         this.pooledFlag = pooledFlag;
         this.gxeFlag = gxeFlag;
         this.submissionId = submissionId;
+        this.imputationPanel = imputationPanel;
+        this.imputationSoftware = imputationSoftware;
+        this.adjustedCovariates = adjustedCovariates;
+        this.minor_allele_frequency_lower_limit = minor_allele_frequency_lower_limit;
+        this.sex = sex;
+        this.coordinateSystem = coordinateSystem;
     }
 
     public String getStudyTag() {
@@ -331,5 +362,29 @@ public final class StudyDto extends ResourceSupport implements Serializable {
 
     public String getSubmissionId() {
         return submissionId;
+    }
+
+    public String getImputationPanel() {
+        return imputationPanel;
+    }
+
+    public String getImputationSoftware() {
+        return imputationSoftware;
+    }
+
+    public String getAdjustedCovariates() {
+        return adjustedCovariates;
+    }
+
+    public Double getMinor_allele_frequency_lower_limit() {
+        return minor_allele_frequency_lower_limit;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public String getCoordinateSystem() {
+        return coordinateSystem;
     }
 }

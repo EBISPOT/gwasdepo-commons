@@ -12,6 +12,9 @@ public class CuratorDTO {
 
     private static final long serialVersionUID = 3094792753261938894L;
 
+    @JsonProperty("id")
+    private String id;
+
     @JsonProperty("lastName")
     private String lastName;
 
@@ -24,16 +27,22 @@ public class CuratorDTO {
     @JsonProperty("email")
     private String email;
 
-    public CuratorDTO(@JsonProperty("lastName") String lastName,
-                      @JsonProperty("firstName") String firstName,
-                      @JsonProperty("username") String username,
-                      @JsonProperty("email") String email) {
+    public CuratorDTO(
+            @JsonProperty("id") String id,
+            @JsonProperty("lastName") String lastName,
+            @JsonProperty("firstName") String firstName,
+            @JsonProperty("username") String username,
+            @JsonProperty("email") String email) {
+        this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.username = username;
         this.email = email;
     }
 
+    public String getId() {
+        return id;
+    }
     public String getLastName() {
         return lastName;
     }

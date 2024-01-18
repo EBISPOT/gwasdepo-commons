@@ -10,6 +10,8 @@ import lombok.EqualsAndHashCode;
 import org.joda.time.LocalDate;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
+import uk.ac.ebi.spot.gwas.deposition.dto.curation.CurationStatusDTO;
+import uk.ac.ebi.spot.gwas.deposition.dto.curation.CuratorDTO;
 import uk.ac.ebi.spot.gwas.deposition.dto.curation.PublicationAuthorDto;
 import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaLocalDateDeserializer;
 import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaLocalDateSerializer;
@@ -62,6 +64,16 @@ public class PublicationDto extends ResourceSupport implements Serializable {
     @JsonProperty("authors")
     private List<PublicationAuthorDto> authors;
 
+    @JsonProperty("curationStatus")
+    private CurationStatusDTO curationStatus;
+
+    @JsonProperty("curator")
+    private CuratorDTO curator;
+
+    @JsonProperty("submitter")
+    private String submitter;
+
+
     @JsonCreator
     public PublicationDto(@JsonProperty("publicationId") String publicationId,
                           @JsonProperty("pmid") String pmid,
@@ -73,7 +85,10 @@ public class PublicationDto extends ResourceSupport implements Serializable {
                           @JsonProperty("status") String status,
                           @JsonProperty("created") ProvenanceDto created,
                           @JsonProperty("updated") ProvenanceDto updated,
-                          @JsonProperty("authors") List<PublicationAuthorDto> authors ) {
+                          @JsonProperty("authors") List<PublicationAuthorDto> authors,
+                          @JsonProperty("curationStatus") CurationStatusDTO curationStatus,
+                          @JsonProperty("curator") CuratorDTO curator,
+                          @JsonProperty("submitter") String submitter) {
         this.publicationId = publicationId;
         this.pmid = pmid;
         this.title = title;
@@ -85,6 +100,9 @@ public class PublicationDto extends ResourceSupport implements Serializable {
         this.created = created;
         this.updated = updated;
         this.authors = authors;
+        this.curationStatus = curationStatus;
+        this.curator = curator;
+        this.submitter = submitter;
     }
 
     public String getPublicationId() {
@@ -141,5 +159,29 @@ public class PublicationDto extends ResourceSupport implements Serializable {
 
     public void setAuthors(List<PublicationAuthorDto> authors) {
         this.authors = authors;
+    }
+
+    public CurationStatusDTO getCurationStatus() {
+        return curationStatus;
+    }
+
+    public void setCurationStatus(CurationStatusDTO curationStatus) {
+        this.curationStatus = curationStatus;
+    }
+
+    public CuratorDTO getCurator() {
+        return curator;
+    }
+
+    public void setCurator(CuratorDTO curator) {
+        this.curator = curator;
+    }
+
+    public String getSubmitter() {
+        return submitter;
+    }
+
+    public void setSubmitter(String submitter) {
+        this.submitter = submitter;
     }
 }

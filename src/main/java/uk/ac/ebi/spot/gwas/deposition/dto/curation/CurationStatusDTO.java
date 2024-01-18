@@ -10,14 +10,23 @@ import lombok.EqualsAndHashCode;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CurationStatusDTO {
 
+    @JsonProperty("id")
+    private String id;
+
     @JsonProperty("status")
     private String status;
 
-    public CurationStatusDTO(@JsonProperty("status") String status) {
+    public CurationStatusDTO( @JsonProperty("id") String id, @JsonProperty("status") String status) {
+        this.id = id;
         this.status = status;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getStatus() {
         return status;
     }
+
 }

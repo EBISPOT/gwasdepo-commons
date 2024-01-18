@@ -24,14 +24,19 @@ public class SearchPublicationDTO {
     @JsonProperty("title")
     private String title;
 
+    @JsonProperty("submitter")
+    private String submitter;
+
     public SearchPublicationDTO(@JsonProperty("pmid") String pmid,
                                 @JsonProperty("curator") String curator,
                                 @JsonProperty("curationStatus") String curationStatus,
-                                @JsonProperty("title") String title) {
+                                @JsonProperty("title") String title,
+                                @JsonProperty("submitter") String submitter) {
         this.pmid = pmid;
         this.curator = curator;
         this.curationStatus = curationStatus;
         this.title = title;
+        this.submitter = submitter;
     }
 
     public String getPmid() {
@@ -48,5 +53,9 @@ public class SearchPublicationDTO {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getSubmitter() {
+        return submitter;
     }
 }

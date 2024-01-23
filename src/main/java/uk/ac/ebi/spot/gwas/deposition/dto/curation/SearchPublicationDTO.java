@@ -27,16 +27,21 @@ public class SearchPublicationDTO {
     @JsonProperty("submitter")
     private String submitter;
 
+    @JsonProperty
+    private String firstAuthor;
+
     public SearchPublicationDTO(@JsonProperty("pmid") String pmid,
                                 @JsonProperty("curator") String curator,
                                 @JsonProperty("curationStatus") String curationStatus,
                                 @JsonProperty("title") String title,
-                                @JsonProperty("submitter") String submitter) {
+                                @JsonProperty("submitter") String submitter,
+                                @JsonProperty("firstAuthor") String firstAuthor) {
         this.pmid = pmid;
         this.curator = curator;
         this.curationStatus = curationStatus;
         this.title = title;
         this.submitter = submitter;
+        this.firstAuthor = firstAuthor;
     }
 
     public String getPmid() {
@@ -57,5 +62,9 @@ public class SearchPublicationDTO {
 
     public String getSubmitter() {
         return submitter;
+    }
+
+    public String getFirstAuthor() {
+        return firstAuthor;
     }
 }

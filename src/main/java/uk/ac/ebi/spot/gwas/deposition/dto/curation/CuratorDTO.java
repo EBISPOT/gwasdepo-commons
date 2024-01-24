@@ -15,8 +15,8 @@ public class CuratorDTO extends ResourceSupport implements Serializable {
 
     private static final long serialVersionUID = 3094792753261938894L;
 
-    @JsonProperty("id")
-    private String id;
+    @JsonProperty("curatorId")
+    private String curatorId;
 
     @JsonProperty("lastName")
     private String lastName;
@@ -31,20 +31,20 @@ public class CuratorDTO extends ResourceSupport implements Serializable {
     private String email;
 
     public CuratorDTO(
-            @JsonProperty("id") String id,
+            @JsonProperty("curatorId") String curatorId,
             @JsonProperty("lastName") String lastName,
             @JsonProperty("firstName") String firstName,
             @JsonProperty("username") String username,
             @JsonProperty("email") String email) {
-        this.id = id;
+        this.curatorId = curatorId;
         this.lastName = lastName;
         this.firstName = firstName;
         this.username = username;
         this.email = email;
     }
 
-    public String getId() {
-        return id;
+    public String getCuratorId() {
+        return curatorId;
     }
     public String getLastName() {
         return lastName;

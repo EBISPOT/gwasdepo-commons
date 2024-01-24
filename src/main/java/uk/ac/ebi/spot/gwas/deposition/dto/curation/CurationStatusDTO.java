@@ -16,19 +16,19 @@ public class CurationStatusDTO extends ResourceSupport implements Serializable {
 
     private static final long serialVersionUID = -8767756436682259521L;
 
-    @JsonProperty("id")
-    private String id;
+    @JsonProperty("curationStatusId")
+    private String curationStatusId;
 
     @JsonProperty("status")
     private String status;
 
-    public CurationStatusDTO( @JsonProperty("id") String id, @JsonProperty("status") String status) {
-        this.id = id;
+    public CurationStatusDTO( @JsonProperty("curationStatusId") String curationStatusId, @JsonProperty("status") String status) {
+        this.curationStatusId = curationStatusId;
         this.status = status;
     }
 
-    public String getId() {
-        return id;
+    public String getCurationStatusId() {
+        return curationStatusId;
     }
 
     public String getStatus() {

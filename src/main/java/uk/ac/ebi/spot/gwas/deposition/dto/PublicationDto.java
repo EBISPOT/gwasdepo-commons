@@ -77,8 +77,8 @@ public class PublicationDto extends ResourceSupport implements Serializable {
     @JsonCreator
     public PublicationDto(@JsonProperty("publicationId") String publicationId,
                           @JsonProperty("pmid") String pmid,
-                          @JsonProperty("title") String title,
                           @JsonProperty("journal") String journal,
+                          @JsonProperty("title") String title,
                           @JsonProperty("firstAuthor") String firstAuthor,
                           @JsonProperty("publicationDate") @JsonDeserialize(using = JsonJodaLocalDateDeserializer.class) LocalDate publicationDate,
                           @JsonProperty("correspondingAuthor") CorrespondingAuthorDto correspondingAuthor,

@@ -27,7 +27,7 @@ public class SearchPublicationDTO {
     @JsonProperty("submitter")
     private String submitter;
 
-    @JsonProperty
+    @JsonProperty("firstAuthor")
     private String firstAuthor;
 
     public SearchPublicationDTO(@JsonProperty("pmid") String pmid,

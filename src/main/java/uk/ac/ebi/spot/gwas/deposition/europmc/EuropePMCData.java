@@ -12,7 +12,7 @@ import java.util.Collection;
  */
 public class EuropePMCData {
 
-    private Boolean error;
+    private Boolean error = false;
 
     private PublicationDto publication = null;
 

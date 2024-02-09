@@ -33,9 +33,7 @@ public class Publication implements Serializable {
 
     private CorrespondingAuthor correspondingAuthor;
 
-    private String curator;
-
-    private String curationStatus;
+    private String curatorId;
 
     private String submitter;
 
@@ -45,6 +43,8 @@ public class Publication implements Serializable {
     private List<String> authors;
 
     private String firstAuthorId;
+
+    private String curationStatusId;
 
     private Provenance created;
 
@@ -56,7 +56,7 @@ public class Publication implements Serializable {
 
     public Publication(String pmid, String journal, String title, String firstAuthor,
                        LocalDate publicationDate, CorrespondingAuthor correspondingAuthor,
-                       String status, String curator,String curationStatus, String submitter,
+                       String status, String curatorId, String curationStatusId, String submitter,
                        Provenance created, Provenance updated, List<String> authors) {
         this.pmid = pmid;
         this.journal = journal;
@@ -66,8 +66,8 @@ public class Publication implements Serializable {
         this.correspondingAuthor = correspondingAuthor;
         this.status = status;
         this.pushed = false;
-        this.curator = curator;
-        this.curationStatus = curationStatus;
+        this.curatorId = curatorId;
+        this.curationStatusId = curationStatusId;
         this.submitter = submitter;
         this.created = created;
         this.updated = updated;
@@ -146,20 +146,20 @@ public class Publication implements Serializable {
         this.pushed = pushed;
     }
 
-    public String getCurator() {
-        return curator;
+    public String getCuratorId() {
+        return curatorId;
     }
 
-    public void setCurator(String curator) {
-        this.curator = curator;
+    public void setCuratorId(String curatorId) {
+        this.curatorId = curatorId;
     }
 
-    public String getCurationStatus() {
-        return curationStatus;
+    public String getCurationStatusId() {
+        return curationStatusId;
     }
 
-    public void setCurationStatus(String curationStatus) {
-        this.curationStatus = curationStatus;
+    public void setCurationStatusId(String curationStatusId) {
+        this.curationStatusId = curationStatusId;
     }
 
     public String getSubmitter() {

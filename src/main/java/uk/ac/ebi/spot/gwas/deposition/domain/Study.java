@@ -102,6 +102,8 @@ public class Study {
 
     private String coordinateSystem;
 
+    private String analysisSoftware;
+
 
     public Study() {
         bodyOfWorkList = new ArrayList<>();
@@ -427,5 +429,13 @@ public class Study {
 
     public void setCoordinateSystem(String coordinateSystem) {
         this.coordinateSystem = coordinateSystem;
+    }
+
+    public String getAnalysisSoftware() {
+        return analysisSoftware;
+    }
+
+    public void setAnalysisSoftware(String analysisSoftware) {
+        this.analysisSoftware = analysisSoftware;
     }
 }

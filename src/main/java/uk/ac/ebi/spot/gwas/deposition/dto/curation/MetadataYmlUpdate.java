@@ -8,7 +8,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 @Builder
 public class MetadataYmlUpdate implements Serializable {
 
@@ -18,4 +18,7 @@ public class MetadataYmlUpdate implements Serializable {
     private String gsct;
 
 
+    public MetadataYmlUpdate(@JsonProperty("gsct") String gsct) {
+        this.gsct = gsct;
+    }
 }

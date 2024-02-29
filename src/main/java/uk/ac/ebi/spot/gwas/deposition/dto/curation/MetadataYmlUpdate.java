@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 //@AllArgsConstructor
@@ -14,11 +15,21 @@ public class MetadataYmlUpdate implements Serializable {
 
     private static final long serialVersionUID = -8798172291691050974L;
 
-    @JsonProperty("gsct")
-    private String gsct;
 
+    @JsonProperty("args")
+    List<String> args = null;
 
-    public MetadataYmlUpdate(@JsonProperty("gsct") String gsct) {
-        this.gsct = gsct;
+    @JsonProperty("task")
+    String task = null;
+
+    @JsonProperty("id")
+    String id = null;
+
+    public MetadataYmlUpdate(@JsonProperty("args") List<String> args,
+                             @JsonProperty("task") String task ,
+                             @JsonProperty("id") String id) {
+        this.args = args;
+        this.task = task;
+        this.id = id;
     }
 }

@@ -147,6 +147,9 @@ public final class StudyDto extends ResourceSupport implements Serializable {
     @JsonProperty("coordinateSystem")
     private String coordinateSystem;
 
+    @JsonProperty("analysisSoftware")
+    private String analysisSoftware;
+
     @JsonCreator
     public StudyDto(@JsonProperty("study_tag") String studyTag,
                     @JsonProperty("studyId") String studyId,
@@ -188,7 +191,8 @@ public final class StudyDto extends ResourceSupport implements Serializable {
                     @JsonProperty("adjustedCovariates") String adjustedCovariates,
                     @JsonProperty("minor_allele_frequency_lower_limit") Double minor_allele_frequency_lower_limit,
                     @JsonProperty("sex") String sex,
-                    @JsonProperty("coordinateSystem") String coordinateSystem) {
+                    @JsonProperty("coordinateSystem") String coordinateSystem,
+                    @JsonProperty("analysisSoftware") String analysisSoftware) {
         this.studyTag = studyTag;
         this.studyId = studyId;
         this.accession = accession;
@@ -230,6 +234,7 @@ public final class StudyDto extends ResourceSupport implements Serializable {
         this.minor_allele_frequency_lower_limit = minor_allele_frequency_lower_limit;
         this.sex = sex;
         this.coordinateSystem = coordinateSystem;
+        this.analysisSoftware = analysisSoftware;
     }
 
     public String getStudyTag() {
@@ -386,5 +391,9 @@ public final class StudyDto extends ResourceSupport implements Serializable {
 
     public String getCoordinateSystem() {
         return coordinateSystem;
+    }
+
+    public String getAnalysisSoftware() {
+        return analysisSoftware;
     }
 }

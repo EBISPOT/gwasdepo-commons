@@ -15,6 +15,14 @@ public class RabbitMQConfigProperties {
     @Value("${rabbitmq.routing-key}")
     private String routingKey;
 
+    @Value("${rabbitmq.sumstats.queue-name}")
+    private String sumstatsQueueName;
+
+    @Value("${rabbitmq.sumstats.exchange-name}")
+    private String sumstatsExchangeName;
+
+    @Value("${rabbitmq.sumstats.routing-key}")
+    private String sumstatsRoutingKey;
 
     public String getQueueName() {
         return queueName;
@@ -26,5 +34,17 @@ public class RabbitMQConfigProperties {
 
     public String getRoutingKey() {
         return routingKey;
+    }
+
+    public String getSumstatsQueueName() {
+        return sumstatsQueueName;
+    }
+
+    public String getSumstatsExchangeName() {
+        return sumstatsExchangeName;
+    }
+
+    public String getSumstatsRoutingKey() {
+        return sumstatsRoutingKey;
     }
 }

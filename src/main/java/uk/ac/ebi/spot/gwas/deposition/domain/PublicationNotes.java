@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-@Document(collection = "publicationnotes")
+@Document(collection = "publicationNotes")
 public class PublicationNotes implements Serializable {
 
     private static final long serialVersionUID = -6087596001333151889L;

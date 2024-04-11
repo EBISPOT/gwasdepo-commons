@@ -18,7 +18,7 @@ public class PublicationNotes implements Serializable {
 
     private String publicationId;
 
-    private List<String> notes;
+    private String notes;
 
     private Provenance created;
 

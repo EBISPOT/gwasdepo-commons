@@ -25,7 +25,7 @@ public class PublicationNotesDto extends ResourceSupport implements Serializable
     private String publicationId;
 
     @JsonProperty("notes")
-    private List<String> notes;
+    private String notes;
 
     @JsonProperty("created")
     private ProvenanceDto created;
@@ -36,7 +36,7 @@ public class PublicationNotesDto extends ResourceSupport implements Serializable
 
     public PublicationNotesDto(@JsonProperty("noteId") String noteId,
                                @JsonProperty("publicationId") String publicationId,
-                               @JsonProperty("notes") List<String> notes,
+                               @JsonProperty("notes") String notes,
                                @JsonProperty("created") ProvenanceDto created,
                                @JsonProperty("updated") ProvenanceDto updated) {
         this.noteId = noteId;

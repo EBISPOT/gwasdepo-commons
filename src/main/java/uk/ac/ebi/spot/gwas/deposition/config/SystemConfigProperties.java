@@ -16,7 +16,7 @@ public class SystemConfigProperties {
     @Value("${server.port}")
     private String serverPort;
 
-    @Value("${spring.data.mongodb.uri}")
+    @Value("${spring.data.mongodb.uri:#{NULL}}")
     private String mongoUri;
 
     public String getActiveSpringProfile() {

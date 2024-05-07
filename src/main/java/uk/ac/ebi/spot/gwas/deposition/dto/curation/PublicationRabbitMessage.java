@@ -36,19 +36,5 @@ public class PublicationRabbitMessage {
 
     @JsonProperty("firstAuthor")
     private PublicationAuthorDto firstAuthor;
-
-
-    /*public PublicationRabbitMessage(@JsonProperty("pmid") String pmid,
-                                    @JsonProperty("journal") String journal,
-                                    @JsonProperty("title") String title,
-                                    @JsonProperty("publicationDate")  String publicationDate,
-                                    @JsonProperty("authors") List<PublicationAuthorDto> authors,
-                                    @JsonProperty("firstAuthor")  PublicationAuthorDto firstAuthor) {
-        this.pmid = pmid;
-        this.journal = journal;
-        this.title = title;
-        this.publicationDate = publicationDate;
-        this.authors = authors;
-        this.firstAuthor = firstAuthor;
-    }*/
+    
 }

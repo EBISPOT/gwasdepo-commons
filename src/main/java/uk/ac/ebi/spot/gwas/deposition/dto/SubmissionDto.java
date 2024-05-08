@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import org.joda.time.LocalDate;
 import org.springframework.hateoas.ResourceSupport;
@@ -17,6 +19,8 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
+@Builder
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Relation(value = "submission", collectionRelation = "submissions")
@@ -94,6 +98,9 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
 
     @JsonProperty("userrequested_flag")
     private final Boolean userRequestedFlag;
+
+    @JsonProperty("type")
+    private String type;
 
     @JsonCreator
     public SubmissionDto(@JsonProperty("submissionId") String submissionId,
@@ -220,5 +227,13 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
 
     public Boolean getUserRequestedFlag() {
         return userRequestedFlag;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

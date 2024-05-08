@@ -36,5 +36,4 @@ public class PublicationRabbitMessage {
 
     @JsonProperty("firstAuthor")
     private PublicationAuthorDto firstAuthor;
-    
 }

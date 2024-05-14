@@ -81,6 +81,12 @@ public class PublicationDto extends ResourceSupport implements Serializable {
     @JsonProperty("submissionIds")
     private List<String> submissionIds;
 
+    @JsonProperty("isUserRequested")
+    private Boolean isUserRequested;
+
+    @JsonProperty("isOpenTargets")
+    private Boolean isOpenTargets;
+
     @JsonCreator
     public PublicationDto(@JsonProperty("publicationId") String publicationId,
                           @JsonProperty("pmid") String pmid,
@@ -207,4 +213,21 @@ public class PublicationDto extends ResourceSupport implements Serializable {
     public void setSubmissionIds(List<String> submissionIds) {
         this.submissionIds = submissionIds;
     }
+
+    public Boolean getIsUserRequested() {
+        return isUserRequested;
+    }
+
+    public void setIsUserRequested(Boolean isUserRequested) {
+        this.isUserRequested = isUserRequested;
+    }
+
+    public Boolean getIsOpenTargets() {
+        return isOpenTargets;
+    }
+
+    public void setIsOpenTargets(Boolean isOpenTargets) {
+        this.isOpenTargets = isOpenTargets;
+    }
+
 }

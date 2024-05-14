@@ -88,10 +88,6 @@ public class Submission {
 
     private Boolean agreedToCc0;
 
-    private Boolean openTargetsFlag;
-
-    private Boolean userRequestedFlag;
-
     public Submission(String provenanceId, String provenanceType, Provenance created) {
         if (provenanceType.equalsIgnoreCase(SubmissionProvenanceType.BODY_OF_WORK.name())) {
             this.bodyOfWorks = new ArrayList<>();
@@ -344,19 +340,4 @@ public class Submission {
 
     public void setLockDetails(LockDetails lockDetails) { this.lockDetails = lockDetails; }
 
-    public Boolean getOpenTargetsFlag() {
-        return openTargetsFlag;
-    }
-
-    public void setOpenTargetsFlag(Boolean openTargetsFlag) {
-        this.openTargetsFlag = openTargetsFlag;
-    }
-
-    public Boolean getUserRequestedFlag() {
-        return userRequestedFlag;
-    }
-
-    public void setUserRequestedFlag(Boolean userRequestedFlag) {
-        this.userRequestedFlag = userRequestedFlag;
-    }
 }

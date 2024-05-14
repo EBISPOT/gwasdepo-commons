@@ -66,12 +66,6 @@ public class DepositionSubmission {
     @JsonProperty("agreedToCc0")
     private Boolean agreedToCc0;
 
-    @JsonProperty("opentargets_flag")
-    private Boolean opentargetsFlag;
-
-    @JsonProperty("userrequested_flag")
-    private Boolean userrequestedFlag;
-
 
     public DepositionSubmission(@JsonProperty("submissionId") String submissionId,
                                 @JsonProperty("publication") DepositionPublication publication,
@@ -86,9 +80,7 @@ public class DepositionSubmission {
                                 @JsonProperty("provenanceType") String provenanceType,
                                 @JsonProperty("date_submitted") @JsonDeserialize(using = JsonJodaLocalDateDeserializer.class) LocalDate dateSubmitted,
                                 @JsonProperty("created") DepositionProvenance created,
-                                @JsonProperty("agreedToCc0") Boolean agreedToCc0,
-                                @JsonProperty("opentargets_flag") Boolean opentargetsFlag,
-                                @JsonProperty("userrequested_flag") Boolean userrequestedFlag) {
+                                @JsonProperty("agreedToCc0") Boolean agreedToCc0) {
         this.submissionId = submissionId;
         this.publication = publication;
         this.bodyOfWork = bodyOfWork;
@@ -103,7 +95,5 @@ public class DepositionSubmission {
         this.dateSubmitted = dateSubmitted;
         this.created = created;
         this.agreedToCc0 = agreedToCc0;
-        this.opentargetsFlag = opentargetsFlag;
-        this.userrequestedFlag = userrequestedFlag;
     }
 }

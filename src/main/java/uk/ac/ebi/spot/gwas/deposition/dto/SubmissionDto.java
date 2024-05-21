@@ -93,12 +93,6 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
     @JsonProperty("agreedToCc0")
     private final Boolean agreedToCc0;
 
-    @JsonProperty("opentargets_flag")
-    private final Boolean openTargetsFlag;
-
-    @JsonProperty("userrequested_flag")
-    private final Boolean userRequestedFlag;
-
     @JsonProperty("type")
     private String type;
 
@@ -121,9 +115,7 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
                          @JsonProperty("lastUpdated") ProvenanceDto lastUpdated,
                          @JsonProperty("editTemplate") ProvenanceDto editTemplate,
                          @JsonProperty("lockDetails") LockDetailsDto lockdetails,
-                         @JsonProperty("agreedToCc0") Boolean agreedToCc0,
-                         @JsonProperty("opentargets_flag") Boolean openTargetsFlag,
-                         @JsonProperty("userrequested_flag") Boolean userRequestedFlag) {
+                         @JsonProperty("agreedToCc0") Boolean agreedToCc0) {
         this.submissionId = submissionId;
         this.publication = publication;
         this.bodyOfWork = bodyOfWork;
@@ -143,8 +135,6 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
         this.editTemplate = editTemplate;
         this.lockDetails = lockdetails;
         this.agreedToCc0 = agreedToCc0;
-        this.openTargetsFlag = openTargetsFlag;
-        this.userRequestedFlag = userRequestedFlag;
     }
 
     public String getSubmissionId() {
@@ -219,14 +209,6 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
 
     public Boolean isAgreedToCc0() {
         return agreedToCc0;
-    }
-
-    public Boolean getOpenTargetsFlag() {
-        return openTargetsFlag;
-    }
-
-    public Boolean getUserRequestedFlag() {
-        return userRequestedFlag;
     }
 
     public String getType() {

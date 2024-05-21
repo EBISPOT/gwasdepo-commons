@@ -50,6 +50,10 @@ public class Publication implements Serializable {
 
     private Provenance updated;
 
+    private Boolean isUserRequested;
+
+    private Boolean isOpenTargets;
+
     public Publication() {
 
     }
@@ -57,7 +61,7 @@ public class Publication implements Serializable {
     public Publication(String pmid, String journal, String title, String firstAuthor,
                        LocalDate publicationDate, CorrespondingAuthor correspondingAuthor,
                        String status, String curatorId, String curationStatusId, String submitter,
-                       Provenance created, Provenance updated, List<String> authors) {
+                       Provenance created, Provenance updated, List<String> authors, Boolean isUserRequested, Boolean isOpenTargets) {
         this.pmid = pmid;
         this.journal = journal;
         this.title = title;
@@ -72,6 +76,8 @@ public class Publication implements Serializable {
         this.created = created;
         this.updated = updated;
         this.authors = authors;
+        this.isUserRequested = isUserRequested;
+        this.isOpenTargets = isOpenTargets;
     }
 
     public String getId() {
@@ -201,4 +207,21 @@ public class Publication implements Serializable {
     public void setUpdated(Provenance updated) {
         this.updated = updated;
     }
+
+    public Boolean getIsUserRequested() {
+        return isUserRequested;
+    }
+
+    public void setIsUserRequested(Boolean isUserRequested) {
+        this.isUserRequested = isUserRequested;
+    }
+
+    public Boolean getIsOpenTargets() {
+        return isOpenTargets;
+    }
+
+    public void setIsOpenTargets(Boolean isOpenTargets) {
+        this.isOpenTargets = isOpenTargets;
+    }
+
 }

@@ -15,7 +15,6 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @Relation(
         value = "literature-file",
         collectionRelation = "literature-files"
@@ -23,8 +22,8 @@ import java.util.List;
 public class LiteratureFileDto {
 
     private String id;
-    private String fileName;
     private String name;
+    private String fileOriginalName;
     private String createdBy;
     private Date createDate;
 

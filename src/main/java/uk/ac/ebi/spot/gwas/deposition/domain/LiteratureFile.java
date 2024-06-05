@@ -21,6 +21,8 @@ public class LiteratureFile {
 
     private String name;
 
+    private String fileOriginalName;
+
     private String pubmedId;
 
     @CreatedBy

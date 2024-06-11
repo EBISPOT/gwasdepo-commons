@@ -1,7 +1,6 @@
 package uk.ac.ebi.spot.gwas.deposition.dto.curation;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import org.springframework.hateoas.core.Relation;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,7 +14,6 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @Relation(
         value = "literature-file",
         collectionRelation = "literature-files"
@@ -23,8 +21,8 @@ import java.util.List;
 public class LiteratureFileDto {
 
     private String id;
-    private String fileName;
-    private String name;
+    private String originalFileName;
+    private String onDiskFileName;
     private String createdBy;
     private Date createDate;
 

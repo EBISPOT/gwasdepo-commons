@@ -19,16 +19,12 @@ public class LiteratureFile {
     @Id
     private String id;
 
-    private String name;
+    private String originalFileName;
 
-    private String fileOriginalName;
+    private String onDiskFileName;
 
     private String pubmedId;
 
-    @CreatedBy
-    private String createdBy;
-
-    @CreatedDate
-    private Date createDate;
+    private Provenance created;
 
 }

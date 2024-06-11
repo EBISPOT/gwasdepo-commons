@@ -22,8 +22,8 @@ import java.util.List;
 public class LiteratureFileDto {
 
     private String id;
-    private String name;
-    private String fileOriginalName;
+    private String originalFileName;
+    private String onDiskFileName;
     private String createdBy;
     private Date createDate;
 

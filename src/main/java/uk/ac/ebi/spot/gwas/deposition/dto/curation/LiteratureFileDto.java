@@ -1,7 +1,6 @@
 package uk.ac.ebi.spot.gwas.deposition.dto.curation;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import org.springframework.hateoas.core.Relation;
 import org.springframework.web.multipart.MultipartFile;

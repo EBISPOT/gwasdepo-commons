@@ -8,16 +8,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class FtpConfig {
 
-    @Value("${ftp.link}")
+    @Value("${ftp.link:#{NULL}}")
     private String ftpLink;
 
-    @Value("${ftp.user}")
+    @Value("${ftp.user:#{NULL}}")
     private String ftpUser;
 
-    @Value("${ftp.pass}")
+    @Value("${ftp.pass:#{NULL}}")
     private String ftpPass;
 
-    @Value("${ftp.app_folder}")
+    @Value("${ftp.app_folder:#{NULL}}")
     private String appFolder;
 }
 

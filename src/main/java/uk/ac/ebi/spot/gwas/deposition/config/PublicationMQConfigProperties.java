@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class PublicationMQConfigProperties {
 
-    @Value("${rabbitmq.publication.queue-name}")
+    @Value("${rabbitmq.publication.queue-name:#{NULL}}")
     private String publicationQueueName;
 
-    @Value("${rabbitmq.publication.exchange-name}")
+    @Value("${rabbitmq.publication.exchange-name:#{NULL}}")
     private String publicationExchangeName;
 
-    @Value("${rabbitmq.publication.routing-key}")
+    @Value("${rabbitmq.publication.routing-key:#{NULL}}")
     private String publicationRoutingKey;
 }

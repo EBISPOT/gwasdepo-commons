@@ -36,11 +36,15 @@ public class SummaryStatsEntry {
 
     private String error;
 
+
+    private String analysisSoftware;
+
     public SummaryStatsEntry() {
 
     }
 
-    public SummaryStatsEntry(String fileUploadId, String studyTag, String filePath, String rawFilePath, String md5, String assembly, String readme, String globusFolder) {
+    public SummaryStatsEntry(String fileUploadId, String studyTag, String filePath, String rawFilePath,
+                             String md5, String assembly, String readme, String globusFolder, String analysisSoftware) {
         this.fileUploadId = fileUploadId;
         this.studyTag = studyTag;
         this.filePath = filePath;
@@ -50,6 +54,7 @@ public class SummaryStatsEntry {
         this.readme = readme;
         this.globusFolder = globusFolder;
         this.status = SummaryStatsEntryStatus.PENDING.name();
+        this.analysisSoftware = analysisSoftware;
     }
 
     public String getId() {
@@ -146,5 +151,13 @@ public class SummaryStatsEntry {
 
     public void setRawFilePath(String rawFilePath) {
         this.rawFilePath = rawFilePath;
+    }
+
+    public String getAnalysisSoftware() {
+        return analysisSoftware;
+    }
+
+    public void setAnalysisSoftware(String analysisSoftware) {
+        this.analysisSoftware = analysisSoftware;
     }
 }

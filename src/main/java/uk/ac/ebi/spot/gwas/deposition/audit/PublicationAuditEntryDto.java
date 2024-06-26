@@ -1,17 +1,13 @@
 package uk.ac.ebi.spot.gwas.deposition.audit;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import lombok.*;
-import org.joda.time.DateTime;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.springframework.hateoas.ResourceSupport;
+import org.springframework.hateoas.core.Relation;
 import uk.ac.ebi.spot.gwas.deposition.dto.ProvenanceDto;
-import uk.ac.ebi.spot.gwas.deposition.dto.UserDto;
-import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaDateTimeDeserializer;
-import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaDateTimeSerializer;
 
 import java.io.Serializable;
 
@@ -19,6 +15,7 @@ import java.io.Serializable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @NoArgsConstructor
 @Builder
+@Relation(value = "publicationAuditEntryDto", collectionRelation = "publicationAuditEntryDtos")
 public class PublicationAuditEntryDto extends ResourceSupport implements Serializable {
 
     private static final long serialVersionUID = 9048843867605119333L;
@@ -30,10 +27,6 @@ public class PublicationAuditEntryDto extends ResourceSupport implements Seriali
     @JsonProperty("eventDetails")
     private String eventDetails;
 
-   //@JsonSerialize(using = JsonJodaDateTimeSerializer.class)
-    //private DateTime timestamp;
-
-   // private UserDto userDto;
     @JsonProperty("created")
     private ProvenanceDto provenanceDto;
     @JsonProperty("isPublication")

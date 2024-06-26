@@ -11,7 +11,7 @@ public class FtpConfig {
     @Value("${ftp.link:#{NULL}}")
     private String ftpLink;
 
-    @Value("${ftp.user:#{NULL}")
+    @Value("${ftp.user:#{NULL}}")
     private String ftpUser;
 
     @Value("${ftp.pass:#{NULL}}")

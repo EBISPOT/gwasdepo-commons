@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
-
 @Document(collection = "literature-file")
 @Data
 @Builder
@@ -19,14 +17,12 @@ public class LiteratureFile {
     @Id
     private String id;
 
-    private String name;
+    private String originalFileName;
+
+    private String onDiskFileName;
 
     private String pubmedId;
 
-    @CreatedBy
-    private String createdBy;
-
-    @CreatedDate
-    private Date createDate;
+    private Provenance created;
 
 }

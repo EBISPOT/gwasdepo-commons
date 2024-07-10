@@ -1,7 +1,6 @@
 package uk.ac.ebi.spot.gwas.deposition.audit;
+
 import org.joda.time.DateTime;
-import uk.ac.ebi.spot.gwas.deposition.audit.PublicationAuditEntryDto;
-import uk.ac.ebi.spot.gwas.deposition.domain.Provenance;
 import uk.ac.ebi.spot.gwas.deposition.dto.ProvenanceDto;
 import uk.ac.ebi.spot.gwas.deposition.dto.UserDto;
 

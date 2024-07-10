@@ -2,6 +2,7 @@ package uk.ac.ebi.spot.gwas.deposition.audit.constants;
 
 public enum PublicationEventType {
 
+
     SUBMISSION_CREATED,
     TEMPLATE_UPLOAD,
     CURATION_STATUS_UPDATED,
@@ -17,6 +18,7 @@ public enum PublicationEventType {
     SS_VALIDATION_FAILED,
     SS_VALIDATION_SUCCESS,
     METADATA_VALIDATION_FAILED,
-    METADATA_VALIDATION_SUCCESS
+    METADATA_VALIDATION_SUCCESS;
+
 
 }

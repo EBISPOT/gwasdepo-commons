@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import org.joda.time.LocalDate;
 import org.springframework.hateoas.ResourceSupport;
@@ -17,6 +19,8 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
+@Builder
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Relation(value = "submission", collectionRelation = "submissions")
@@ -89,11 +93,8 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
     @JsonProperty("agreedToCc0")
     private final Boolean agreedToCc0;
 
-    @JsonProperty("opentargets_flag")
-    private final Boolean openTargetsFlag;
-
-    @JsonProperty("userrequested_flag")
-    private final Boolean userRequestedFlag;
+    @JsonProperty("type")
+    private String type;
 
     @JsonCreator
     public SubmissionDto(@JsonProperty("submissionId") String submissionId,
@@ -114,9 +115,7 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
                          @JsonProperty("lastUpdated") ProvenanceDto lastUpdated,
                          @JsonProperty("editTemplate") ProvenanceDto editTemplate,
                          @JsonProperty("lockDetails") LockDetailsDto lockdetails,
-                         @JsonProperty("agreedToCc0") Boolean agreedToCc0,
-                         @JsonProperty("opentargets_flag") Boolean openTargetsFlag,
-                         @JsonProperty("userrequested_flag") Boolean userRequestedFlag) {
+                         @JsonProperty("agreedToCc0") Boolean agreedToCc0) {
         this.submissionId = submissionId;
         this.publication = publication;
         this.bodyOfWork = bodyOfWork;
@@ -136,8 +135,6 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
         this.editTemplate = editTemplate;
         this.lockDetails = lockdetails;
         this.agreedToCc0 = agreedToCc0;
-        this.openTargetsFlag = openTargetsFlag;
-        this.userRequestedFlag = userRequestedFlag;
     }
 
     public String getSubmissionId() {
@@ -214,11 +211,11 @@ public class SubmissionDto extends ResourceSupport implements Serializable {
         return agreedToCc0;
     }
 
-    public Boolean getOpenTargetsFlag() {
-        return openTargetsFlag;
+    public String getType() {
+        return type;
     }
 
-    public Boolean getUserRequestedFlag() {
-        return userRequestedFlag;
+    public void setType(String type) {
+        this.type = type;
     }
 }

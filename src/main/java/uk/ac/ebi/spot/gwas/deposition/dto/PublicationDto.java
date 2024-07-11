@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import org.joda.time.LocalDate;
@@ -21,13 +22,14 @@ import java.io.Serializable;
 import java.util.List;
 
 @Builder
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Relation(value = "publication", collectionRelation = "publications")
 public class PublicationDto extends ResourceSupport implements Serializable {
 
     private static final long serialVersionUID = 4614819124284486530L;
-
+    
     @JsonProperty("publicationId")
     private final String publicationId;
 
@@ -73,6 +75,17 @@ public class PublicationDto extends ResourceSupport implements Serializable {
     @JsonProperty("submitter")
     private String submitter;
 
+    @JsonProperty("bodyOfWorkId")
+    private String bodyOfWorkId;
+
+    @JsonProperty("submissionIds")
+    private List<String> submissionIds;
+
+    @JsonProperty("isUserRequested")
+    private Boolean isUserRequested;
+
+    @JsonProperty("isOpenTargets")
+    private Boolean isOpenTargets;
 
     @JsonCreator
     public PublicationDto(@JsonProperty("publicationId") String publicationId,
@@ -184,4 +197,37 @@ public class PublicationDto extends ResourceSupport implements Serializable {
     public void setSubmitter(String submitter) {
         this.submitter = submitter;
     }
+
+    public String getBodyOfWorkId() {
+        return bodyOfWorkId;
+    }
+
+    public void setBodyOfWorkId(String bodyOfWorkId) {
+        this.bodyOfWorkId = bodyOfWorkId;
+    }
+
+    public List<String> getSubmissionIds() {
+        return submissionIds;
+    }
+
+    public void setSubmissionIds(List<String> submissionIds) {
+        this.submissionIds = submissionIds;
+    }
+
+    public Boolean getIsUserRequested() {
+        return isUserRequested;
+    }
+
+    public void setIsUserRequested(Boolean isUserRequested) {
+        this.isUserRequested = isUserRequested;
+    }
+
+    public Boolean getIsOpenTargets() {
+        return isOpenTargets;
+    }
+
+    public void setIsOpenTargets(Boolean isOpenTargets) {
+        this.isOpenTargets = isOpenTargets;
+    }
+
 }

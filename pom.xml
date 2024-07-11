@@ -6,7 +6,8 @@
 
     <groupId>uk.ac.ebi.spot.gwasdepo</groupId>
     <artifactId>gwasdepo-commons</artifactId>
-    <version>1.0.38-SNAPSHOT</version>
+
+    <version>1.0.45-SNAPSHOT</version>
 
     <packaging>jar</packaging>
 
@@ -286,13 +287,49 @@
 
     <developers>
         <developer>
+            <id>sprintell</id>
+            <name>Abayomi Mosaku</name>
+            <email>abayomi@ebi.ac.uk</email>
+            <organization>EBI</organization>
+            <organizationUrl>http://www.ebi.ac.uk</organizationUrl>
+            <roles>
+                <role>administrator</role>
+                <role>developer</role>
+            </roles>
+            <timezone>0</timezone>
+            <properties />
+        </developer>
+        <developer>
+            <id>sajo-ebi</id>
+            <name>Sajo John</name>
+            <email>sajo@ebi.ac.uk</email>
+            <organization>EBI</organization>
+            <organizationUrl>http://www.ebi.ac.uk</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>0</timezone>
+            <properties />
+        </developer>
+        <developer>
+            <id>ala-ebi</id>
+            <name>Ala Abid</name>
+            <email>ala@ebi.ac.uk</email>
+            <organization>EBI</organization>
+            <organizationUrl>http://www.ebi.ac.uk</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>0</timezone>
+            <properties />
+        </developer>
+        <developer>
             <id>tudor</id>
             <name>Tudor Groza</name>
             <email>tudor.groza@pryzm.health</email>
             <organization>Phen-X AI Consultancy</organization>
             <roles>
-                <role>administrator</role>
-                <role>developer</role>
+                <role>previous-developer</role>
             </roles>
             <timezone>0</timezone>
             <properties/>

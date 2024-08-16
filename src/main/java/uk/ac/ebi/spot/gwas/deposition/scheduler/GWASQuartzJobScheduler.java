@@ -57,7 +57,7 @@ public class GWASQuartzJobScheduler extends MongoDBJobStore {
     private static void initializeMongo() {
         String env = System.getProperty(ENVIRONMENT);
         env = StringUtils.isNotBlank(env) ? env : "dev";
-
+        log.info("The environment is {}",env);
         YamlPropertiesFactoryBean commonProperties = new YamlPropertiesFactoryBean();
         commonProperties.setResources(new ClassPathResource("application.yml"));
 

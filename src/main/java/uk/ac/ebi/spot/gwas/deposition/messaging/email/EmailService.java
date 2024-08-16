@@ -14,7 +14,11 @@ import uk.ac.ebi.spot.gwas.deposition.repository.FailedEmailRepository;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 
@@ -73,6 +77,57 @@ public class EmailService {
         }
     }
 
+    //@Async
+    public void sendMessageWithAttachments(String emailAddress, String subject, String content, File attachment, boolean retainFailed) {
+        log.info("Inside sendMessageWithAttachments");
+        if (mailConfig == null) {
+            log.info("Email sending is disabled.");
+            return;
+        }
+
+        if (mailSender != null) {
+            log.info("Inside mailSender not null block");
+            if (content == null) {
+                log.error("Unable to send email. Content is null.");
+                return;
+            }
+            int retryCount = mailConfig.getRetryCount();
+            boolean sent = false;
+            for (int i = 0; i < retryCount; i++) {
+                try {
+                    log.info("Building the email message with attachment to be sent");
+                    //MimeMessage message = buildMessage(emailAddress, subject, content);
+                    MimeBodyPart mimeBodyPart = buildEmailBody(content);
+                    MimeBodyPart mimeAttachPart = buildAttachmentPart(attachment);
+                    MimeMessage message = buildMultiPartMessage(emailAddress, subject);
+                    MimeMultipart multipart = new MimeMultipart();
+                    multipart.addBodyPart(mimeBodyPart);
+                    multipart.addBodyPart(mimeAttachPart);
+                    message.setContent(multipart);
+                    log.info("Preparing to send the email: {}", message);
+                    mailSender.send(message);
+                    log.info("Successfully sent the email message.");
+                    sent = true;
+                    break;
+                } catch (Exception e) {
+                    log.error("Exception received while trying to send out email: {}", e.getMessage(), e);
+                }
+            }
+            if (retainFailed) {
+                if (!sent && failedEmailRepository != null) {
+                    failedEmailRepository.insert(new FailedEmail(emailAddress,
+                            Base64.getEncoder().encodeToString(subject.getBytes()),
+                            Base64.getEncoder().encodeToString(content.getBytes())
+                            , 0));
+                }
+            }
+        } else {
+            log.warn("Email sender configuration not present. Cannot send emails.");
+        }
+    }
+
+
+
     @Async
     public void resendFailedMessage(FailedEmail failedEmail) {
         log.info("Resending failed email: {}", failedEmail.getId());
@@ -109,6 +164,30 @@ public class EmailService {
     }
 
 
+    MimeBodyPart buildAttachmentPart(File file) throws IOException, MessagingException {
+        MimeBodyPart mimeBodyPart = new MimeBodyPart();
+        mimeBodyPart.attachFile(file);
+        return mimeBodyPart;
+    }
+
+    MimeBodyPart buildEmailBody(String content) throws IOException, MessagingException {
+        MimeBodyPart mimeBodyPart = new MimeBodyPart();
+        mimeBodyPart.setContent(content, String.format("%s;%s",
+                doesStringContainHtml(content) ? "text/html" : "text/plain", "charset=utf-8"));
+        return mimeBodyPart;
+    }
+
+    private MimeMessage buildMultiPartMessage(String emailAddress,
+                                  String subject) throws MessagingException, UnsupportedEncodingException {
+        log.info("Building the MimeMultiPartMessage to be sent.");
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        mimeMessage.setFrom(new InternetAddress(mailConfig.getFromAddress(), mailConfig.getFromName()));
+        mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailAddress));
+        mimeMessage.setSubject(subject);
+        return mimeMessage;
+
+    }
+
     private MimeMessage buildMessage(String emailAddress,
                                      String subject,
                                      String content) throws MessagingException, UnsupportedEncodingException {
@@ -121,6 +200,8 @@ public class EmailService {
         mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailAddress));
 
         mimeMessage.setSubject(subject);
+
+
         return mimeMessage;
     }
 

@@ -79,14 +79,14 @@ public class EmailService {
 
     //@Async
     public void sendMessageWithAttachments(String emailAddress, String subject, String content, File attachment, boolean retainFailed) {
-        log.info("Inside sendMessageWithAttachments");
+        log.debug("Inside sendMessageWithAttachments");
         if (mailConfig == null) {
             log.info("Email sending is disabled.");
             return;
         }
 
         if (mailSender != null) {
-            log.info("Inside mailSender not null block");
+            log.debug("Inside mailSender not null block");
             if (content == null) {
                 log.error("Unable to send email. Content is null.");
                 return;
@@ -95,7 +95,7 @@ public class EmailService {
             boolean sent = false;
             for (int i = 0; i < retryCount; i++) {
                 try {
-                    log.info("Building the email message with attachment to be sent");
+                    log.debug("Building the email message with attachment to be sent");
                     //MimeMessage message = buildMessage(emailAddress, subject, content);
                     MimeBodyPart mimeBodyPart = buildEmailBody(content);
                     MimeBodyPart mimeAttachPart = buildAttachmentPart(attachment);

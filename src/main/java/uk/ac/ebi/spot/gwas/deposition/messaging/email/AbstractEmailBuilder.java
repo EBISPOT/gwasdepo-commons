@@ -37,6 +37,9 @@ public abstract class AbstractEmailBuilder implements EmailBuilder {
         } catch (IOException e) {
             log.error("Unable to read email content from [{}]: {}", emailFile, e.getMessage(), e);
             return null;
+        }catch(Exception ex){
+            log.error("Exception in reding email",ex.getMessage(),ex);
+            return null;
         }
     }
 

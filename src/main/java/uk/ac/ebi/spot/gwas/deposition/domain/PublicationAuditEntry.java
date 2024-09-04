@@ -24,6 +24,7 @@ public class PublicationAuditEntry {
 
     private String eventDetails;
 
+    @Indexed
     private DateTime timestamp;
 
     private String userId;

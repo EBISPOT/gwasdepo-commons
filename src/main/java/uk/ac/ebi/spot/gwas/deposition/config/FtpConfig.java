@@ -19,5 +19,8 @@ public class FtpConfig {
 
     @Value("${ftp.app_folder:#{NULL}}")
     private String appFolder;
+
+    @Value("${ftp.weekly_stats_folder:#{NULL}}")
+    private String weeklyStatsFolder;
 }
 

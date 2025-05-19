@@ -20,7 +20,6 @@
 
     <properties>
         <sonar.organization>gwas-ebi</sonar.organization>
-        <release.artifact>true</release.artifact>
     </properties>
 
     <build>

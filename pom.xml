@@ -15,11 +15,12 @@
     <parent>
         <groupId>uk.ac.ebi.spot.gwas</groupId>
         <artifactId>gwasdepo-master</artifactId>
-        <version>1.0.5</version>
+        <version>1.0.7</version>
     </parent>
 
     <properties>
         <sonar.organization>gwas-ebi</sonar.organization>
+        <release.artifact>true</release.artifact>
     </properties>
 
     <build>

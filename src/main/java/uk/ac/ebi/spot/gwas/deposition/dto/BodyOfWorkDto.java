@@ -9,6 +9,7 @@ import lombok.EqualsAndHashCode;
 import org.joda.time.LocalDate;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
+import uk.ac.ebi.spot.gwas.deposition.constants.BodyOfWorkType;
 import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaLocalDateDeserializer;
 import uk.ac.ebi.spot.gwas.deposition.util.JsonJodaLocalDateSerializer;
 
@@ -25,6 +26,9 @@ public class BodyOfWorkDto extends ResourceSupport implements Serializable {
 
     @JsonProperty("bodyOfWorkId")
     private final String bodyOfWorkId;
+
+    @JsonProperty("bodyOfWorkType")
+    private final BodyOfWorkType bodyOfWorkType;
 
     @NotEmpty
     @JsonProperty("title")
@@ -72,6 +76,7 @@ public class BodyOfWorkDto extends ResourceSupport implements Serializable {
 
     @JsonCreator
     public BodyOfWorkDto(@JsonProperty("bodyOfWorkId") String bodyOfWorkId,
+                         @JsonProperty("bodyOfWorkType") BodyOfWorkType bodyOfWorkType,
                          @JsonProperty("title") String title,
                          @JsonProperty("description") String description,
                          @JsonProperty("firstAuthor") AuthorDto firstAuthor,
@@ -87,6 +92,7 @@ public class BodyOfWorkDto extends ResourceSupport implements Serializable {
                          @JsonProperty("pmids") List<String> pmids,
                          @JsonProperty("status") String status) {
         this.bodyOfWorkId = bodyOfWorkId;
+        this.bodyOfWorkType = bodyOfWorkType;
         this.title = title;
         this.description = description;
         this.firstAuthor = firstAuthor;
@@ -105,6 +111,10 @@ public class BodyOfWorkDto extends ResourceSupport implements Serializable {
 
     public String getBodyOfWorkId() {
         return bodyOfWorkId;
+    }
+
+    public BodyOfWorkType getBodyOfWorkType() {
+        return bodyOfWorkType;
     }
 
     public String getTitle() {

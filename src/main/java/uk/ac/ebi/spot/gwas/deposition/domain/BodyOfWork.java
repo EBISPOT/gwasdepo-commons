@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import uk.ac.ebi.spot.gwas.deposition.constants.BodyOfWorkStatus;
+import uk.ac.ebi.spot.gwas.deposition.constants.BodyOfWorkType;
 
 import java.util.List;
 
@@ -23,6 +24,8 @@ public class BodyOfWork {
 
     @Indexed
     private String bowId;
+
+    private BodyOfWorkType bowType;
 
     private String title;
 
@@ -64,10 +67,11 @@ public class BodyOfWork {
 
     }
 
-    public BodyOfWork(String title, String description, String journal, String doi, String url,
+    public BodyOfWork(BodyOfWorkType bowType, String title, String description, String journal, String doi, String url,
                       Author firstAuthor, Author lastAuthor, List<Author> correspondingAuthors,
                       List<String> pmids, String prePrintServer, String preprintServerDOI, LocalDate embargoDate,
                       Boolean embargoUntilPublished, Provenance created) {
+        this.bowType = bowType;
         this.status = BodyOfWorkStatus.NEW.name();
         this.title = title;
         this.description = description;
@@ -237,5 +241,13 @@ public class BodyOfWork {
 
     public void setBowId(String bowId) {
         this.bowId = bowId;
+    }
+
+    public BodyOfWorkType getBowType() {
+        return bowType;
+    }
+
+    public void setBowType(BodyOfWorkType bowType) {
+        this.bowType = bowType;
     }
 }

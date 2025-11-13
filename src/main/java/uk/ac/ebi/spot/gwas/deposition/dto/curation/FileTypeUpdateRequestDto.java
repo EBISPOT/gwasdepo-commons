@@ -12,5 +12,7 @@ public class FileTypeUpdateRequestDto {
     @JsonProperty("file_type")
     private String fileType;
     @JsonProperty("gcst_id")
-    private String gcstId;
+    private String[] gcstId;
+    @JsonProperty("is_harmonised_included")
+    private String isHarmonisedIncluded;
 }
